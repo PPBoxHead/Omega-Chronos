@@ -6,19 +6,19 @@ public class CheckpointManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if (PlayerPrefs.HasKey("checkpointX") && PlayerPrefs.HasKey("checkpointY"))
+        if (PlayerPrefs.HasKey("OCcheckpointX") && PlayerPrefs.HasKey("OCcheckpointY"))
         {
             Vector2 initialPosition;
-            initialPosition = new Vector2(PlayerPrefs.GetFloat("checkpointX"), PlayerPrefs.GetFloat("checkpointY"));
+            initialPosition = new Vector2(PlayerPrefs.GetFloat("OCcheckpointX"), PlayerPrefs.GetFloat("OCcheckpointY"));
             checkpoint.position = initialPosition;
         }
     }
 
     public void SetCheckpoint(Transform destination)
     {
-        if (PlayerPrefs.HasKey("checkpointX") && PlayerPrefs.HasKey("checkpointY"))
+        if (PlayerPrefs.HasKey("OCcheckpointX") && PlayerPrefs.HasKey("OCcheckpointY"))
         {
-            Vector3 currentCheckpoint = new Vector3(PlayerPrefs.GetFloat("checkpointX"), PlayerPrefs.GetFloat("checkpointY"), 0);
+            Vector3 currentCheckpoint = new Vector3(PlayerPrefs.GetFloat("OCcheckpointX"), PlayerPrefs.GetFloat("OCcheckpointY"), 0);
 
             if (currentCheckpoint != destination.position)
             {
@@ -33,8 +33,8 @@ public class CheckpointManager : MonoBehaviour
 
     public void MoveCheckpoint(Transform destination)
     {
-        PlayerPrefs.SetFloat("checkpointX", destination.position.x);
-        PlayerPrefs.SetFloat("checkpointY", destination.position.y);
+        PlayerPrefs.SetFloat("OCcheckpointX", destination.position.x);
+        PlayerPrefs.SetFloat("OCcheckpointY", destination.position.y);
         Debug.Log("Checkpoint position: (" + destination.position.x + "), (" + checkpoint.position.y + ")");
         checkpoint.position = destination.position;
     }

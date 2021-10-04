@@ -4,9 +4,9 @@ public class SavesManager : MonoBehaviour
 {
     public void DeleteSaves()
     {
-        PlayerPrefs.DeleteKey("scene");
-        PlayerPrefs.DeleteKey("checkpointX");
-        PlayerPrefs.DeleteKey("checkpointY");
+        PlayerPrefs.DeleteKey("OCscene");
+        PlayerPrefs.DeleteKey("OCcheckpointX");
+        PlayerPrefs.DeleteKey("OCcheckpointY");
         Debug.Log("PlayerPrefs deleted");
     }
 }

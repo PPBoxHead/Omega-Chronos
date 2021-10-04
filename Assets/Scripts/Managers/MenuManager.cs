@@ -27,15 +27,15 @@ public class MenuManager : MonoBehaviour
     public void GoToNextLevel(string value)
     {
         if (savesManager != null) savesManager.DeleteSaves();
-        PlayerPrefs.SetString("scene", value);
+        PlayerPrefs.SetString("OCscene", value);
         LoadScene(value);
     }
 
     public void PlayGame()
     {
-        if (PlayerPrefs.HasKey("scene"))
+        if (PlayerPrefs.HasKey("OCscene"))
         {
-            startingLevel = PlayerPrefs.GetString("scene");
+            startingLevel = PlayerPrefs.GetString("OCscene");
         }
         LoadScene(startingLevel);
     }
