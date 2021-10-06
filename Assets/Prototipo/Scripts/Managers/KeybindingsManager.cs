@@ -6,9 +6,9 @@ public class KeybindingsManager : MonoBehaviour
     #region Variables
     #region KeyCodes
     private KeyCode pauseButton = KeyCode.Escape;
-    private KeyCode jumpButton = KeyCode.Space;
-    private KeyCode dashButton = KeyCode.LeftShift;
-    private KeyCode slowmoButton = KeyCode.L;
+    [SerializeField] private KeyCode jumpButton = KeyCode.Space;
+    [SerializeField] private KeyCode dashButton = KeyCode.LeftShift;
+    [SerializeField] private KeyCode slowmoButton = KeyCode.L;
     #endregion
     private static KeybindingsManager instance;
     #endregion
