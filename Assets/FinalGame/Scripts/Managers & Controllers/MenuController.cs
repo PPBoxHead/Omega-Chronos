@@ -31,11 +31,14 @@ public class MenuController : MonoBehaviour
 
     [Header("Volume Settings")]
     //[SerializeField] private AudioMixerGroup masterMixer;
+    [SerializeField] private AudioMixer masterMixer;
+    [SerializeField] private TMP_Text masterTextValue = null;
+    [SerializeField] private Slider masterSlider = null;
     [SerializeField] private TMP_Text musicTextValue = null;
     [SerializeField] private Slider musicSlider = null;
     [SerializeField] private TMP_Text sfxTextValue = null;
     [SerializeField] private Slider sfxSlider = null;
-    [SerializeField] private int defaultVolume = 5;
+    [SerializeField] private float defaultVolume = 0.5f;
     [Space]
     [SerializeField] private GameObject confirmationPrompt = null;
 
@@ -71,22 +74,24 @@ public class MenuController : MonoBehaviour
 
     public void NewGame()
     {
-        SceneManager.LoadScene(newGame);
+        PlayerPrefs.DeleteKey("OCscene");
+        PlayerPrefs.DeleteKey("OCcheckpointX");
+        PlayerPrefs.DeleteKey("OCcheckpointY");
+        Debug.Log("PlayerPrefs deleted");
+        SceneManager.LoadScene("SampleScene");
     }
-
     public void LoadGame()
     {
         if(PlayerPrefs.HasKey("OCscene"))
         {
-            loadedGame = PlayerPrefs.GetString("OCscene");
-            SceneManager.LoadScene(loadedGame);
+            loadedGame = PlayerPrefs.GetString("OCscene"); 
+            SceneManager.LoadScene(loadedGame); 
         }
         else
         {
             noSavedGamePanel.SetActive(true);
         }
     }
-
     public void ExitGame()
     {
         Debug.Log("Goodbye pussy");
@@ -95,15 +100,14 @@ public class MenuController : MonoBehaviour
 
     public void SetBrightness(float brightness)
     {
+        
         brightnessLevel = brightness;
         brightnessTextValue.text = brightness.ToString("0.0");
     }
-
     public void SetFullScreen(bool fullScreen)
     {
         isFullScreen = fullScreen;
     }
-
     public void SetQuality(int qualityIndex)
     {
         qualityLevel = qualityIndex;
@@ -122,25 +126,33 @@ public class MenuController : MonoBehaviour
         StartCoroutine(Confirmationbox());
     }
 
+    public void SetMasterVolume(float masterVolume)
+    {
+        AudioListener.volume = masterVolume;
+        masterMixer.SetFloat("MasterVolumeExposed", Mathf.Log10(masterVolume) * 20);
+        masterTextValue.text = masterVolume.ToString("0.0");
+    }
     public void SetMusicVolume(float musicVolume) // poner el audio de la música 
     {
         //masterMixer.audioMixer.SetFloat("musicVolume", Mathf.Log10(musicVolume) * 20); // esto aun se tiene que ver 
         AudioListener.volume = musicVolume;
-        musicTextValue.text = musicVolume.ToString("0");
+        musicTextValue.text = musicVolume.ToString("0.0");
     }
     public void SetSFXVolume(float sfxVolume) // poner el audio de los sfx 
     {
         AudioListener.volume = sfxVolume;
-        sfxTextValue.text = sfxVolume.ToString("0");
+        sfxTextValue.text = sfxVolume.ToString("0.0");
     }
 
     public void VolumeApply() // guarda los valores de audio
     {
         PlayerPrefs.SetFloat("musicVolume", AudioListener.volume);
         PlayerPrefs.SetFloat("sfxVolume", AudioListener.volume);
+        PlayerPrefs.SetFloat("masterVolume", AudioListener.volume);
         // Nos muestra que fue aplicado
         StartCoroutine(Confirmationbox());
     }
+
     public void ResetValues(string MenuType)
     {
         if(MenuType == "Graphics")
@@ -152,8 +164,8 @@ public class MenuController : MonoBehaviour
             qualityDrowpdown.value = 3;
             QualitySettings.SetQualityLevel(3);
             //reset full screen
-            fullScreenToggle.isOn = true;
-            Screen.fullScreen = true;
+            fullScreenToggle.isOn = false;
+            Screen.fullScreen = false;
             //reset resolution
             Resolution currentResolution = Screen.currentResolution;
             Screen.SetResolution(currentResolution.width, currentResolution.height, Screen.fullScreen);
@@ -164,13 +176,16 @@ public class MenuController : MonoBehaviour
         if(MenuType == "Audio")
         {
             AudioListener.volume = defaultVolume;
+            masterSlider.value = defaultVolume;
+            masterTextValue.text = defaultVolume.ToString("0.0");
             musicSlider.value = defaultVolume;
-            musicTextValue.text = defaultVolume.ToString("0");
+            musicTextValue.text = defaultVolume.ToString("0.0");
             sfxSlider.value = defaultVolume;
-            sfxTextValue.text = defaultVolume.ToString("0");
+            sfxTextValue.text = defaultVolume.ToString("0.0");
             VolumeApply();
         }
     }
+    
     public IEnumerator Confirmationbox()
     { 
         confirmationPrompt.SetActive(true);

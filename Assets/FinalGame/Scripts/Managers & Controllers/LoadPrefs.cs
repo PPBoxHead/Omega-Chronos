@@ -24,6 +24,8 @@ public class LoadPrefs : MonoBehaviour
     [SerializeField] private Toggle fullScreenToggle;
 
     [Header("Volume Setting")]
+    [SerializeField] private TMP_Text masterTextValue = null;
+    [SerializeField] private Slider masterSlider = null;
     [SerializeField] private TMP_Text musicTextValue = null;
     [SerializeField] private Slider musicSlider = null;
     [SerializeField] private TMP_Text sfxTextValue = null;
@@ -33,11 +35,19 @@ public class LoadPrefs : MonoBehaviour
     {
         if(canUse)
         {
+            if(PlayerPrefs.HasKey("masterVolume"))
+            {
+                float localVolume = PlayerPrefs.GetFloat("masterVolume");
+
+                masterTextValue.text = localVolume.ToString("0.0");
+                masterSlider.value = localVolume;
+                AudioListener.volume = localVolume;
+            }
             if(PlayerPrefs.HasKey("musicVolume"))
             {
                 float localVolume = PlayerPrefs.GetFloat("musicVolume");
 
-                musicTextValue.text = localVolume.ToString("0");
+                musicTextValue.text = localVolume.ToString("0.0");
                 musicSlider.value = localVolume;
                 AudioListener.volume = localVolume;
             }
@@ -45,7 +55,7 @@ public class LoadPrefs : MonoBehaviour
             {
                 float localVolume = PlayerPrefs.GetFloat("sfxVolume");
 
-                sfxTextValue.text = localVolume.ToString("0");
+                sfxTextValue.text = localVolume.ToString("0.0");
                 sfxSlider.value = localVolume;
                 AudioListener.volume = localVolume;
             }
