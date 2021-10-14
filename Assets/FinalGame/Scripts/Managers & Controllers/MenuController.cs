@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class MenuController : MonoBehaviour
@@ -12,6 +13,7 @@ public class MenuController : MonoBehaviour
     public string newGame;
     private string loadedGame;
     [SerializeField] private GameObject noSavedGamePanel = null;
+    [SerializeField] private GameObject noSavedGameButton;
 
     [Header("Graphics Settings")]
     [SerializeField] private Slider brightnessSlider = null;
@@ -41,9 +43,12 @@ public class MenuController : MonoBehaviour
     [SerializeField] private float defaultVolume = 0.5f;
     [Space]
     [SerializeField] private GameObject confirmationPrompt = null;
-
-    void Start() //resolutions list for the screen
+    void Start() //resolutions list for the screen & cursor lock
     {
+        // Esto bloquea la interacción del mouse y lo vuelve invisible
+        // Cursor.visible = false;
+        // Cursor.lockState = CursorLockMode.Locked;
+
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
 
@@ -90,6 +95,7 @@ public class MenuController : MonoBehaviour
         else
         {
             noSavedGamePanel.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(noSavedGameButton);
         }
     }
     public void ExitGame()
