@@ -170,8 +170,8 @@ public class MenuController : MonoBehaviour
             qualityDrowpdown.value = 3;
             QualitySettings.SetQualityLevel(3);
             //reset full screen
-            fullScreenToggle.isOn = false;
-            Screen.fullScreen = false;
+            fullScreenToggle.isOn = true;
+            Screen.fullScreen = true;
             //reset resolution
             Resolution currentResolution = Screen.currentResolution;
             Screen.SetResolution(currentResolution.width, currentResolution.height, Screen.fullScreen);
