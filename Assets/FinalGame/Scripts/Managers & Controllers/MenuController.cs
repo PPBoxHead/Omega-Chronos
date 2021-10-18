@@ -37,11 +37,14 @@ public class MenuController : MonoBehaviour
     [SerializeField] private AudioMixer masterMixer;
     [SerializeField] private TMP_Text masterTextValue = null;
     [SerializeField] private Slider masterSlider = null;
+    [SerializeField] private AudioMixerGroup musicMixer;
     [SerializeField] private TMP_Text musicTextValue = null;
     [SerializeField] private Slider musicSlider = null;
+    [SerializeField] private AudioMixerGroup sfxMixer;
     [SerializeField] private TMP_Text sfxTextValue = null;
     [SerializeField] private Slider sfxSlider = null;
-    [SerializeField] private float defaultVolume = 0.5f;
+    [SerializeField] private float defaultVolume = 1f;
+    [SerializeField] private int volumeMultiplier = 40;
     [Space]
     [SerializeField] private GameObject confirmationPrompt = null;
     void Start() //resolutions list for the screen & cursor lock
@@ -136,18 +139,19 @@ public class MenuController : MonoBehaviour
     public void SetMasterVolume(float masterVolume)
     {
         AudioListener.volume = masterVolume;
-        masterMixer.SetFloat("MasterVolumeExposed", Mathf.Log10(masterVolume) * 20);
+        masterMixer.SetFloat("MasterVolumeExposed", Mathf.Log10(masterVolume) * volumeMultiplier);
         masterTextValue.text = masterVolume.ToString("0.0");
     }
     public void SetMusicVolume(float musicVolume) // poner el audio de la música 
-    {
-        //masterMixer.audioMixer.SetFloat("musicVolume", Mathf.Log10(musicVolume) * 20); // esto aun se tiene que ver 
+    { 
         AudioListener.volume = musicVolume;
+        musicMixer.audioMixer.SetFloat("MusicVolumeExposed", Mathf.Log10(musicVolume) * volumeMultiplier);
         musicTextValue.text = musicVolume.ToString("0.0");
     }
     public void SetSFXVolume(float sfxVolume) // poner el audio de los sfx 
     {
         AudioListener.volume = sfxVolume;
+        sfxMixer.audioMixer.SetFloat("SFXVolumeExposed", Mathf.Log10(sfxVolume) * volumeMultiplier);
         sfxTextValue.text = sfxVolume.ToString("0.0");
     }
 

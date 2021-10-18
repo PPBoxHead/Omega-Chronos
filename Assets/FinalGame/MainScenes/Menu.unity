@@ -5059,7 +5059,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1960869445}
   m_HandleRect: {fileID: 1574519998}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0.8
@@ -13157,7 +13157,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1720685899}
   m_HandleRect: {fileID: 1496353974}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0.8
@@ -13411,7 +13411,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1786933735}
   m_HandleRect: {fileID: 140546614}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0.8
@@ -14134,11 +14134,13 @@ MonoBehaviour:
   masterMixer: {fileID: 24100000, guid: c956f0faa25541c408cbc89bb13d5b41, type: 2}
   masterTextValue: {fileID: 530528777}
   masterSlider: {fileID: 874089394}
+  musicMixer: {fileID: 8296036350477022478, guid: c956f0faa25541c408cbc89bb13d5b41, type: 2}
   musicTextValue: {fileID: 556365743}
   musicSlider: {fileID: 1991734263}
+  sfxMixer: {fileID: 5979693427445828709, guid: c956f0faa25541c408cbc89bb13d5b41, type: 2}
   sfxTextValue: {fileID: 223471910}
   sfxSlider: {fileID: 1960148493}
-  defaultVolume: 5
+  defaultVolume: 1
   confirmationPrompt: {fileID: 645380035}
 --- !u!4 &2040182886
 Transform:
