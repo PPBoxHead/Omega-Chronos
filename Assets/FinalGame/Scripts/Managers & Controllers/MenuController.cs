@@ -18,7 +18,8 @@ public class MenuController : MonoBehaviour
     [Header("Graphics Settings")]
     [SerializeField] private Slider brightnessSlider = null;
     [SerializeField] private TMP_Text brightnessTextValue = null;
-    [SerializeField] private float defaultBrightness = 1f;
+    [SerializeField] private float defaultBrightness = 0.1f;
+    [SerializeField] private Image brightPanel;
     
     [Space(10)]
     [SerializeField] private TMP_Dropdown qualityDrowpdown;
@@ -106,9 +107,9 @@ public class MenuController : MonoBehaviour
 
     public void SetBrightness(float brightness)
     {
-        
         brightnessLevel = brightness;
         brightnessTextValue.text = brightness.ToString("0.0");
+        brightPanel.color = new Color(brightPanel.color.r, brightPanel.color.g, brightPanel.color.b, brightnessSlider.value);
     }
     public void SetFullScreen(bool fullScreen)
     {
@@ -121,7 +122,7 @@ public class MenuController : MonoBehaviour
     public void GraphicsApply()
     {
         PlayerPrefs.SetFloat("masterBrightness", brightnessLevel);
-        //Change brightness
+        brightPanel.color = new Color(brightPanel.color.r, brightPanel.color.g, brightPanel.color.b, brightnessSlider.value);
 
         PlayerPrefs.SetInt("masterQuality", qualityLevel);
         QualitySettings.SetQualityLevel(qualityLevel);
@@ -166,6 +167,8 @@ public class MenuController : MonoBehaviour
             //reset Brightness value
             brightnessSlider.value = defaultBrightness;
             brightnessTextValue.text = defaultBrightness.ToString("0.0");
+            brightPanel.color = new Color(brightPanel.color.r, brightPanel.color.g, brightPanel.color.b, brightnessSlider.value);
+
             //reset quality
             qualityDrowpdown.value = 3;
             QualitySettings.SetQualityLevel(3);
