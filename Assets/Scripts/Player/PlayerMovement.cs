@@ -1,144 +1,63 @@
 using UnityEngine;
-[RequireComponent(typeof(Rigidbody2D))]
+using System.Collections.Generic;
+[RequireComponent(typeof(Player))]
 
 public class PlayerMovement : MonoBehaviour
 {
     #region Variables
+    [Header("LookAhead Setup")]
+    [Range(1, 5)] [SerializeField] private float aheadSpeed = 3;
+    [Range(1, 10)] [SerializeField] private float aheadAmount = 5;
+    private float walljumpLerp = 10;
     #region Setup
-    public float movementSpeed;
-    private Rigidbody2D rb2D;
-    private SpriteRenderer spriteRenderer;
-    #endregion
-    #region Movement
-    private Vector2 playerMomentum;
     private bool stopMovement;
-    private float hMovement;
-    private float vMovement;
+    private Rigidbody2D rb;
+
+    private Player player;
+
+    private List<Player.State> movingState = new List<Player.State>() { Player.State.Walking, Player.State.Jumping, Player.State.Falling, Player.State.WallGrabing };
     #endregion
-    public Transform camTarget;
-    [SerializeField] private float aheadAmount, aheadSpeed;
-    public TimeManager timeManager; // esto despues puede estar como un singleton pero para el prototipo lo hago asi nomas
-    public bool isDashing = false;
-    [SerializeField] private ParticleSystem dustParticles;
-    private PlayerJump playerJump;
+    #region LookAhead
+    Transform lookAhead;
+    #endregion
     #endregion
 
     #region Methods
-    private void Awake()
+    void Start()
     {
-        rb2D = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        playerJump = GetComponent<PlayerJump>();
-    }
+        lookAhead = GameObject.Find("/Player/LookAheadPoint").transform;
 
-    private void Start()
-    {
+        player = GetComponent<Player>();
+        rb = player.GetRb;
+
         GameManager.GetInstance.onGamePaused += PauseResume;
-        timeManager.onSlowMotion += OnSlowMotion;
     }
 
-    private void Update()
+    void FixedUpdate()
     {
-        if (stopMovement) return;
+        if (!movingState.Contains(player.CurrentState) || stopMovement) return;
 
-        // solucion super cutre cuando pones el tiempo mas lento
-        // arreglar luego
-        hMovement = Input.GetAxis("Horizontal") / Time.timeScale;
-        FlipSprite();
-        ManageDustParticles();
-        if (hMovement >= 1)
-        {
-            hMovement = 1;
-        }
+        // moves lookAhead
+        lookAhead.localPosition = new Vector2(Mathf.Lerp(lookAhead.localPosition.x, aheadAmount * player.HMovement, aheadSpeed * Time.deltaTime), lookAhead.localPosition.y);
 
-        if (hMovement <= -1)
+        if (!player.WallJumped)
         {
-            hMovement = -1;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (stopMovement) return;
-
-        // this moves the "lookahead" gameobject for camera
-        if (hMovement != 0)
-        {
-            camTarget.localPosition = new Vector2(Mathf.Lerp(camTarget.localPosition.x, aheadAmount * hMovement, aheadSpeed * Time.deltaTime / Time.timeScale), camTarget.localPosition.y);
-        }
-
-        if (!isDashing)
-        {
-            rb2D.velocity = new Vector2(hMovement * movementSpeed, rb2D.velocity.y);
-        }
-    }
-
-    void FlipSprite()
-    {
-        if (hMovement < 0)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else if (hMovement > 0)
-        {
-            spriteRenderer.flipX = false;
-        }
-    }
-
-    void ManageDustParticles()
-    {
-        if (!playerJump.IsOnGround) return;
-        if(Input.GetButtonDown("Horizontal"))
-        {
-            dustParticles.Play();
-        }
-        /*if (Input.GetKeyDown(KeyCode.A))
-        {
-            dustParticles.Play();
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            dustParticles.Play();
-        }*/
-    }
-
-    /// <summary>
-    /// stores player momentum before pause
-    /// and gives it to player after pause
-    /// </summary>
-    public void PauseResume(bool gamePaused)
-    {
-        if (gamePaused)
-        {
-            playerMomentum = rb2D.velocity;
-            rb2D.bodyType = RigidbodyType2D.Static;
+            rb.velocity = new Vector2(player.HMovement * player.CurrentMovementSpeed, rb.velocity.y);
         }
         else
         {
-            rb2D.bodyType = RigidbodyType2D.Dynamic;
-            rb2D.velocity = playerMomentum;
+            // used for smooth movement after walljump
+            rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(player.HMovement * player.CurrentMovementSpeed, rb.velocity.y)), walljumpLerp * Time.deltaTime);
         }
+
+    }
+
+    void PauseResume(bool gamePaused)
+    {
         stopMovement = gamePaused;
     }
 
-
-    /// <summary>
-    /// Manages player speed
-    /// on slow motion
-    /// </summary>
-    void OnSlowMotion(bool isTimeSlow)
-    {
-        if (isTimeSlow)
-        {
-            movementSpeed /= timeManager.GetSlowdownFactor;
-        }
-        else
-        {
-            movementSpeed *= timeManager.GetSlowdownFactor;
-        }
-    }
-
-    private void OnDestroy()
+    void OnDestroy()
     {
         GameManager.GetInstance.onGamePaused -= PauseResume;
     }

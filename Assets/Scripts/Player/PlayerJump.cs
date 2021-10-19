@@ -1,100 +1,102 @@
 using UnityEngine;
 using System.Collections.Generic;
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Player))]
 
 public class PlayerJump : MonoBehaviour
 {
     #region Variables
     #region Setup
-    [SerializeField] private float jumpForce; // fuerza del salto
-    [SerializeField] private float bufferTime = 0.1f; // el tiempo del buffer
-    private float walkingTreshold = 0.05f;
-    private KeyCode jumpButton;
+    // pasar a Player.cs
+    [Header("Jump force")]
+    [Range(5, 20)] [SerializeField] private float vJumpForce = 11f;
+    [Range(5, 20)] [SerializeField] private float hJumpForce = 11f;
+
+    [Header("Jump Config")]
+    [Range(0, 0.5f)] [SerializeField] private float bufferTime = 0.1f;
+
+    [Range(0, 1)] [SerializeField] private float jumpTimer = 0.2f;
+
+    private bool stopMovement;
+    private KeyCode jumpBtn;
+
+    private Rigidbody2D rb;
+
+    private Player player;
+
+    private List<Player.State> jumpingState = new List<Player.State>() { Player.State.Walking, Player.State.Idle, Player.State.Jumping, Player.State.Falling, Player.State.WallGrabing, Player.State.WallJumping };
+    #endregion
+    #region Buffer
     Queue<KeyCode> inputBuffer;
-    private Rigidbody2D rb2D;
     #endregion
     #region VariableJump
-    [SerializeField] private float jumpTimer = 0.2f; // cuanto tiempo esta "Subiendo"
+
+    private bool checkingForWall = true;
     private bool releaseJump = false;
-    private bool isOnGround = false;
     private bool startTimer = false;
     private float gravityScale;
     private float timer;
     #endregion
     #region CoyoteTime
-    [SerializeField] private float coyoteFrames = 3f; // coyote time
+    [Header("Coyote Time")]
+    [Range(0, 0.5f)] [SerializeField] private float coyoteFrames = 0.1f;
     [SerializeField] private float coyoteTimer;
-    [SerializeField] private Vector3 raycastOffset = new Vector3(0.18f, 0, 0);
-    [SerializeField] private float raycastLenght = 0.7f;
     #endregion
-    private bool stopMovement;
-    public TimeManager timeManager;
-    private Animator animator;
-    private WallGrab wallGrab;
-    [SerializeField] private ParticleSystem dustParticles;
     #endregion
 
     #region Methods
-    private void Awake()
+    void Start()
     {
-        inputBuffer = new Queue<KeyCode>();
-        rb2D = GetComponent<Rigidbody2D>();
-        gravityScale = rb2D.gravityScale;
+        player = GetComponent<Player>();
+
+        rb = player.GetRb;
+        gravityScale = rb.gravityScale;
+
         timer = jumpTimer;
-        animator = GetComponentInChildren<Animator>();
-        wallGrab = GetComponent<WallGrab>();
-    }
 
-    private void Start()
-    {
+        jumpBtn = KeybindingsManager.GetInstance.GetJumpButton;
+
+        inputBuffer = new Queue<KeyCode>();
+
         GameManager.GetInstance.onGamePaused += PauseResume;
-
-        jumpButton = KeybindingsManager.GetInstance.GetJumpButton;
     }
 
-    private void Update()
+    void Update()
     {
-        if (stopMovement) return;
+        if (stopMovement || !jumpingState.Contains(player.CurrentState)) return;
 
-        ManageAnimations();
-
-        if (isGroundColliding())
+        if ((player.IsOnGround || player.IsOnWallL || player.IsOnWallR) && checkingForWall)
         {
-            coyoteTimer = 0; // resets coyoteTimer
-            isOnGround = true;
+            coyoteTimer = 0;
         }
         else
         {
-            coyoteTimer += 1; // start adding to coyoteTimer
-            isOnGround = false;
+            coyoteTimer += Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(jumpButton))
+        if (Input.GetKeyDown(jumpBtn))
         {
-            inputBuffer.Enqueue(jumpButton); // saves space to buffer
-            Invoke("RemoveAction", bufferTime * Time.timeScale); // deletes action after 0.1f
+            inputBuffer.Enqueue(jumpBtn);
+            Invoke("RemoveAction", bufferTime);
         }
 
-        // dynamic jump
-        if ((isOnGround || coyoteTimer < coyoteFrames) && inputBuffer.Count > 0)
+        if ((player.IsOnGround || player.IsOnWallL || coyoteTimer < coyoteFrames) && inputBuffer.Count > 0)
         {
-            if (inputBuffer.Peek() == jumpButton)
+            if (inputBuffer.Peek() == jumpBtn && player.CurrentState != Player.State.Jumping)
             {
-                // peeks into buffer to check for jumpButton
-                inputBuffer.Clear(); // clears buffer when you jump to avoid double jump on the same frame
-                Jump();
+                inputBuffer.Clear();
+                if (player.IsOnWallL || player.IsOnWallR) WallJump();
+                else VerticalJump();
             }
         }
 
-        if (Input.GetKeyUp(jumpButton))
+        if (Input.GetKeyUp(jumpBtn))
         {
             releaseJump = true;
         }
 
         if (startTimer)
         {
-            // stops jump
-            timer -= Time.unscaledDeltaTime;
+            timer -= Time.deltaTime;
             if (timer <= 0)
             {
                 releaseJump = true;
@@ -107,90 +109,62 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
-    private bool isGroundColliding()
+    void VerticalJump()
     {
-        // checks if player is colliding with floor
-        // and returns bool
+        // algunas lineas estan repetidas con WallJump()
+        // se podria mejorar un poco mas
+        // pero creo que esta bien
+        player.CurrentState = Player.State.Jumping;
 
-        RaycastHit2D rayHit1 = Physics2D.Raycast(transform.position, Vector3.down, raycastLenght);
-        RaycastHit2D rayHit2 = Physics2D.Raycast(transform.position + raycastOffset, Vector3.down, raycastLenght);
-        RaycastHit2D rayHit3 = Physics2D.Raycast(transform.position - raycastOffset, Vector3.down, raycastLenght);
+        rb.gravityScale = 0;
 
-        bool isCollidingCenter = rayHit1.collider && (rayHit1.collider.CompareTag("Floor"));
-        bool isCollidingRight = rayHit2.collider && (rayHit2.collider.gameObject.CompareTag("Floor"));
-        bool isCollidingLeft = rayHit3.collider && (rayHit3.collider.gameObject.CompareTag("Floor"));
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+        rb.velocity = Vector2.up * vJumpForce;
 
-        Debug.DrawRay(transform.position, Vector3.down * raycastLenght, Color.red);
-        Debug.DrawRay(transform.position + raycastOffset, Vector3.down * raycastLenght, Color.red);
-        Debug.DrawRay(transform.position - raycastOffset, Vector3.down * raycastLenght, Color.red);
-
-        return isCollidingCenter || isCollidingLeft || isCollidingRight;
-    }
-
-    private void Jump()
-    {
-        dustParticles.Play();
-        isOnGround = false;
-
-        rb2D.gravityScale = 0;
-        rb2D.velocity = Vector2.zero;
-        rb2D.velocity = Vector2.up * jumpForce / Time.timeScale;
-        //rb2D.AddForce(Vector2.up * jumpForce);
         startTimer = true;
     }
 
-    private void StopJump()
+    void WallJump()
     {
-        rb2D.gravityScale = gravityScale / Mathf.Pow(Time.timeScale, 2);
+        int jumpDir = player.IsOnWallR ? -1 : 1;
+
+        player.CurrentState = Player.State.WallJumping;
+        player.WallJumped = true;
+
+        rb.gravityScale = 0;
+
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+        rb.velocity = new Vector2(jumpDir * hJumpForce, vJumpForce);
+
+        startTimer = true;
+        checkingForWall = false;
+    }
+
+    void StopJump()
+    {
+        rb.gravityScale = gravityScale;
+
         releaseJump = false;
+
         timer = jumpTimer;
         startTimer = false;
+
+        if (!checkingForWall) checkingForWall = true;
     }
 
-    private void RemoveAction()
-    {
-        if (inputBuffer.Count > 0) inputBuffer.Dequeue();
-    }
-
-    private void PauseResume(bool gamePaused)
+    void PauseResume(bool gamePaused)
     {
         stopMovement = gamePaused;
     }
 
-    void ManageAnimations()
+    void RemoveAction()
     {
-        if (wallGrab.isOnWall)
-        {
-            animator.Play("playerWallgrab");
-        }
-        else if (isOnGround && Mathf.Abs(rb2D.velocity.y) <= walkingTreshold)
-        {
-            if (Mathf.Abs(rb2D.velocity.x) >= walkingTreshold)
-            {
-                animator.Play("playerRun");
-            }
-            else animator.Play("playerIdle");
-        }
-        else
-        {
-            if (startTimer || wallGrab.startTimer) animator.Play("playerJump");
-            else animator.Play("playerFall");
-        }
+        if (inputBuffer.Count > 0) inputBuffer.Dequeue();
     }
 
-    public bool IsOnGround
+    void OnDestroy()
     {
-        get { return isOnGround; }
-    }
-
-    public float GetGravityScale
-    {
-        get { return gravityScale; }
-    }
-
-    public float GetJumpForce
-    {
-        get { return jumpForce; }
+        GameManager.GetInstance.onGamePaused -= PauseResume;
     }
     #endregion
 }

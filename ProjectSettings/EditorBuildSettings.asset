@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/FinalGame/MainScenes/Menu.unity
+    path: Assets/Scenes/Menu.unity
     guid: ce84fc397629e864c85f2f2a44224f9e
   - enabled: 1
-    path: Assets/Prototipo/Scenes/SampleScene.unity
+    path: Assets/Scenes/PauseMenu.unity
+    guid: 5433258a40dbce345852f556ea954bb8
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Prototipo/Scenes/WonScreen.unity
+    path: Assets/Scenes/WonScreen.unity
     guid: 9d791a2803d323041aeeb98428b2c68c
-  - enabled: 1
-    path: Assets/Prototipo/Scenes/PauseMenu.unity
-    guid: 5433258a40dbce345852f556ea954bb8
   m_configObjects: {}
