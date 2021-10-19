@@ -4,11 +4,18 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
+    #region Variabes
+    #region Setup
+    private SavesManager savesManager;
+    private LevelManager levelManager;
+    private TimeManager timeManager;
+    #endregion
     #region Pause
     public delegate void OnGamePaused(bool paused);
     public event OnGamePaused onGamePaused;
-    public bool gamePaused = false;
-    private KeyCode pauseButton;
+
+    private bool gamePaused = false;
+    private KeyCode pauseBtn;
     #endregion
     #region Death
     public delegate void OnDeath(float duration);
@@ -16,8 +23,12 @@ public class GameManager : MonoBehaviour
     public GameObject deathText;
     private float duration = 2f;
     #endregion
+    #region Singleton
     private static GameManager instance;
+    #endregion
+    #endregion
 
+    #region Methods
     void Awake()
     {
         if (instance != null && instance != this)
@@ -28,16 +39,19 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+        savesManager = GetComponent<SavesManager>();
+        levelManager = GetComponent<LevelManager>();
+        timeManager = GetComponent<TimeManager>();
     }
 
     void Start()
     {
-        pauseButton = KeybindingsManager.GetInstance.GetPauseButton;
+        pauseBtn = KeybindingsManager.GetInstance.GetPauseButton;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(pauseButton))
+        if (Input.GetKeyDown(pauseBtn))
         {
             PauseGame();
         }
@@ -46,7 +60,7 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         gamePaused = !gamePaused;
-        LoadMenuScene();
+        LoadInGameMenu();
 
         if (onGamePaused != null)
         {
@@ -54,7 +68,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void LoadMenuScene()
+    void LoadInGameMenu()
     {
         if (SceneManager.GetSceneByName("PauseMenu").isLoaded)
         {
@@ -89,9 +103,28 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
     }
+    #endregion
 
+
+    #region Getters/Setters
+    public SavesManager GetSavesManager
+    {
+        get { return savesManager; }
+    }
+
+    public LevelManager GetLevelManager
+    {
+        get { return levelManager; }
+    }
+
+    public TimeManager GetTimeManager
+    {
+        get { return timeManager; }
+    }
     public static GameManager GetInstance
     {
         get { return instance; }
     }
+    #endregion
+
 }

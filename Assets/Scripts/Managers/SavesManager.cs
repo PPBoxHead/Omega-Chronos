@@ -9,4 +9,9 @@ public class SavesManager : MonoBehaviour
         PlayerPrefs.DeleteKey("OCcheckpointY");
         Debug.Log("PlayerPrefs deleted");
     }
+
+    public void SaveScene(string value)
+    {
+        PlayerPrefs.SetString("OCscene", value);
+    }
 }

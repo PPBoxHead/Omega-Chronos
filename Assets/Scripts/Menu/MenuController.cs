@@ -20,7 +20,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] private TMP_Text brightnessTextValue = null;
     [SerializeField] private float defaultBrightness = 0.1f;
     [SerializeField] private Image brightPanel;
-    
+
     [Space(10)]
     [SerializeField] private TMP_Dropdown qualityDrowpdown;
     [SerializeField] private Toggle fullScreenToggle;
@@ -65,7 +65,7 @@ public class MenuController : MonoBehaviour
             string option = resolutions[i].width + " x " + resolutions[i].height;
             options.Add(option);
 
-            if(resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
+            if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
             {
                 currentResolutionIndex = i;
             }
@@ -88,13 +88,15 @@ public class MenuController : MonoBehaviour
         PlayerPrefs.DeleteKey("OCcheckpointY");
         Debug.Log("PlayerPrefs deleted");
         SceneManager.LoadScene("SampleScene");
+        // arreglar luego
+        PlayerPrefs.SetString("OCscene", "SampleScene");
     }
     public void LoadGame()
     {
-        if(PlayerPrefs.HasKey("OCscene"))
+        if (PlayerPrefs.HasKey("OCscene"))
         {
-            loadedGame = PlayerPrefs.GetString("OCscene"); 
-            SceneManager.LoadScene(loadedGame); 
+            loadedGame = PlayerPrefs.GetString("OCscene");
+            SceneManager.LoadScene(loadedGame);
         }
         else
         {
@@ -143,7 +145,7 @@ public class MenuController : MonoBehaviour
         masterTextValue.text = masterVolume.ToString("0.0");
     }
     public void SetMusicVolume(float musicVolume) // poner el audio de la música 
-    { 
+    {
         AudioListener.volume = musicVolume;
         musicMixer.audioMixer.SetFloat("MusicVolumeExposed", Mathf.Log10(musicVolume) * volumeMultiplier);
         musicTextValue.text = musicVolume.ToString("0.0");
@@ -166,7 +168,7 @@ public class MenuController : MonoBehaviour
 
     public void ResetValues(string MenuType)
     {
-        if(MenuType == "Graphics")
+        if (MenuType == "Graphics")
         {
             //reset Brightness value
             brightnessSlider.value = defaultBrightness;
@@ -186,7 +188,7 @@ public class MenuController : MonoBehaviour
             GraphicsApply();
         }
 
-        if(MenuType == "Audio")
+        if (MenuType == "Audio")
         {
             AudioListener.volume = defaultVolume;
             masterSlider.value = defaultVolume;
@@ -198,9 +200,9 @@ public class MenuController : MonoBehaviour
             VolumeApply();
         }
     }
-    
+
     public IEnumerator Confirmationbox()
-    { 
+    {
         confirmationPrompt.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         confirmationPrompt.SetActive(false);
@@ -209,5 +211,5 @@ public class MenuController : MonoBehaviour
 
 
 
-    
+
 }
