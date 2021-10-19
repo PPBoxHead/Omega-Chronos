@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections.Generic;
 [RequireComponent(typeof(Player))]
 
@@ -27,6 +28,7 @@ public class PlayerJump : MonoBehaviour
     #endregion
     #region Buffer
     Queue<KeyCode> inputBuffer;
+    private int inputTest = 0;
     #endregion
     #region VariableJump
 
@@ -60,6 +62,17 @@ public class PlayerJump : MonoBehaviour
         GameManager.GetInstance.onGamePaused += PauseResume;
     }
 
+    public void OnJump()
+    {
+        inputTest += 1;
+        Invoke("RemoveAction", bufferTime);
+    }
+
+    public void OnReleaseJump()
+    {
+        releaseJump = true;
+    }
+
     void Update()
     {
         if (stopMovement || !jumpingState.Contains(player.CurrentState)) return;
@@ -73,25 +86,14 @@ public class PlayerJump : MonoBehaviour
             coyoteTimer += Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(jumpBtn))
+        if ((player.IsOnGround || player.IsOnWallL || coyoteTimer < coyoteFrames) && inputTest > 0)
         {
-            inputBuffer.Enqueue(jumpBtn);
-            Invoke("RemoveAction", bufferTime);
-        }
-
-        if ((player.IsOnGround || player.IsOnWallL || coyoteTimer < coyoteFrames) && inputBuffer.Count > 0)
-        {
-            if (inputBuffer.Peek() == jumpBtn && player.CurrentState != Player.State.Jumping)
+            if (player.CurrentState != Player.State.Jumping)
             {
-                inputBuffer.Clear();
+                inputTest = 0;
                 if (player.IsOnWallL || player.IsOnWallR) WallJump();
                 else VerticalJump();
             }
-        }
-
-        if (Input.GetKeyUp(jumpBtn))
-        {
-            releaseJump = true;
         }
 
         if (startTimer)
@@ -159,7 +161,8 @@ public class PlayerJump : MonoBehaviour
 
     void RemoveAction()
     {
-        if (inputBuffer.Count > 0) inputBuffer.Dequeue();
+        // if (inputBuffer.Count > 0) inputBuffer.Dequeue();
+        inputTest = 0;
     }
 
     void OnDestroy()

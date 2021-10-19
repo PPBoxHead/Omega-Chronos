@@ -49,12 +49,9 @@ public class GameManager : MonoBehaviour
         pauseBtn = KeybindingsManager.GetInstance.GetPauseButton;
     }
 
-    void Update()
+    public void OnPause()
     {
-        if (Input.GetKeyDown(pauseBtn))
-        {
-            PauseGame();
-        }
+        PauseGame();
     }
 
     public void PauseGame()

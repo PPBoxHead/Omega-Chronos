@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections;
 
 public class TimeManager : MonoBehaviour
@@ -47,15 +48,14 @@ public class TimeManager : MonoBehaviour
         timer = slowdownTime;
     }
 
-    void Update()
+    public void OnSlowMo()
     {
-        //arreglar aca
-        if (Input.GetKeyDown(slowmoBtn) && !isTimeSlow)
+        if (!isTimeSlow)
         {
             StopAllCoroutines();
             SlowMotion();
         }
-        else if (Input.GetKeyDown(slowmoBtn) && isTimeSlow)
+        else if (isTimeSlow)
         {
             StopAllCoroutines();
             StartCoroutine("Co_Recharge");

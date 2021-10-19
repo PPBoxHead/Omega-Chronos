@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 
 public class Player : MonoBehaviour
@@ -69,6 +70,7 @@ public class Player : MonoBehaviour
         timeManager = GameManager.GetInstance.GetTimeManager;
 
         GameManager.GetInstance.onGamePaused += PauseResume;
+        GameManager.GetInstance.onDeath += OnDeath;
         timeManager.onSlowMotion += OnSlowMotion;
 
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -80,11 +82,14 @@ public class Player : MonoBehaviour
         this.transform.position = checkpoint.position;
     }
 
+    public void OnMove(InputValue input)
+    {
+        hMovement = input.Get<float>() / Time.timeScale;
+    }
+
     void Update()
     {
         if (stopMovement) return;
-
-        hMovement = Input.GetAxis("Horizontal") / Time.timeScale;
 
         if (onSlowmo)
         {
@@ -138,6 +143,18 @@ public class Player : MonoBehaviour
             rb.velocity = playerMomentum;
         }
         stopMovement = gamePaused;
+    }
+
+    // instantly moves player
+    public void MovePlayer()
+    {
+        this.transform.position = checkpoint.position;
+    }
+
+    void OnDeath(float duration)
+    {
+        MovePlayer();
+        // tambien frenar la velocidad que tenia anteriormente
     }
 
     void ManageStates()
@@ -285,6 +302,7 @@ public class Player : MonoBehaviour
     void OnDestroy()
     {
         GameManager.GetInstance.onGamePaused -= PauseResume;
+        GameManager.GetInstance.onDeath -= OnDeath;
     }
     #endregion
 
