@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     #region Methods
     void Start()
     {
+        // ver de sacar esto en el menu
         savesManager = GameManager.GetInstance.GetSavesManager;
     }
 

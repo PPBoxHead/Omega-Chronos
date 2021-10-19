@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     private bool isOnWallR;
     private bool isOnWallL;
 
+    private Transform checkpoint;
     private State currentState = State.Idle;
     #region Animations
     private string[] animations = { "playerIdle", "playerRun", "playerJump", "playerJump", "playerFall", "playerWallgrab" };
@@ -74,6 +75,9 @@ public class Player : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
 
         currentMovementSpeed = movementSpeed;
+
+        checkpoint = GameObject.Find("Checkpoint").transform;
+        this.transform.position = checkpoint.position;
     }
 
     void Update()
@@ -82,6 +86,7 @@ public class Player : MonoBehaviour
 
         hMovement = Input.GetAxis("Horizontal") / Time.timeScale;
 
+        Debug.Log(rb.velocity.y);
 
         if (onSlowmo)
         {
@@ -145,7 +150,8 @@ public class Player : MonoBehaviour
             currentState = State.Falling;
             return;
         }
-        if (rb.velocity.y < 0 && currentState != State.WallGrabing)
+
+        if (rb.velocity.y < -0.01f && currentState != State.WallGrabing)
         {
             currentState = State.Falling;
         }

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
@@ -47,8 +46,14 @@ public class MenuController : MonoBehaviour
     [SerializeField] private int volumeMultiplier = 40;
     [Space]
     [SerializeField] private GameObject confirmationPrompt = null;
+
+    private LevelManager levelManager;
+    private string startingLevel = "SampleScene";
+
     void Start() //resolutions list for the screen & cursor lock
     {
+        levelManager = GetComponent<LevelManager>();
+
         // Esto bloquea la interacción del mouse y lo vuelve invisible
         // Cursor.visible = false;
         // Cursor.lockState = CursorLockMode.Locked;
@@ -87,7 +92,7 @@ public class MenuController : MonoBehaviour
         PlayerPrefs.DeleteKey("OCcheckpointX");
         PlayerPrefs.DeleteKey("OCcheckpointY");
         Debug.Log("PlayerPrefs deleted");
-        SceneManager.LoadScene("SampleScene");
+        levelManager.LoadScene(startingLevel);
         // arreglar luego
         PlayerPrefs.SetString("OCscene", "SampleScene");
     }
@@ -96,7 +101,7 @@ public class MenuController : MonoBehaviour
         if (PlayerPrefs.HasKey("OCscene"))
         {
             loadedGame = PlayerPrefs.GetString("OCscene");
-            SceneManager.LoadScene(loadedGame);
+            levelManager.LoadScene(loadedGame);
         }
         else
         {

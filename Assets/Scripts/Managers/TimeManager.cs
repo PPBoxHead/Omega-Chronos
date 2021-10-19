@@ -3,104 +3,116 @@ using System.Collections;
 
 public class TimeManager : MonoBehaviour
 {
-    [SerializeField] private float slowdownFactor = 0.05f; // controls how low it's gonna be the time
-    [Range(2f, 8f)]
-    [SerializeField] private float slowdownTime = 5; // how long is gona be the slow
-    public float originalTime;
-    public float originalDeltaTime;
-    public bool isTimeSlow = false;
-    [SerializeField] private Rigidbody2D player;
-    private float gravityScale;
-
-    private KeyCode slowmoButton;
-
-    // Delegate to notice things about this change
+    #region Delegates
     public delegate void OnSlowMotion(bool paused);
     public event OnSlowMotion onSlowMotion;
+    #endregion
 
-    // esto pasar a un script aparte
-    // porque esta super desprolijo
-    [SerializeField] GameObject slowmoBar;
-    [SerializeField] RectTransform valueBar;
-    private float maxBarValue;
+    #region Variables
+
+    #region Setup
+    private KeyCode slowmoBtn;
+
+    private float gravityScale;
+    private float originalTime;
+    private float originalDeltaTime;
+
+    private bool isTimeSlow = false;
     private float timer;
 
-    void Awake()
-    {
-        maxBarValue = valueBar.rect.width;
-    }
+    private GameObject slowmoBar;
+    private RectTransform valueBar;
+    private float maxBarValue;
+    #endregion
 
+    #region SlowdownParameters
+    [Range(0.5f, 0.01f)] [SerializeField] private float slowdownFactor = 0.05f; // controls how low it's gonna be the time
+    [Range(2f, 8f)] [SerializeField] private float slowdownTime = 5; // how long is gona be the slow
+    #endregion
+    #endregion
+
+    #region Methods
     void Start()
     {
+        slowmoBar = GameObject.Find("UI/SlowMotionIndicator");
+        valueBar = GameObject.Find("UI/SlowMotionIndicator/Value").GetComponent<RectTransform>();
+
+        maxBarValue = valueBar.rect.width;
+
         originalDeltaTime = Time.fixedDeltaTime;
         originalTime = Time.timeScale;
 
-        slowmoButton = KeybindingsManager.GetInstance.GetSlowmoButton;
-        gravityScale = player.gravityScale;
+        slowmoBtn = KeybindingsManager.GetInstance.GetSlowmoButton;
+
+        timer = slowdownTime;
     }
 
     void Update()
     {
-        /*Time.timeScale += (1f / slowdownTime) * Time.unscaledDeltaTime; back to the normal time
-        Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);*/
-        if (Input.GetKeyDown(slowmoButton) && !isTimeSlow)
+        //arreglar aca
+        if (Input.GetKeyDown(slowmoBtn) && !isTimeSlow)
         {
+            StopAllCoroutines();
             SlowMotion();
         }
-
-        if (isTimeSlow)
+        else if (Input.GetKeyDown(slowmoBtn) && isTimeSlow)
         {
-            UpdateBoostValue(timer);
+            StopAllCoroutines();
+            StartCoroutine("Co_Recharge");
         }
+    }
+
+    void SlowMotion()
+    {
+        //arreglar aca
+        isTimeSlow = true;
+        //Time.timeScale = slowdownFactor;
+        // always deltaTime = timeScale * 0.02
+        //Time.fixedDeltaTime = Time.timeScale * 0.02f;
+        StartCoroutine("Co_SlowTime");
+        ManageSlowMotion();
+    }
+
+    IEnumerator Co_SlowTime()
+    {
+        //arreglar aca
+        // pasar numeros a variables
+        while (timer > 0)
+        {
+            Time.timeScale = Mathf.Lerp(Time.timeScale, slowdownFactor, 10f * Time.unscaledDeltaTime);
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
+
+            timer -= Time.unscaledDeltaTime;
+            UpdateBoostValue(timer);
+            yield return null;
+        }
+
+        StartCoroutine("Co_Recharge");
+    }
+
+    IEnumerator Co_Recharge()
+    {
+        //arreglar aca
+        // pasar numeros a variables
+        isTimeSlow = false;
+        while (timer <= slowdownTime)
+        {
+            Time.timeScale = Mathf.Lerp(Time.timeScale, 1, 10f * Time.unscaledDeltaTime);
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
+
+            timer += Time.unscaledDeltaTime;
+            UpdateBoostValue(timer);
+            yield return null;
+        }
+        // para dejar los valores exactos y no luego de un lerp
+        timer = slowdownTime;
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
     }
 
     void UpdateBoostValue(float value)
     {
-        timer -= Time.unscaledDeltaTime;
         valueBar.sizeDelta = new Vector2(value / slowdownTime * maxBarValue, valueBar.sizeDelta.y);
-    }
-
-    public void SlowMotion()
-    {
-        isTimeSlow = true;
-        Time.timeScale = slowdownFactor;
-        Time.fixedDeltaTime = Time.timeScale * .02f;
-        timer = slowdownTime;
-        player.gravityScale = gravityScale / Mathf.Pow(Time.timeScale, 2);
-        StartCoroutine("NormalMotion");
-
-        ManageSlowMotion();
-    }
-
-    // esta solo esta para cuando quiero hacer pruebas sin CD
-    /*public void NormalMotionTest()
-    {
-        Time.timeScale = originalTime;
-        Time.fixedDeltaTime = originalDeltaTime;
-        isTimeSlow = false;
-
-        ManageSlowMotion();
-    }*/
-
-    IEnumerator NormalMotion()
-    {
-        yield return new WaitForSeconds(slowdownTime * slowdownFactor);
-
-        ReturnMotion();
-    }
-
-    public void ReturnMotion()
-    {
-        StopAllCoroutines(); // esto esta para que cuando lo llames del dash no se ejecute 2 veces
-        player.velocity = new Vector2(player.velocity.x, player.velocity.y * Time.timeScale);
-        Time.timeScale = originalTime;
-        Time.fixedDeltaTime = originalDeltaTime;
-        isTimeSlow = false;
-        valueBar.sizeDelta = new Vector2(maxBarValue, valueBar.sizeDelta.y);
-        player.gravityScale = gravityScale;
-
-        ManageSlowMotion();
-
     }
 
     void ManageSlowMotion()
@@ -110,9 +122,5 @@ public class TimeManager : MonoBehaviour
             onSlowMotion(isTimeSlow);
         }
     }
-
-    public float GetSlowdownFactor
-    {
-        get { return slowdownFactor; }
-    }
+    #endregion
 }

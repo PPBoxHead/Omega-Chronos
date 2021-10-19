@@ -206,7 +206,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2106133339}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: PauseMenu
         m_Mode: 1
@@ -624,7 +624,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2106133339}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -896,6 +896,7 @@ GameObject:
   - component: {fileID: 2106133337}
   - component: {fileID: 2106133336}
   - component: {fileID: 2106133335}
+  - component: {fileID: 2106133340}
   - component: {fileID: 2106133339}
   m_Layer: 5
   m_Name: UI
@@ -997,8 +998,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 2106133334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fd71493aa8a85d4c83b1bc7994bb05e, type: 3}
+  m_Script: {fileID: 11500000, guid: 25b5a69ec81b5c74d82c3762696c9cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2106133340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106133334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b4dd0777b9b6d41a649678b62e3ab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playBtn: {fileID: 123402163}
-  savesManager: {fileID: 0}
