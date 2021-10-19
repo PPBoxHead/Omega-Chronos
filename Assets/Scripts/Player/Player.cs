@@ -86,8 +86,6 @@ public class Player : MonoBehaviour
 
         hMovement = Input.GetAxis("Horizontal") / Time.timeScale;
 
-        Debug.Log(rb.velocity.y);
-
         if (onSlowmo)
         {
             if (hMovement >= 1)
@@ -151,7 +149,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        if (rb.velocity.y < -0.01f && currentState != State.WallGrabing)
+        if (rb.velocity.y < -movTreshold && currentState != State.WallGrabing)
         {
             currentState = State.Falling;
         }

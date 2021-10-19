@@ -18121,7 +18121,7 @@ MonoBehaviour:
   hJumpForce: 11
   bufferTime: 0.1
   jumpTimer: 0.2
-  coyoteFrames: 10
+  coyoteFrames: 0.1
   coyoteTimer: 0
 --- !u!114 &1043968961
 MonoBehaviour:
