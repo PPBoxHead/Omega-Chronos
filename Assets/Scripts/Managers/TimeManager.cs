@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections;
 
 public class TimeManager : MonoBehaviour
@@ -9,7 +10,6 @@ public class TimeManager : MonoBehaviour
     #endregion
 
     #region Variables
-
     #region Setup
     private KeyCode slowmoBtn;
 
@@ -27,7 +27,9 @@ public class TimeManager : MonoBehaviour
 
     #region SlowdownParameters
     [Range(0.5f, 0.01f)] [SerializeField] private float slowdownFactor = 0.05f; // controls how low it's gonna be the time
+    [Range(1f, 10f)] [SerializeField] private float slowdownSmooth = 2f;
     [Range(2f, 8f)] [SerializeField] private float slowdownTime = 5; // how long is gona be the slow
+    private float startingTimeScale;
     #endregion
     #endregion
 
@@ -45,17 +47,17 @@ public class TimeManager : MonoBehaviour
         slowmoBtn = KeybindingsManager.GetInstance.GetSlowmoButton;
 
         timer = slowdownTime;
+        startingTimeScale = Time.timeScale;
     }
 
-    void Update()
+    public void OnSlowMo()
     {
-        //arreglar aca
-        if (Input.GetKeyDown(slowmoBtn) && !isTimeSlow)
+        if (!isTimeSlow)
         {
             StopAllCoroutines();
             SlowMotion();
         }
-        else if (Input.GetKeyDown(slowmoBtn) && isTimeSlow)
+        else if (isTimeSlow)
         {
             StopAllCoroutines();
             StartCoroutine("Co_Recharge");
@@ -66,9 +68,6 @@ public class TimeManager : MonoBehaviour
     {
         //arreglar aca
         isTimeSlow = true;
-        //Time.timeScale = slowdownFactor;
-        // always deltaTime = timeScale * 0.02
-        //Time.fixedDeltaTime = Time.timeScale * 0.02f;
         StartCoroutine("Co_SlowTime");
         ManageSlowMotion();
     }
@@ -79,7 +78,7 @@ public class TimeManager : MonoBehaviour
         // pasar numeros a variables
         while (timer > 0)
         {
-            Time.timeScale = Mathf.Lerp(Time.timeScale, slowdownFactor, 10f * Time.unscaledDeltaTime);
+            Time.timeScale = Mathf.Lerp(Time.timeScale, slowdownFactor, slowdownSmooth * Time.unscaledDeltaTime);
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
 
             timer -= Time.unscaledDeltaTime;
@@ -95,9 +94,19 @@ public class TimeManager : MonoBehaviour
         //arreglar aca
         // pasar numeros a variables
         isTimeSlow = false;
+        ManageSlowMotion();
         while (timer <= slowdownTime)
         {
-            Time.timeScale = Mathf.Lerp(Time.timeScale, 1, 10f * Time.unscaledDeltaTime);
+            if (Time.timeScale < startingTimeScale - 0.01f)
+            // can change this number but it will work as is
+            // it sets timescale to 1 instead of 0.99999.... when close to 1
+            {
+                Time.timeScale = Mathf.Lerp(Time.timeScale, startingTimeScale, slowdownSmooth * Time.unscaledDeltaTime);
+            }
+            else
+            {
+                Time.timeScale = startingTimeScale;
+            }
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
 
             timer += Time.unscaledDeltaTime;

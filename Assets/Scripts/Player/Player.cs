@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 
 public class Player : MonoBehaviour
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     #region Setup
     private Rigidbody2D rb;
     private BoxCollider2D col;
+    private float gravityScale;
     private TimeManager timeManager;
 
     private bool wallJumped = false;
@@ -62,6 +64,8 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
+
+        gravityScale = rb.gravityScale;
     }
 
     void Start()
@@ -69,6 +73,7 @@ public class Player : MonoBehaviour
         timeManager = GameManager.GetInstance.GetTimeManager;
 
         GameManager.GetInstance.onGamePaused += PauseResume;
+        GameManager.GetInstance.onDeath += OnDeath;
         timeManager.onSlowMotion += OnSlowMotion;
 
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -80,31 +85,26 @@ public class Player : MonoBehaviour
         this.transform.position = checkpoint.position;
     }
 
+    public void OnMove(InputValue input)
+    {
+        hMovement = input.Get<float>() / Time.timeScale;
+    }
+
     void Update()
     {
         if (stopMovement) return;
 
-        hMovement = Input.GetAxis("Horizontal") / Time.timeScale;
-
         if (onSlowmo)
         {
-            if (hMovement >= 1)
-            {
-                hMovement = 1;
-            }
+            // with hMovement = input.Get<float>() / Time.timeScale; hmovement can be > 1
+            // but without it it will move reaaaaally slow
+            if (hMovement >= 1) hMovement = 1;
+            else if (hMovement <= -1) hMovement = -1;
+        }
 
-            if (hMovement <= -1)
-            {
-                hMovement = -1;
-            }
-            currentMovementSpeed = movementSpeed / Time.timeScale;
-            animator.speed = 1 / Time.timeScale;
-        }
-        else
-        {
-            currentMovementSpeed = movementSpeed;
-            animator.speed = 1;
-        }
+        currentMovementSpeed = movementSpeed / Time.timeScale;
+        animator.speed = 1 / Time.timeScale;
+        // rb.gravityScale = gravityScale / Mathf.Pow(Time.timeScale, 2);
 
         isOnWallR = isWallCollidingR();
         isOnWallL = isWallCollidingL();
@@ -138,6 +138,18 @@ public class Player : MonoBehaviour
             rb.velocity = playerMomentum;
         }
         stopMovement = gamePaused;
+    }
+
+    // instantly moves player
+    public void MovePlayer()
+    {
+        this.transform.position = checkpoint.position;
+    }
+
+    void OnDeath(float duration)
+    {
+        MovePlayer();
+        // tambien frenar la velocidad que tenia anteriormente
     }
 
     void ManageStates()
@@ -269,22 +281,15 @@ public class Player : MonoBehaviour
     void OnSlowMotion(bool isTimeSlow)
     {
         onSlowmo = isTimeSlow;
-
-        /*if (onSlowmo)
-        {
-            movementSpeed = movementSpeed / Time.timeScale;
-            animator.speed = animator.speed / Time.timeScale;
-        }
-        else
-        {
-            movementSpeed = 10;
-            animator.speed = 1;
-        }*/
+        // no paso los cambios de velocidades aca
+        // porque como es gradual entonces tienen que
+        // ser en el update
     }
 
     void OnDestroy()
     {
         GameManager.GetInstance.onGamePaused -= PauseResume;
+        GameManager.GetInstance.onDeath -= OnDeath;
     }
     #endregion
 
@@ -329,6 +334,11 @@ public class Player : MonoBehaviour
     public float CurrentMovementSpeed
     {
         get { return currentMovementSpeed; }
+    }
+
+    public bool IsOnSlowMo
+    {
+        get { return onSlowmo; }
     }
     #endregion
 }

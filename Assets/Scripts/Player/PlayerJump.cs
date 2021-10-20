@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections.Generic;
 [RequireComponent(typeof(Player))]
 
@@ -10,6 +11,8 @@ public class PlayerJump : MonoBehaviour
     [Header("Jump force")]
     [Range(5, 20)] [SerializeField] private float vJumpForce = 11f;
     [Range(5, 20)] [SerializeField] private float hJumpForce = 11f;
+    private float currentVJumpForce;
+    private float currentHJumpForce;
 
     [Header("Jump Config")]
     [Range(0, 0.5f)] [SerializeField] private float bufferTime = 0.1f;
@@ -20,13 +23,12 @@ public class PlayerJump : MonoBehaviour
     private KeyCode jumpBtn;
 
     private Rigidbody2D rb;
-
     private Player player;
-
     private List<Player.State> jumpingState = new List<Player.State>() { Player.State.Walking, Player.State.Idle, Player.State.Jumping, Player.State.Falling, Player.State.WallGrabing, Player.State.WallJumping };
     #endregion
     #region Buffer
     Queue<KeyCode> inputBuffer;
+    private int inputTest = 0;
     #endregion
     #region VariableJump
 
@@ -60,6 +62,17 @@ public class PlayerJump : MonoBehaviour
         GameManager.GetInstance.onGamePaused += PauseResume;
     }
 
+    public void OnJump()
+    {
+        inputTest += 1;
+        Invoke("RemoveAction", bufferTime);
+    }
+
+    public void OnReleaseJump()
+    {
+        releaseJump = true;
+    }
+
     void Update()
     {
         if (stopMovement || !jumpingState.Contains(player.CurrentState)) return;
@@ -73,25 +86,14 @@ public class PlayerJump : MonoBehaviour
             coyoteTimer += Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(jumpBtn))
+        if ((player.IsOnGround || player.IsOnWallL || coyoteTimer < coyoteFrames) && inputTest > 0)
         {
-            inputBuffer.Enqueue(jumpBtn);
-            Invoke("RemoveAction", bufferTime);
-        }
-
-        if ((player.IsOnGround || player.IsOnWallL || coyoteTimer < coyoteFrames) && inputBuffer.Count > 0)
-        {
-            if (inputBuffer.Peek() == jumpBtn && player.CurrentState != Player.State.Jumping)
+            if (player.CurrentState != Player.State.Jumping)
             {
-                inputBuffer.Clear();
+                inputTest = 0;
                 if (player.IsOnWallL || player.IsOnWallR) WallJump();
                 else VerticalJump();
             }
-        }
-
-        if (Input.GetKeyUp(jumpBtn))
-        {
-            releaseJump = true;
         }
 
         if (startTimer)
@@ -119,7 +121,7 @@ public class PlayerJump : MonoBehaviour
         rb.gravityScale = 0;
 
         rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.velocity = Vector2.up * vJumpForce;
+        rb.velocity = Vector2.up * (vJumpForce / Time.timeScale);
 
         startTimer = true;
     }
@@ -134,7 +136,7 @@ public class PlayerJump : MonoBehaviour
         rb.gravityScale = 0;
 
         rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.velocity = new Vector2(jumpDir * hJumpForce, vJumpForce);
+        rb.velocity = new Vector2(jumpDir * hJumpForce / Time.timeScale, vJumpForce / Time.timeScale);
 
         startTimer = true;
         checkingForWall = false;
@@ -159,7 +161,8 @@ public class PlayerJump : MonoBehaviour
 
     void RemoveAction()
     {
-        if (inputBuffer.Count > 0) inputBuffer.Dequeue();
+        // if (inputBuffer.Count > 0) inputBuffer.Dequeue();
+        inputTest = 0;
     }
 
     void OnDestroy()

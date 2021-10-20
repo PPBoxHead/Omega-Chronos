@@ -94,7 +94,7 @@ public class MenuController : MonoBehaviour
         Debug.Log("PlayerPrefs deleted");
         levelManager.LoadScene(startingLevel);
         // arreglar luego
-        PlayerPrefs.SetString("OCscene", "SampleScene");
+        PlayerPrefs.SetString("OCscene", startingLevel);
     }
     public void LoadGame()
     {

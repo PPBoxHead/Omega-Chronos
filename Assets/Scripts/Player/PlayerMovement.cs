@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         if (!movingState.Contains(player.CurrentState) || stopMovement) return;
 
         // moves lookAhead
-        lookAhead.localPosition = new Vector2(Mathf.Lerp(lookAhead.localPosition.x, aheadAmount * player.HMovement, aheadSpeed * Time.deltaTime), lookAhead.localPosition.y);
+        lookAhead.localPosition = new Vector2(Mathf.Lerp(lookAhead.localPosition.x, aheadAmount * player.HMovement, aheadSpeed * Time.deltaTime / Time.timeScale), lookAhead.localPosition.y);
 
         if (!player.WallJumped)
         {
