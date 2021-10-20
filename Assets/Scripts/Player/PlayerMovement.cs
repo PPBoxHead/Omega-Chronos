@@ -8,7 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("LookAhead Setup")]
     [Range(1, 5)] [SerializeField] private float aheadSpeed = 3;
     [Range(1, 10)] [SerializeField] private float aheadAmount = 5;
-    private float walljumpLerp = 10;
+    [Header("WallJump Smoothing")]
+    [Range(1, 10)] [SerializeField] private float walljumpLerp = 3;
     #region Setup
     private bool stopMovement;
     private Rigidbody2D rb;
@@ -42,12 +43,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (!player.WallJumped)
         {
+            // transform.position = new Vector3(transform.position.x, newPosition, transform.position.z);
             rb.velocity = new Vector2(player.HMovement * player.CurrentMovementSpeed, rb.velocity.y);
         }
         else
         {
+            rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(player.HMovement * player.CurrentMovementSpeed, rb.velocity.y)), walljumpLerp * Time.deltaTime / Time.timeScale);
             // used for smooth movement after walljump
-            rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(player.HMovement * player.CurrentMovementSpeed, rb.velocity.y)), walljumpLerp * Time.deltaTime);
         }
 
     }

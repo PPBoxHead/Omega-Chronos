@@ -83,7 +83,7 @@ public class PlayerJump : MonoBehaviour
         }
         else
         {
-            coyoteTimer += Time.deltaTime;
+            coyoteTimer += Time.deltaTime / Time.timeScale;
         }
 
         if ((player.IsOnGround || player.IsOnWallL || coyoteTimer < coyoteFrames) && inputTest > 0)
@@ -98,7 +98,7 @@ public class PlayerJump : MonoBehaviour
 
         if (startTimer)
         {
-            timer -= Time.deltaTime;
+            timer -= Time.deltaTime / Time.timeScale;
             if (timer <= 0)
             {
                 releaseJump = true;
@@ -136,7 +136,7 @@ public class PlayerJump : MonoBehaviour
         rb.gravityScale = 0;
 
         rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.velocity = new Vector2(jumpDir * hJumpForce / Time.timeScale, vJumpForce / Time.timeScale);
+        rb.velocity = new Vector2(jumpDir * hJumpForce, vJumpForce) / Time.timeScale;
 
         startTimer = true;
         checkingForWall = false;
@@ -144,6 +144,8 @@ public class PlayerJump : MonoBehaviour
 
     void StopJump()
     {
+        player.CurrentState = Player.State.Falling;
+
         rb.gravityScale = gravityScale;
 
         releaseJump = false;

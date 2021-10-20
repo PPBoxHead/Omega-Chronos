@@ -18024,6 +18024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aheadSpeed: 2.5
   aheadAmount: 3
+  walljumpLerp: 1
 --- !u!114 &1043968962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53818,7 +53819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowdownFactor: 0.05
-  slowdownSmooth: 3
+  slowdownSmooth: 10
   slowdownTime: 5
 --- !u!114 &1429247939
 MonoBehaviour:

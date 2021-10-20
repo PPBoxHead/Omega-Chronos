@@ -102,9 +102,14 @@ public class Player : MonoBehaviour
             else if (hMovement <= -1) hMovement = -1;
         }
 
+        // esto se podria pasar a una corutina pero mientras no de problemas que este aca
         currentMovementSpeed = movementSpeed / Time.timeScale;
         animator.speed = 1 / Time.timeScale;
-        // rb.gravityScale = gravityScale / Mathf.Pow(Time.timeScale, 2);
+
+        if (!(currentState == State.Jumping || currentState == State.WallJumping))
+        {
+            rb.gravityScale = gravityScale / Mathf.Pow(Time.timeScale, 2);
+        }
 
         isOnWallR = isWallCollidingR();
         isOnWallL = isWallCollidingL();
@@ -169,14 +174,7 @@ public class Player : MonoBehaviour
         {
             if (isOnGround && Mathf.Abs(rb.velocity.y) <= movTreshold)
             {
-                if (hMovement != 0)
-                {
-                    currentState = State.Walking;
-                }
-                else
-                {
-                    currentState = State.Idle;
-                }
+                currentState = hMovement != 0 ? currentState = State.Walking : currentState = State.Idle;
             }
         }
     }
@@ -281,6 +279,11 @@ public class Player : MonoBehaviour
     void OnSlowMotion(bool isTimeSlow)
     {
         onSlowmo = isTimeSlow;
+
+        if (!isTimeSlow)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y) * Time.timeScale;
+        }
         // no paso los cambios de velocidades aca
         // porque como es gradual entonces tienen que
         // ser en el update
