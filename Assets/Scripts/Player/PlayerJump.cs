@@ -11,6 +11,8 @@ public class PlayerJump : MonoBehaviour
     [Header("Jump force")]
     [Range(5, 20)] [SerializeField] private float vJumpForce = 11f;
     [Range(5, 20)] [SerializeField] private float hJumpForce = 11f;
+    private float currentVJumpForce;
+    private float currentHJumpForce;
 
     [Header("Jump Config")]
     [Range(0, 0.5f)] [SerializeField] private float bufferTime = 0.1f;
@@ -21,9 +23,7 @@ public class PlayerJump : MonoBehaviour
     private KeyCode jumpBtn;
 
     private Rigidbody2D rb;
-
     private Player player;
-
     private List<Player.State> jumpingState = new List<Player.State>() { Player.State.Walking, Player.State.Idle, Player.State.Jumping, Player.State.Falling, Player.State.WallGrabing, Player.State.WallJumping };
     #endregion
     #region Buffer
@@ -121,7 +121,7 @@ public class PlayerJump : MonoBehaviour
         rb.gravityScale = 0;
 
         rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.velocity = Vector2.up * vJumpForce;
+        rb.velocity = Vector2.up * (vJumpForce / Time.timeScale);
 
         startTimer = true;
     }
@@ -136,7 +136,7 @@ public class PlayerJump : MonoBehaviour
         rb.gravityScale = 0;
 
         rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.velocity = new Vector2(jumpDir * hJumpForce, vJumpForce);
+        rb.velocity = new Vector2(jumpDir * hJumpForce / Time.timeScale, vJumpForce / Time.timeScale);
 
         startTimer = true;
         checkingForWall = false;

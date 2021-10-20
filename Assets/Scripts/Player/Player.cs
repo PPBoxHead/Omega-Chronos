@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     #region Setup
     private Rigidbody2D rb;
     private BoxCollider2D col;
+    private float gravityScale;
     private TimeManager timeManager;
 
     private bool wallJumped = false;
@@ -63,6 +64,8 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
+
+        gravityScale = rb.gravityScale;
     }
 
     void Start()
@@ -93,23 +96,15 @@ public class Player : MonoBehaviour
 
         if (onSlowmo)
         {
-            if (hMovement >= 1)
-            {
-                hMovement = 1;
-            }
+            // with hMovement = input.Get<float>() / Time.timeScale; hmovement can be > 1
+            // but without it it will move reaaaaally slow
+            if (hMovement >= 1) hMovement = 1;
+            else if (hMovement <= -1) hMovement = -1;
+        }
 
-            if (hMovement <= -1)
-            {
-                hMovement = -1;
-            }
-            currentMovementSpeed = movementSpeed / Time.timeScale;
-            animator.speed = 1 / Time.timeScale;
-        }
-        else
-        {
-            currentMovementSpeed = movementSpeed;
-            animator.speed = 1;
-        }
+        currentMovementSpeed = movementSpeed / Time.timeScale;
+        animator.speed = 1 / Time.timeScale;
+        // rb.gravityScale = gravityScale / Mathf.Pow(Time.timeScale, 2);
 
         isOnWallR = isWallCollidingR();
         isOnWallL = isWallCollidingL();
@@ -286,17 +281,9 @@ public class Player : MonoBehaviour
     void OnSlowMotion(bool isTimeSlow)
     {
         onSlowmo = isTimeSlow;
-
-        /*if (onSlowmo)
-        {
-            movementSpeed = movementSpeed / Time.timeScale;
-            animator.speed = animator.speed / Time.timeScale;
-        }
-        else
-        {
-            movementSpeed = 10;
-            animator.speed = 1;
-        }*/
+        // no paso los cambios de velocidades aca
+        // porque como es gradual entonces tienen que
+        // ser en el update
     }
 
     void OnDestroy()
@@ -347,6 +334,11 @@ public class Player : MonoBehaviour
     public float CurrentMovementSpeed
     {
         get { return currentMovementSpeed; }
+    }
+
+    public bool IsOnSlowMo
+    {
+        get { return onSlowmo; }
     }
     #endregion
 }
