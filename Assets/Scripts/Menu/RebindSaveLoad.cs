@@ -9,6 +9,8 @@ public class RebindSaveLoad : MonoBehaviour
     public InputActionAsset actions;
     private List<InputAction> inputBindings = new List<InputAction>();
     private Keyboard keyboard = Keyboard.current;
+    private KeybindingData _KeybiningData = new KeybindingData();
+
 
     //ver de pasar los bindings a un json
     // y leerlos de ahi
@@ -21,13 +23,13 @@ public class RebindSaveLoad : MonoBehaviour
         }
 
 
-        if (PlayerPrefs.HasKey("OCjumpkey"))
-        {
-            InputBinding binding = inputBindings[1].bindings[0];
-            binding.overridePath = PlayerPrefs.GetString("OCjumpkey");
-            inputBindings[1].ApplyBindingOverride(0, binding);
+        // if (PlayerPrefs.HasKey("OCjumpkey"))
+        // {
+        //     InputBinding binding = inputBindings[1].bindings[0];
+        //     binding.overridePath = PlayerPrefs.GetString("OCjumpkey");
+        //     inputBindings[1].ApplyBindingOverride(0, binding);
 
-        }
+        // }
     }
 
     public void Test()
@@ -52,6 +54,27 @@ public class RebindSaveLoad : MonoBehaviour
         binding.overridePath = inputBindings[1].bindings[0].effectivePath;
         inputBindings[1].ApplyBindingOverride(0, binding);
 
-        PlayerPrefs.SetString("OCjumpkey", binding.effectivePath);
+        _KeybiningData.actionName = inputBindings[1].name;
+        _KeybiningData.effectivePath = binding.effectivePath;
+
+        string test = JsonUtility.ToJson(_KeybiningData);
+        // Debug.Log(test);
+
+        PlayerPrefs.SetString("OCjumpkey", test);
     }
+
+
+    public void ReadJson()
+    {
+        // string keybinding = JsonUtility.ToJson(_KeybiningData);
+        KeybindingData test = JsonUtility.FromJson<KeybindingData>(PlayerPrefs.GetString("OCjumpkey"));
+        Debug.Log(test.actionName);
+        Debug.Log(test.effectivePath);
+    }
+}
+
+public class KeybindingData
+{
+    public string actionName;
+    public string effectivePath;
 }
