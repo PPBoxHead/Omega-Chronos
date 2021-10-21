@@ -87,6 +87,7 @@ public class Player : MonoBehaviour
 
     public void OnMove(InputValue input)
     {
+        // suavizar movimiento
         hMovement = input.Get<float>() / Time.timeScale;
     }
 
