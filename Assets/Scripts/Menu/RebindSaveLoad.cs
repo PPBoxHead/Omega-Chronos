@@ -1,80 +1,88 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.InputSystem;
-using System.Collections.Generic;
+
 
 
 public class RebindSaveLoad : MonoBehaviour
 {
-    public InputActionReference triggerAction;
-    public InputActionAsset actions;
-    private List<InputAction> inputBindings = new List<InputAction>();
+    public enum KeyMaping
+    {
+        Move,
+        Jump,
+        ReleaseJump
+    }
+    [SerializeField] private InputActionAsset actions;
+    private InputActionMap inputActions;
     private Keyboard keyboard = Keyboard.current;
-    private KeybindingData _KeybiningData = new KeybindingData();
-
-
     //ver de pasar los bindings a un json
     // y leerlos de ahi
     void Start()
     {
-        // Debug.Log(actions.FindActionMap("PlayerActions").actions);
-        foreach (var item in actions.FindActionMap("PlayerActions").actions)
+        int i = 0;
+        // esto ver de usar una variable asi podes elegir que actionmap queres cambiar
+        inputActions = actions.FindActionMap("PlayerActions");
+        foreach (InputAction item in inputActions.actions)
         {
-            inputBindings.Add(item);
+            string name = "CO" + item.bindings[0].action;
+            if (PlayerPrefs.HasKey(name))
+            {
+                // changes controls to previously saved scheme
+                InputBinding binding = item.bindings[0];
+                binding.overridePath = PlayerPrefs.GetString(name);
+                item.ApplyBindingOverride(0, binding);
+            }
+            else
+            {
+                // set initial controls
+                PlayerPrefs.SetString(name, item.bindings[0].effectivePath);
+            }
+            i++;
+        }
+    }
+
+    public void StartRebindKey(int keyToRebind)
+    {
+        // aca podrias hacer aparecer un panel y mensaje para que quede mas bonito
+        actions.Disable();
+        Debug.Log("Waiting for keypress");
+        StartCoroutine("Co_WaitForKeyPress", keyToRebind);
+    }
+
+    IEnumerator Co_WaitForKeyPress(int keyToRebind)
+    {
+        var rebindOperation = inputActions.actions[keyToRebind].PerformInteractiveRebinding()
+.WithControlsExcluding("Mouse")
+.OnMatchWaitForAnother(0.1f)
+.Start();
+
+        while (!keyboard.anyKey.wasPressedThisFrame)
+        {
+            yield return null;
         }
 
-
-        // if (PlayerPrefs.HasKey("OCjumpkey"))
-        // {
-        //     InputBinding binding = inputBindings[1].bindings[0];
-        //     binding.overridePath = PlayerPrefs.GetString("OCjumpkey");
-        //     inputBindings[1].ApplyBindingOverride(0, binding);
-
-        // }
+        // to avoid memory leak
+        rebindOperation.Dispose();
+        SaveKey(keyToRebind);
     }
 
-    public void Test()
+    private void SaveKey(int keyToRebind)
     {
-        actions.Disable();
-        var rebindOperation = inputBindings[1].PerformInteractiveRebinding()
-            // To avoid accidental input from mouse motion
-            .WithControlsExcluding("Mouse")
-            .OnMatchWaitForAnother(0.1f)
-            .Start();
-    }
-
-    public void Test2()
-    {
+        Debug.Log("Saved key");
         actions.Enable();
-        Debug.Log(inputBindings[1].bindings[0].effectivePath);
+        // de momento 0 es el keyboard, cambiar si se agregan mas schemes
+        InputBinding binding = inputActions.actions[keyToRebind].bindings[0];
+        binding.overridePath = inputActions.actions[keyToRebind].bindings[0].effectivePath;
+        inputActions.actions[keyToRebind].ApplyBindingOverride(0, binding);
+
+        // checks if action is jump to modify releasejump too
+        if (inputActions.actions[keyToRebind].bindings[0].action == "Jump")
+        {
+            // modifica release jump
+            inputActions.actions[keyToRebind + 1].ApplyBindingOverride(0, binding);
+            PlayerPrefs.SetString("CO" + inputActions.actions[keyToRebind + 1].bindings[0].action, binding.overridePath);
+        }
+        // saves changed action to prefs
+        PlayerPrefs.SetString("CO" + inputActions.actions[keyToRebind].bindings[0].action, binding.overridePath);
     }
-
-    public void Save()
-    {
-        InputBinding binding = inputBindings[1].bindings[0];
-        binding.overridePath = inputBindings[1].bindings[0].effectivePath;
-        inputBindings[1].ApplyBindingOverride(0, binding);
-
-        _KeybiningData.actionName = inputBindings[1].name;
-        _KeybiningData.effectivePath = binding.effectivePath;
-
-        string test = JsonUtility.ToJson(_KeybiningData);
-        // Debug.Log(test);
-
-        PlayerPrefs.SetString("OCjumpkey", test);
-    }
-
-
-    public void ReadJson()
-    {
-        // string keybinding = JsonUtility.ToJson(_KeybiningData);
-        KeybindingData test = JsonUtility.FromJson<KeybindingData>(PlayerPrefs.GetString("OCjumpkey"));
-        Debug.Log(test.actionName);
-        Debug.Log(test.effectivePath);
-    }
-}
-
-public class KeybindingData
-{
-    public string actionName;
-    public string effectivePath;
 }

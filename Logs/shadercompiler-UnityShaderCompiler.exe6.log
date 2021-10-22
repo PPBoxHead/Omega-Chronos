@@ -2,3 +2,5 @@ Base path: 'C:/ProgramData/Microsoft/Windows/Start Menu/Programs/Visual Studio C
 Cmd: initializeCompiler
 
 Cmd: shutdown
+
+Quitting shader compiler process
