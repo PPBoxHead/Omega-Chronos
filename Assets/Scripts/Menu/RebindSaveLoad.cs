@@ -1,59 +1,70 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
 
 
 public class RebindSaveLoad : MonoBehaviour
 {
-    public enum KeyMaping
-    {
-        Move,
-        Jump,
-        ReleaseJump
-    }
-    [SerializeField] private InputActionAsset actions;
-    private InputActionMap inputActions;
+    #region Actions
+    [SerializeField] private InputActionAsset actionsAsset;
+    #endregion
+    #region ActionsMap
+    private List<InputActionMap> actionMaps = new List<InputActionMap>();
+    // current actionmap
+    private InputActionMap actionMap;
+    #endregion
+    #region Actions
+    private List<string> actionList = new List<string>();
+    private int actionToRebind;
+    #endregion
     private Keyboard keyboard = Keyboard.current;
-    private string actionMap;
-    private string actionToRebind;
     //ver de pasar los bindings a un json
     // y leerlos de ahi
     void Start()
     {
-        int i = 0;
-        // esto ver de usar una variable asi podes elegir que actionmap queres cambiar
-        inputActions = actions.FindActionMap("PlayerActions");
-        foreach (InputAction item in inputActions.actions)
+        foreach (InputActionMap item in actionsAsset.actionMaps)
         {
-            string name = "CO" + item.bindings[0].action;
-            if (PlayerPrefs.HasKey(name))
+            actionMaps.Add(item);
+        }
+
+        foreach (InputActionMap map in actionMaps)
+        {
+            // revisar esto
+            // el rebind para el slowmo no anda tampoco , revisar porque
+            foreach (InputAction item in map.actions)
             {
-                // changes controls to previously saved scheme
-                InputBinding binding = item.bindings[0];
-                binding.overridePath = PlayerPrefs.GetString(name);
-                item.ApplyBindingOverride(0, binding);
+                int i = 0;
+                string name = "CO" + item.bindings[0].action;
+                if (PlayerPrefs.HasKey(name))
+                {
+                    // changes controls to previously saved scheme
+                    InputBinding binding = item.bindings[0];
+                    binding.overridePath = PlayerPrefs.GetString(name);
+                    item.ApplyBindingOverride(0, binding);
+                }
+                else
+                {
+                    // set initial controls
+                    PlayerPrefs.SetString(name, item.bindings[0].effectivePath);
+                }
+                i++;
             }
-            else
-            {
-                // set initial controls
-                PlayerPrefs.SetString(name, item.bindings[0].effectivePath);
-            }
-            i++;
         }
     }
 
-    public void StartRebindKey(string keyToRebind)
+    public void StartRebindKey()
     {
         // aca podrias hacer aparecer un panel y mensaje para que quede mas bonito
-        actions.Disable();
+        actionsAsset.Disable();
         Debug.Log("Waiting for keypress");
-        StartCoroutine("Co_WaitForKeyPress", keyToRebind);
+        StartCoroutine("Co_WaitForKeyPress");
     }
 
-    IEnumerator Co_WaitForKeyPress(int keyToRebind)
+    IEnumerator Co_WaitForKeyPress()
     {
-        var rebindOperation = inputActions.actions[keyToRebind].PerformInteractiveRebinding()
+        var rebindOperation = actionMap.actions[actionToRebind].PerformInteractiveRebinding()
 .WithControlsExcluding("Mouse")
 .OnMatchWaitForAnother(0.1f)
 .Start();
@@ -65,36 +76,42 @@ public class RebindSaveLoad : MonoBehaviour
 
         // to avoid memory leak
         rebindOperation.Dispose();
-        SaveKey(keyToRebind);
+        SaveKey();
     }
 
-    private void SaveKey(int keyToRebind)
+    private void SaveKey()
     {
         Debug.Log("Saved key");
-        actions.Enable();
+        actionsAsset.Enable();
         // de momento 0 es el keyboard, cambiar si se agregan mas schemes
-        InputBinding binding = inputActions.actions[keyToRebind].bindings[0];
-        binding.overridePath = inputActions.actions[keyToRebind].bindings[0].effectivePath;
-        inputActions.actions[keyToRebind].ApplyBindingOverride(0, binding);
+        InputBinding binding = actionMap.actions[actionToRebind].bindings[0];
+        binding.overridePath = actionMap.actions[actionToRebind].bindings[0].effectivePath;
+        actionMap.actions[actionToRebind].ApplyBindingOverride(0, binding);
 
         // checks if action is jump to modify releasejump too
-        if (inputActions.actions[keyToRebind].bindings[0].action == "Jump")
+        if (actionMap.actions[actionToRebind].bindings[0].action == "Jump")
         {
             // modifica release jump
-            inputActions.actions[keyToRebind + 1].ApplyBindingOverride(0, binding);
-            PlayerPrefs.SetString("CO" + inputActions.actions[keyToRebind + 1].bindings[0].action, binding.overridePath);
+            actionMap.actions[actionToRebind + 1].ApplyBindingOverride(0, binding);
+            PlayerPrefs.SetString("CO" + actionMap.actions[actionToRebind + 1].bindings[0].action, binding.overridePath);
         }
         // saves changed action to prefs
-        PlayerPrefs.SetString("CO" + inputActions.actions[keyToRebind].bindings[0].action, binding.overridePath);
+        PlayerPrefs.SetString("CO" + actionMap.actions[actionToRebind].bindings[0].action, binding.overridePath);
     }
 
-    public void ChangeActionMap(string newActionMap)
+    public void ChangeInputActions(string newActionMap)
     {
-        actionMap = newActionMap;
+        actionMap = actionsAsset.FindActionMap(newActionMap);
+        foreach (var item in actionMap.actions)
+        {
+            actionList.Add(item.name);
+        }
     }
 
-    public void ChangeActionToRebind(string newAction)
+    public void RebindAction(string newAction)
     {
-
+        actionToRebind = actionList.IndexOf(newAction);
+        StartRebindKey();
     }
+
 }

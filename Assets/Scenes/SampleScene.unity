@@ -54381,7 +54381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d250d2ce20af04eb9fa2089e334141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions: {fileID: -944628639613478452, guid: afa5faafa0280f940ac6ec23fae3005f, type: 3}
+  actionsAsset: {fileID: -944628639613478452, guid: afa5faafa0280f940ac6ec23fae3005f, type: 3}
 --- !u!1 &1569663308
 GameObject:
   m_ObjectHideFlags: 0
@@ -59738,14 +59738,26 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1429247940}
         m_TargetAssemblyTypeName: RebindSaveLoad, Assembly-CSharp
-        m_MethodName: StartRebindKey
-        m_Mode: 3
+        m_MethodName: ChangeInputActions
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MenuActions
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1429247940}
+        m_TargetAssemblyTypeName: RebindSaveLoad, Assembly-CSharp
+        m_MethodName: RebindAction
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SlowMo
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1783660169
