@@ -15,6 +15,8 @@ public class RebindSaveLoad : MonoBehaviour
     [SerializeField] private InputActionAsset actions;
     private InputActionMap inputActions;
     private Keyboard keyboard = Keyboard.current;
+    private string actionMap;
+    private string actionToRebind;
     //ver de pasar los bindings a un json
     // y leerlos de ahi
     void Start()
@@ -41,7 +43,7 @@ public class RebindSaveLoad : MonoBehaviour
         }
     }
 
-    public void StartRebindKey(int keyToRebind)
+    public void StartRebindKey(string keyToRebind)
     {
         // aca podrias hacer aparecer un panel y mensaje para que quede mas bonito
         actions.Disable();
@@ -84,5 +86,15 @@ public class RebindSaveLoad : MonoBehaviour
         }
         // saves changed action to prefs
         PlayerPrefs.SetString("CO" + inputActions.actions[keyToRebind].bindings[0].action, binding.overridePath);
+    }
+
+    public void ChangeActionMap(string newActionMap)
+    {
+        actionMap = newActionMap;
+    }
+
+    public void ChangeActionToRebind(string newAction)
+    {
+
     }
 }

@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
     private float movTreshold = 0.05f;
     private bool onSlowmo = false;
     private float hMovement;
+    private float inputValue;
+
     private float vMovement;
     #endregion
     #region Pause
@@ -58,6 +60,7 @@ public class Player : MonoBehaviour
     private float hRayLength = 0.37f;
     #endregion
     #endregion
+
 
     #region Methods
     void Awake()
@@ -88,11 +91,15 @@ public class Player : MonoBehaviour
     public void OnMove(InputValue input)
     {
         // suavizar movimiento
-        hMovement = input.Get<float>() / Time.timeScale;
+        // float newPosition = Mathf.SmoothDamp(transform.position.y, target.position.y, ref yVelocity, smoothTime);
+        inputValue = input.Get<float>() / Time.timeScale;
     }
 
     void Update()
     {
+        // ver de mejorar esto
+        hMovement = Mathf.Lerp(hMovement, inputValue, Time.deltaTime * currentMovementSpeed);
+
         if (stopMovement) return;
 
         if (onSlowmo)

@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         if (!player.WallJumped)
         {
             // transform.position = new Vector3(transform.position.x, newPosition, transform.position.z);
+            // float newPosition = Mathf.SmoothDamp(transform.position.y, target.position.y, ref yVelocity, smoothTime);
             rb.velocity = new Vector2(player.HMovement * player.CurrentMovementSpeed, rb.velocity.y);
         }
         else
