@@ -3,9 +3,11 @@ using UnityEngine.InputSystem;
 
 public class LoadBindings : MonoBehaviour
 {
+    #region Variables
     [SerializeField] private InputActionAsset actionsAsset;
+    #endregion
 
-    // Start is called before the first frame update
+    #region Methods
     void Start()
     {
         foreach (InputActionMap item in actionsAsset.actionMaps)
@@ -27,6 +29,6 @@ public class LoadBindings : MonoBehaviour
                 }
             }
         }
-
     }
+    #endregion
 }

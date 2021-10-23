@@ -7,13 +7,10 @@ using UnityEngine.InputSystem;
 
 public class RebindKey : MonoBehaviour
 {
+    #region Variables
     #region Actions
     [SerializeField] private InputActionAsset actionsAsset;
-    public void RebindAction(string newAction)
-    {
-        actionToRebind = actionList.IndexOf(newAction);
-        StartRebindKey();
-    }
+
     #endregion
     #region ActionsMap
     // current actionmap
@@ -24,6 +21,14 @@ public class RebindKey : MonoBehaviour
     private int actionToRebind;
     #endregion
     private Keyboard keyboard = Keyboard.current;
+    #endregion
+
+    #region Methods
+    public void RebindAction(string newAction)
+    {
+        actionToRebind = actionList.IndexOf(newAction);
+        StartRebindKey();
+    }
 
     public void ChangeInputActions(string newActionMap)
     {
@@ -78,4 +83,5 @@ public class RebindKey : MonoBehaviour
         // saves changed action to prefs
         PlayerPrefs.SetString("CO" + actionMap.actions[actionToRebind].bindings[0].action, binding.overridePath);
     }
+    #endregion
 }
