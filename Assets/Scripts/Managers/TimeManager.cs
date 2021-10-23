@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using System.Collections;
 
 public class TimeManager : MonoBehaviour
@@ -11,20 +10,14 @@ public class TimeManager : MonoBehaviour
 
     #region Variables
     #region Setup
-    private KeyCode slowmoBtn;
-
-    private float gravityScale;
     private float originalTime;
     private float originalDeltaTime;
 
     private bool isTimeSlow = false;
     private float timer;
 
-    private GameObject slowmoBar;
-    private RectTransform valueBar;
-    private float maxBarValue;
+    private UIManager uIManager;
     #endregion
-
     #region SlowdownParameters
     [Range(0.5f, 0.01f)] [SerializeField] private float slowdownFactor = 0.05f; // controls how low it's gonna be the time
     [Range(1f, 10f)] [SerializeField] private float slowdownSmooth = 2f;
@@ -36,15 +29,10 @@ public class TimeManager : MonoBehaviour
     #region Methods
     void Start()
     {
-        slowmoBar = GameObject.Find("UI/SlowMotionIndicator");
-        valueBar = GameObject.Find("UI/SlowMotionIndicator/Value").GetComponent<RectTransform>();
-
-        maxBarValue = valueBar.rect.width;
+        uIManager = GameManager.GetInstance.GetUIManager;
 
         originalDeltaTime = Time.fixedDeltaTime;
         originalTime = Time.timeScale;
-
-        slowmoBtn = KeybindingsManager.GetInstance.GetSlowmoButton;
 
         timer = slowdownTime;
         startingTimeScale = Time.timeScale;
@@ -82,7 +70,8 @@ public class TimeManager : MonoBehaviour
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
 
             timer -= Time.unscaledDeltaTime;
-            UpdateBoostValue(timer);
+            uIManager.UpdateBoostValue(slowdownTime, timer);
+            // UpdateBoostValue(timer);
             yield return null;
         }
 
@@ -110,7 +99,8 @@ public class TimeManager : MonoBehaviour
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
 
             timer += Time.unscaledDeltaTime;
-            UpdateBoostValue(timer);
+            uIManager.UpdateBoostValue(slowdownTime, timer);
+            // UpdateBoostValue(timer);
             yield return null;
         }
         // para dejar los valores exactos y no luego de un lerp
@@ -118,12 +108,6 @@ public class TimeManager : MonoBehaviour
         Time.timeScale = 1;
         Time.fixedDeltaTime = Time.timeScale * 0.02f;
     }
-
-    void UpdateBoostValue(float value)
-    {
-        valueBar.sizeDelta = new Vector2(value / slowdownTime * maxBarValue, valueBar.sizeDelta.y);
-    }
-
     void ManageSlowMotion()
     {
         if (onSlowMotion != null)
