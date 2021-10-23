@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     private BoxCollider2D col;
     private float gravityScale;
     private TimeManager timeManager;
+    private UIManager uIManager;
 
     private bool wallJumped = false;
     private bool isOnGround;
@@ -77,6 +78,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         timeManager = GameManager.GetInstance.GetTimeManager;
+        uIManager = GameManager.GetInstance.GetUIManager;
 
         GameManager.GetInstance.onGamePaused += PauseResume;
         GameManager.GetInstance.onDeath += OnDeath;
@@ -87,6 +89,7 @@ public class Player : MonoBehaviour
 
         currentMovementSpeed = movementSpeed;
         currentHitPoints = initHitPoints;
+        uIManager.UpdateHitPoints(currentHitPoints);
 
         checkpoint = GameObject.Find("Checkpoint").transform;
         this.transform.position = checkpoint.position;
@@ -232,6 +235,7 @@ public class Player : MonoBehaviour
     public void TakeDamage(int value)
     {
         currentHitPoints -= value;
+        uIManager.UpdateHitPoints(currentHitPoints);
         if (currentHitPoints <= 0)
         {
             GameManager.GetInstance.PlayerDeath();
@@ -242,6 +246,7 @@ public class Player : MonoBehaviour
     {
         MovePlayer();
         currentHitPoints = initHitPoints;
+        uIManager.UpdateHitPoints(currentHitPoints);
         // tambien frenar la velocidad que tenia anteriormente
     }
 
@@ -359,6 +364,11 @@ public class Player : MonoBehaviour
     public float CurrentMovementSpeed
     {
         get { return currentMovementSpeed; }
+    }
+
+    public int CurrentHitPoints
+    {
+        get { return currentHitPoints; }
     }
 
     public bool IsOnSlowMo
