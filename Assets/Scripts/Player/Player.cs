@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
     #endregion
     #region Variables
     #region Setup
+    // le puse un valor por defecto
+    [Range(1, 10)] [SerializeField] private int initHitPoints = 3;
+    private int currentHitPoints;
     private Rigidbody2D rb;
     private BoxCollider2D col;
     private float gravityScale;
@@ -83,6 +86,7 @@ public class Player : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
 
         currentMovementSpeed = movementSpeed;
+        currentHitPoints = initHitPoints;
 
         checkpoint = GameObject.Find("Checkpoint").transform;
         this.transform.position = checkpoint.position;
@@ -159,12 +163,6 @@ public class Player : MonoBehaviour
         this.transform.position = checkpoint.position;
     }
 
-    void OnDeath(float duration)
-    {
-        MovePlayer();
-        // tambien frenar la velocidad que tenia anteriormente
-    }
-
     void ManageStates()
     {
         if (currentState == State.WallGrabing && !isWallCollidingL() && !isWallCollidingR())
@@ -229,6 +227,22 @@ public class Player : MonoBehaviour
         }
         if (hMovement < 0) spriteRenderer.flipX = true;
         else if (hMovement > 0) spriteRenderer.flipX = false;
+    }
+
+    public void TakeDamage(int value)
+    {
+        currentHitPoints -= value;
+        if (currentHitPoints <= 0)
+        {
+            GameManager.GetInstance.PlayerDeath();
+        }
+    }
+
+    void OnDeath(float duration)
+    {
+        MovePlayer();
+        currentHitPoints = initHitPoints;
+        // tambien frenar la velocidad que tenia anteriormente
     }
 
     bool isGroundColliding()
