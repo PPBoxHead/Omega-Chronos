@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private SavesManager savesManager;
     private LevelManager levelManager;
     private TimeManager timeManager;
+    private UIManager uIManager;
     #endregion
     #region Pause
     public delegate void OnGamePaused(bool paused);
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
         savesManager = GetComponent<SavesManager>();
         levelManager = GetComponent<LevelManager>();
         timeManager = GetComponent<TimeManager>();
+        uIManager = GetComponent<UIManager>();
     }
 
     void Start()
@@ -117,6 +119,11 @@ public class GameManager : MonoBehaviour
     public TimeManager GetTimeManager
     {
         get { return timeManager; }
+    }
+
+    public UIManager GetUIManager
+    {
+        get { return uIManager; }
     }
     public static GameManager GetInstance
     {
