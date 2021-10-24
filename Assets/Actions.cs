@@ -106,7 +106,7 @@ public class @Actions : IInputActionCollection, IDisposable
             ""id"": ""886db77e-018b-46b0-8a0e-f5ce37bbd052"",
             ""actions"": [
                 {
-                    ""name"": ""SlowMo"",
+                    ""name"": ""ChronoTime"",
                     ""type"": ""Button"",
                     ""id"": ""b2efb4e3-b536-4177-8f4a-c533f67a8047"",
                     ""expectedControlType"": ""Button"",
@@ -130,7 +130,7 @@ public class @Actions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SlowMo"",
+                    ""action"": ""ChronoTime"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -157,7 +157,7 @@ public class @Actions : IInputActionCollection, IDisposable
         m_PlayerActions_ReleaseJump = m_PlayerActions.FindAction("ReleaseJump", throwIfNotFound: true);
         // MenuActions
         m_MenuActions = asset.FindActionMap("MenuActions", throwIfNotFound: true);
-        m_MenuActions_SlowMo = m_MenuActions.FindAction("SlowMo", throwIfNotFound: true);
+        m_MenuActions_ChronoTime = m_MenuActions.FindAction("ChronoTime", throwIfNotFound: true);
         m_MenuActions_Pause = m_MenuActions.FindAction("Pause", throwIfNotFound: true);
     }
 
@@ -257,13 +257,13 @@ public class @Actions : IInputActionCollection, IDisposable
     // MenuActions
     private readonly InputActionMap m_MenuActions;
     private IMenuActionsActions m_MenuActionsActionsCallbackInterface;
-    private readonly InputAction m_MenuActions_SlowMo;
+    private readonly InputAction m_MenuActions_ChronoTime;
     private readonly InputAction m_MenuActions_Pause;
     public struct MenuActionsActions
     {
         private @Actions m_Wrapper;
         public MenuActionsActions(@Actions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @SlowMo => m_Wrapper.m_MenuActions_SlowMo;
+        public InputAction @ChronoTime => m_Wrapper.m_MenuActions_ChronoTime;
         public InputAction @Pause => m_Wrapper.m_MenuActions_Pause;
         public InputActionMap Get() { return m_Wrapper.m_MenuActions; }
         public void Enable() { Get().Enable(); }
@@ -274,9 +274,9 @@ public class @Actions : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_MenuActionsActionsCallbackInterface != null)
             {
-                @SlowMo.started -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnSlowMo;
-                @SlowMo.performed -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnSlowMo;
-                @SlowMo.canceled -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnSlowMo;
+                @ChronoTime.started -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnChronoTime;
+                @ChronoTime.performed -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnChronoTime;
+                @ChronoTime.canceled -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnChronoTime;
                 @Pause.started -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnPause;
@@ -284,9 +284,9 @@ public class @Actions : IInputActionCollection, IDisposable
             m_Wrapper.m_MenuActionsActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @SlowMo.started += instance.OnSlowMo;
-                @SlowMo.performed += instance.OnSlowMo;
-                @SlowMo.canceled += instance.OnSlowMo;
+                @ChronoTime.started += instance.OnChronoTime;
+                @ChronoTime.performed += instance.OnChronoTime;
+                @ChronoTime.canceled += instance.OnChronoTime;
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
@@ -302,7 +302,7 @@ public class @Actions : IInputActionCollection, IDisposable
     }
     public interface IMenuActionsActions
     {
-        void OnSlowMo(InputAction.CallbackContext context);
+        void OnChronoTime(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
     }
 }

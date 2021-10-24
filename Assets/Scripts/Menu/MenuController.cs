@@ -50,7 +50,7 @@ public class MenuController : MonoBehaviour
     private LevelManager levelManager;
     private string startingLevel = "SampleScene";
 
-    void Start() //resolutions list for the screen & cursor lock
+    void Awake() //resolutions list for the screen & cursor lock
     {
         levelManager = GetComponent<LevelManager>();
 

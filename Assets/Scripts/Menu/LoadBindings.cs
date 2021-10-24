@@ -8,7 +8,7 @@ public class LoadBindings : MonoBehaviour
     #endregion
 
     #region Methods
-    void Start()
+    void Awake()
     {
         foreach (InputActionMap item in actionsAsset.actionMaps)
         {

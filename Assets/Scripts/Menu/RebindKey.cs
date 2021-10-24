@@ -2,8 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
-
-
+using TMPro;
 
 public class RebindKey : MonoBehaviour
 {
@@ -13,33 +12,42 @@ public class RebindKey : MonoBehaviour
 
     #endregion
     #region ActionsMap
+    [SerializeField] private string actionMapName;
     // current actionmap
     private InputActionMap actionMap;
     #endregion
     #region Actions
+    [SerializeField] private string actionToRebindName;
     private List<string> actionList = new List<string>();
     private int actionToRebind;
     #endregion
     private Keyboard keyboard = Keyboard.current;
+    private TMP_Text bindingText;
+    [SerializeField] private GameObject panelConfirmation;
     #endregion
 
     #region Methods
-    public void RebindAction(string newAction)
+    private void Start()
     {
-        actionToRebind = actionList.IndexOf(newAction);
-        StartRebindKey();
-    }
+        bindingText = gameObject.transform.Find("Key").GetComponent<TMP_Text>();
+        Debug.Log(panelConfirmation);
 
-    public void ChangeInputActions(string newActionMap)
-    {
-        actionMap = actionsAsset.FindActionMap(newActionMap);
-        foreach (var item in actionMap.actions)
+        actionMap = actionsAsset.FindActionMap(actionMapName);
+
+        foreach (InputAction item in actionMap.actions)
         {
             actionList.Add(item.name);
         }
+
+        actionToRebind = actionList.IndexOf(actionToRebindName);
+
+        // bindingText.text = actionMap.actions[actionToRebind].bindings[0].effectivePath;
+        bindingText.text = actionMap.actions[actionToRebind].GetBindingDisplayString(0).ToUpper();
     }
+
     public void StartRebindKey()
     {
+        panelConfirmation.SetActive(true);
         // aca podrias hacer aparecer un panel y mensaje para que quede mas bonito
         actionsAsset.Disable();
         Debug.Log("Waiting for keypress");
@@ -78,10 +86,12 @@ public class RebindKey : MonoBehaviour
         {
             // modifica release jump
             actionMap.actions[actionToRebind + 1].ApplyBindingOverride(0, binding);
-            PlayerPrefs.SetString("CO" + actionMap.actions[actionToRebind + 1].bindings[0].action, binding.overridePath);
+            PlayerPrefs.SetString("CO" + actionMap.actions[actionToRebind + 1].bindings[0].action, binding.effectivePath);
         }
         // saves changed action to prefs
-        PlayerPrefs.SetString("CO" + actionMap.actions[actionToRebind].bindings[0].action, binding.overridePath);
+        PlayerPrefs.SetString("CO" + actionMap.actions[actionToRebind].bindings[0].action, binding.effectivePath);
+        bindingText.text = actionMap.actions[actionToRebind].GetBindingDisplayString(0).ToUpper();
+        panelConfirmation.SetActive(false);
     }
     #endregion
 }
