@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TurretUpAndDown : MonoBehaviour
@@ -33,7 +31,7 @@ public class TurretUpAndDown : MonoBehaviour
         RaycastHit2D rayInfo = Physics2D.Raycast(transform.position, Direction, Agro);
         if (rayInfo)
         {
-            if (rayInfo.collider.gameObject.tag == "Player")
+            if (rayInfo.collider.gameObject.CompareTag("Player"))
             {
                 if (Detected == false)
                 {
@@ -64,7 +62,7 @@ public class TurretUpAndDown : MonoBehaviour
     public void Shoot()
     {
         GameObject BulletIns = Instantiate(Bullet, ShootPoint.position, Quaternion.identity);
-        BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * Force); // Cuando te acercas dispara más lento, no quiero que haga eso
+        BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * Force); // Cuando te acercas dispara mï¿½s lento, no quiero que haga eso
     }
 
     private void OnDrawGizmosSelected()
