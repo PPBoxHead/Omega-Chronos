@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TurretUpAndDown : MonoBehaviour
+public class Turret : MonoBehaviour
 {
     public float Agro;
     public Transform Target;
@@ -13,19 +13,8 @@ public class TurretUpAndDown : MonoBehaviour
     float ThisStartsBeingZeroTurret = 0;//voy a ser sincero no se para que sirve esto pero se que es importante
     public Transform ShootPoint;
     public float Force;
-    public float MovementSpeed;
-    public bool MoveUp;
     void Update()
     {
-
-        if (MoveUp)
-        {
-            transform.Translate(0, 2 * Time.deltaTime * MovementSpeed, 0);
-        }
-        else
-        {
-            transform.Translate(0, -2 * Time.deltaTime * MovementSpeed, 0);
-        }
         Vector2 targetPos = Target.position;
         Direction = targetPos - (Vector2)transform.position;
         RaycastHit2D rayInfo = Physics2D.Raycast(transform.position, Direction, Agro);
@@ -62,26 +51,11 @@ public class TurretUpAndDown : MonoBehaviour
     public void Shoot()
     {
         GameObject BulletIns = Instantiate(Bullet, ShootPoint.position, Quaternion.identity);
-        BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * Force); // Cuando te acercas dispara m�s lento, no quiero que haga eso
+        BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * Force); // Cuando te acercas dispara mas lento, no quiero que haga eso
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, Agro);
-    }
-    void OnTriggerEnter2D(Collider2D trig)
-    {
-        if (trig.gameObject.CompareTag("turn"))
-        {
-
-            if (MoveUp)
-            {
-                MoveUp = false;
-            }
-            else
-            {
-                MoveUp = true;
-            }
-        }
     }
 }
