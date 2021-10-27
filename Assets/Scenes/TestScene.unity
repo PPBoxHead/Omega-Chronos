@@ -8074,7 +8074,7 @@ MonoBehaviour:
   m_Follow: {fileID: 650152968}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 6
+    OrthographicSize: 5.625
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -9155,6 +9155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   visionRange: 6
+  chasingRange: 2
 --- !u!50 &665203356
 Rigidbody2D:
   serializedVersion: 4
@@ -61981,7 +61982,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 5.625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -62005,7 +62006,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103876865}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.3, y: -1.1200001, z: -10}
+  m_LocalPosition: {x: 15.3, y: -1.195, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 416249835}
@@ -62029,9 +62030,9 @@ MonoBehaviour:
   m_RefResolutionY: 180
   m_UpscaleRT: 0
   m_PixelSnapping: 0
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
+  m_CropFrameX: 1
+  m_CropFrameY: 1
+  m_StretchFill: 1
 --- !u!1 &2104950851
 GameObject:
   m_ObjectHideFlags: 3
