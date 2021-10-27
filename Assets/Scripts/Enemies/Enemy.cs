@@ -1,4 +1,5 @@
 using UnityEngine;
+[RequireComponent(typeof(SinMovement))]
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -6,18 +7,12 @@ public abstract class Enemy : MonoBehaviour
     protected int initialHitPoints;
     protected int hitPoints;
     protected Transform target;
-    protected float range = 2f;
+    protected float range;
+    protected SinMovement patrolCicle;
     #endregion
 
     #region Methods
-    private void Update()
-    {
-        PlayerDetection();
-
-        if (target != null) Debug.Log(target.position);
-    }
-
-    private void PlayerDetection()
+    protected void PlayerDetection()
     {
         Collider2D circleHit = Physics2D.OverlapCircle(transform.position, range);
         if (circleHit && circleHit.CompareTag("Player"))
@@ -45,7 +40,22 @@ public abstract class Enemy : MonoBehaviour
 
     // abstract si la clase superior no tiene nada
     // virtual es que se puede cambiar
-    // protected abstract void Alerted();
+    // ver de pasar a state machine if necsesary
+    protected virtual void Alerted()
+    {
+        patrolCicle.enabled = false;
+    }
+
+    protected virtual void ReturnToPos()
+    {
+        // aca hay que pasar de donde esta hasta su pos inicial
+    }
+
+    protected virtual void Patrol()
+    {
+        patrolCicle.enabled = true;
+    }
+
     public virtual void TakeDamage(int value)
     {
         hitPoints -= value;
