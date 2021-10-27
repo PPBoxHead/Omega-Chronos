@@ -13,6 +13,7 @@ public class Target : MonoBehaviour
         enemy = GetComponent<Enemy>();
     }
 
+
     private void Update()
     {
         PlayerDetection();
