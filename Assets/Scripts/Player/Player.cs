@@ -63,6 +63,10 @@ public class Player : MonoBehaviour
     private float vRayLength = 0.05f;
     private float hRayLength = 0.37f;
     #endregion
+    #region Particles
+    [SerializeField] private ParticleSystem walkingParticles;
+    [SerializeField] private ParticleSystem jumpParticles;
+    #endregion
     #endregion
 
 
@@ -100,6 +104,7 @@ public class Player : MonoBehaviour
         // suavizar movimiento
         // float newPosition = Mathf.SmoothDamp(transform.position.y, target.position.y, ref yVelocity, smoothTime);
         inputValue = input.Get<float>() / Time.timeScale;
+        if (isOnGround) walkingParticles.Play();
     }
 
     void Update()
@@ -374,6 +379,11 @@ public class Player : MonoBehaviour
     public bool IsOnSlowMo
     {
         get { return onSlowmo; }
+    }
+
+    public ParticleSystem JumpParticles
+    {
+        get { return jumpParticles; }
     }
     #endregion
 }

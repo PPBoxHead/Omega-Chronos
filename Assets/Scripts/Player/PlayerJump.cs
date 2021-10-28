@@ -91,6 +91,7 @@ public class PlayerJump : MonoBehaviour
             if (player.CurrentState != Player.State.Jumping)
             {
                 inputTest = 0;
+                player.JumpParticles.Play();
                 if (player.IsOnWallL || player.IsOnWallR) WallJump();
                 else VerticalJump();
             }
