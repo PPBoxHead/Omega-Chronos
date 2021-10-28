@@ -22,19 +22,20 @@ public class Dron : Enemy
         patrolCicle = GetComponent<SinMovement>();
         rb = GetComponent<Rigidbody2D>();
     }
+
     private void Update()
     {
         PlayerDetection();
 
         if (target != null && !chasing)
         {
-            Alerted();
+            Chasing();
             chasing = true;
         }
 
         if (target != null && chasing)
         {
-            Vector2 direction = (target.position - transform.position).normalized;
+            Vector2 direction = (target.position + targetOff - transform.position).normalized;
 
             rb.velocity = Vector2.Lerp(rb.velocity, direction * speed, Time.deltaTime);
         }
@@ -42,6 +43,8 @@ public class Dron : Enemy
         if (target == null)
         {
             Patrol();
+            rb.velocity = Vector2.zero;
+            chasing = false;
         }
     }
     #endregion

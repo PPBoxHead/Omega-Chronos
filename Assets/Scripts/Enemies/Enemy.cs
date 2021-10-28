@@ -9,6 +9,7 @@ public abstract class Enemy : MonoBehaviour
     protected Transform target;
     protected float range;
     protected SinMovement patrolCicle;
+    protected Vector3 targetOff = new Vector3(0, 0.6f, 0);
     #endregion
 
     #region Methods
@@ -17,7 +18,7 @@ public abstract class Enemy : MonoBehaviour
         Collider2D circleHit = Physics2D.OverlapCircle(transform.position, range);
         if (circleHit && circleHit.CompareTag("Player"))
         {
-            Debug.DrawRay(transform.position, circleHit.transform.position - transform.position, Color.yellow);
+            Debug.DrawRay(transform.position, circleHit.transform.position + targetOff - transform.position, Color.yellow);
 
             RaycastHit2D playerOnSight = Physics2D.Raycast(transform.position, circleHit.transform.position - transform.position, range);
             bool isPlayerOnSight = playerOnSight.collider && playerOnSight.collider.CompareTag("Player");
@@ -41,7 +42,7 @@ public abstract class Enemy : MonoBehaviour
     // abstract si la clase superior no tiene nada
     // virtual es que se puede cambiar
     // ver de pasar a state machine if necsesary
-    protected virtual void Alerted()
+    protected virtual void Chasing()
     {
         patrolCicle.enabled = false;
     }
