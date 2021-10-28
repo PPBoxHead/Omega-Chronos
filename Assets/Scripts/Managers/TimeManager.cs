@@ -38,7 +38,7 @@ public class TimeManager : MonoBehaviour
         startingTimeScale = Time.timeScale;
     }
 
-    public void OnCronoTime()
+    public void OnChronoTime()
     {
         if (!isTimeSlow)
         {
