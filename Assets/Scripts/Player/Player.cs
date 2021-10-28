@@ -188,7 +188,7 @@ public class Player : MonoBehaviour
         {
             if (isOnGround && Mathf.Abs(rb.velocity.y) <= movTreshold)
             {
-                currentState = hMovement != 0 ? currentState = State.Walking : currentState = State.Idle;
+                currentState = inputValue != 0 ? currentState = State.Walking : currentState = State.Idle;
             }
         }
     }
