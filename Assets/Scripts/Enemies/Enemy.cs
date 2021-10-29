@@ -5,6 +5,7 @@ public abstract class Enemy : MonoBehaviour
 {
     #region Variables
     [SerializeField] private LayerMask targetLayer;
+    [SerializeField] private LayerMask ignoreLayer;
     protected int initialHitPoints;
     protected int hitPoints;
     protected Transform target;
@@ -22,7 +23,7 @@ public abstract class Enemy : MonoBehaviour
         {
             Debug.DrawRay(transform.position, circleHit[0].transform.position + targetOff - transform.position, Color.yellow);
 
-            RaycastHit2D playerOnSight = Physics2D.Raycast(transform.position, circleHit[0].transform.position + targetOff - transform.position, range);
+            RaycastHit2D playerOnSight = Physics2D.Raycast(transform.position, circleHit[0].transform.position + targetOff - transform.position, range, ~ignoreLayer);
             bool isPlayerOnSight = playerOnSight.collider && playerOnSight.collider.CompareTag("Player");
 
             if (isPlayerOnSight)

@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - WallGrab
   - turn
+  - Bullet
   layers:
   - Default
   - TransparentFX
