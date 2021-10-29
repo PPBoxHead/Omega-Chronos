@@ -1958,7 +1958,7 @@ GameObject:
   - component: {fileID: 38824726}
   - component: {fileID: 38824727}
   - component: {fileID: 38824728}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4352,8 +4352,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7238f623b1a914d878198c49557911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 8
   presicion: 10
-  visionRange: 10
+  visionRange: 4
   speed: 10
   health: 3
 --- !u!50 &665203356
@@ -4427,7 +4430,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665203352}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 925f302ebb4a06046bbefadb76c8173b, type: 3}
   m_Name: 
@@ -13542,7 +13545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!58 &962024355
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -13571,6 +13574,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16b55ee27b164945b9d442995feca50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 8
   health: 3
   visionRange: 6
   gunBarrel: {fileID: 911048647}
@@ -14069,7 +14075,7 @@ GameObject:
   - component: {fileID: 1043968960}
   - component: {fileID: 1043968964}
   - component: {fileID: 1043968962}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
