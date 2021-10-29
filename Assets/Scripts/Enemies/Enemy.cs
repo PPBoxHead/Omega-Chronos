@@ -29,6 +29,10 @@ public abstract class Enemy : MonoBehaviour
             {
                 target = playerOnSight.collider.transform;
             }
+            else
+            {
+                target = null;
+            }
         }
         else
         {
