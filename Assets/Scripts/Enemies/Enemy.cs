@@ -4,6 +4,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     #region Variables
+    [SerializeField] private LayerMask targetLayer;
     protected int initialHitPoints;
     protected int hitPoints;
     protected Transform target;
@@ -15,22 +16,23 @@ public abstract class Enemy : MonoBehaviour
     #region Methods
     protected void PlayerDetection()
     {
-        Collider2D circleHit = Physics2D.OverlapCircle(transform.position, range);
-        if (circleHit && circleHit.CompareTag("Player"))
-        {
-            Debug.DrawRay(transform.position, circleHit.transform.position + targetOff - transform.position, Color.yellow);
+        Collider2D[] circleHit = Physics2D.OverlapCircleAll(transform.position, range, targetLayer);
 
-            RaycastHit2D playerOnSight = Physics2D.Raycast(transform.position, circleHit.transform.position - transform.position, range);
+        if (circleHit.Length > 0 && circleHit[0].CompareTag("Player"))
+        {
+            Debug.DrawRay(transform.position, circleHit[0].transform.position + targetOff - transform.position, Color.yellow);
+
+            RaycastHit2D playerOnSight = Physics2D.Raycast(transform.position, circleHit[0].transform.position + targetOff - transform.position, range);
             bool isPlayerOnSight = playerOnSight.collider && playerOnSight.collider.CompareTag("Player");
 
             if (isPlayerOnSight)
             {
                 target = playerOnSight.collider.transform;
             }
-            else
-            {
-                target = null;
-            }
+        }
+        else
+        {
+            target = null;
         }
     }
 
