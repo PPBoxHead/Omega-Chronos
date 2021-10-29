@@ -6,8 +6,6 @@ public class BulletPoolManager : MonoBehaviour
     private static BulletPoolManager instance;
     private Transform bulletsParent;
     [SerializeField] private GameObject bulletPrefab;
-    private float timer = 0;
-
     private int enemiesAmount = 20;
 
     [SerializeField] private List<GameObject> bulletsPool;
