@@ -15579,7 +15579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a4863b8d509ff4e8f889cf4ee14482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGame: SampleScene
+  startingLevel: TestScene
   noSavedGamePanel: {fileID: 842647411}
   noSavedGameButton: {fileID: 366219837}
   brightnessSlider: {fileID: 1815535799}
@@ -15598,7 +15598,7 @@ MonoBehaviour:
   sfxMixer: {fileID: 5979693427445828709, guid: c956f0faa25541c408cbc89bb13d5b41, type: 2}
   sfxTextValue: {fileID: 223471910}
   sfxSlider: {fileID: 1960148493}
-  defaultVolume: 0.8
+  defaultVolume: 0.5
   volumeMultiplier: 20
   confirmationPrompt: {fileID: 645380035}
 --- !u!4 &2040182886

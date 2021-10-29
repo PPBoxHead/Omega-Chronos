@@ -8,8 +8,8 @@ using TMPro;
 
 public class MenuController : MonoBehaviour
 {
+    [SerializeField] private string startingLevel = "TestScene";
     [Header("Levels to Load")]
-    public string newGame;
     private string loadedGame;
     [SerializeField] private GameObject noSavedGamePanel = null;
     [SerializeField] private GameObject noSavedGameButton;
@@ -48,7 +48,6 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject confirmationPrompt = null;
 
     private LevelManager levelManager;
-    private string startingLevel = "SampleScene";
 
     void Awake() //resolutions list for the screen & cursor lock
     {
