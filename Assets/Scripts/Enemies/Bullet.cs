@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private Transform target;
     float duration = 2;
 
     void OnCollisionEnter2D(Collision2D collision) //Si colisiona con cualquier box collider va a desaparecer, ojito

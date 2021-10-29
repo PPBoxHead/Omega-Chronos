@@ -114,13 +114,11 @@ public class Player : MonoBehaviour
 
         if (stopMovement) return;
 
-        if (onSlowmo)
-        {
-            // with hMovement = input.Get<float>() / Time.timeScale; hmovement can be > 1
-            // but without it it will move reaaaaally slow
-            if (hMovement >= 1) hMovement = 1;
-            else if (hMovement <= -1) hMovement = -1;
-        }
+        // with hMovement = input.Get<float>() / Time.timeScale; hmovement can be > 1
+        // but without it it will move reaaaaally slow
+        if (hMovement >= 1) hMovement = 1;
+        else if (hMovement <= -1) hMovement = -1;
+
 
         // esto se podria pasar a una corutina pero mientras no de problemas que este aca
         currentMovementSpeed = movementSpeed / Time.timeScale;
