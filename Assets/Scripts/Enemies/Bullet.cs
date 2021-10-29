@@ -16,6 +16,6 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         // esto lo correcto seria hacerlo en el start con un velocity o algo de eso, pero para probar rinde
-        transform.position = Vector2.MoveTowards(transform.position, target.position, speed);
+       // transform.position = Vector2.MoveTowards(transform.position, target.position, speed);
     }
 }

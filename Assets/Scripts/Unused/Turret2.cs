@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class Turret2 : MonoBehaviour
 {
     public float Agro;
     public Transform Target;
