@@ -50,7 +50,7 @@ public class Turret : Enemy
     }
     void Aim()
     {
-        direction = target.position - transform.position;
+        direction = target.position + targetOff - transform.position;
         gunBarrel.transform.right = direction;
     }
     void Shoot()

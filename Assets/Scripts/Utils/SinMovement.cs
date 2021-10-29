@@ -1,9 +1,7 @@
 using UnityEngine;
-[RequireComponent(typeof(Rigidbody2D))]
 
 public class SinMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
     private Vector2 initialPos;
 
     [SerializeField] private float vSpeed = 4f;
@@ -13,7 +11,6 @@ public class SinMovement : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         initialPos = transform.position;
     }
 
