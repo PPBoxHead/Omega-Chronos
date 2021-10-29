@@ -4,7 +4,7 @@ using System.Collections;
 public class Dron : Enemy
 {
     #region Variables
-    [Range(1, 10)] [SerializeField] private float presicion = 10;
+    [Range(1, 10)] [SerializeField] private float precision = 10;
     [Range(1, 10)] [SerializeField] private int visionRange = 3;
     [Range(10, 20)] [SerializeField] private float speed = 10;
     [Range(1, 10)] [SerializeField] private int health = 3;
@@ -37,7 +37,7 @@ public class Dron : Enemy
         {
             Vector2 direction = (target.position + targetOff - transform.position).normalized;
 
-            rb.velocity = Vector2.Lerp(rb.velocity, direction * speed, Time.deltaTime);
+            rb.velocity = Vector2.Lerp(rb.velocity, direction * speed, Time.deltaTime * precision);
         }
 
         if (target == null)
