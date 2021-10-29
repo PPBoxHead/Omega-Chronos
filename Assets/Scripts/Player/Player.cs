@@ -314,7 +314,8 @@ public class Player : MonoBehaviour
 
         if (!isTimeSlow)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y) * Time.timeScale;
+            rb.velocity = Vector2.zero;
+            hMovement = 0;
         }
         // no paso los cambios de velocidades aca
         // porque como es gradual entonces tienen que
