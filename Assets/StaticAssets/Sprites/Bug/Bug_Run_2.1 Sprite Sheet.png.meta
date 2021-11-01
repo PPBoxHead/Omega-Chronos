@@ -1,37 +1,49 @@
 fileFormatVersion: 2
-guid: a04d06b92e4bc5b4eac28857d51fca63
+guid: 1964e1a6b4f3c504ba23520c1161ab53
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6773109317451695714
-    second: Run Sprite Sheet_0
+      213: -3542792001435767751
+    second: Bug_Run_2.1 Sprite Sheet_0
   - first:
-      213: 7577089037990988415
-    second: Run Sprite Sheet_1
+      213: 656658622105284748
+    second: Bug_Run_2.1 Sprite Sheet_1
   - first:
-      213: -1754886526318036360
-    second: Run Sprite Sheet_2
+      213: 3775359617900056759
+    second: Bug_Run_2.1 Sprite Sheet_2
   - first:
-      213: 5756241723716997249
-    second: Run Sprite Sheet_3
+      213: 8955271362651837083
+    second: Bug_Run_2.1 Sprite Sheet_3
   - first:
-      213: 8265792990580065470
-    second: Run Sprite Sheet_4
+      213: -5080544526177386783
+    second: Bug_Run_2.1 Sprite Sheet_4
   - first:
-      213: -6557769892548595
-    second: Run Sprite Sheet_5
+      213: -4915878536573734103
+    second: Bug_Run_2.1 Sprite Sheet_5
   - first:
-      213: -6990714587750225774
-    second: Run Sprite Sheet_6
+      213: -6974684923398493755
+    second: Bug_Run_2.1 Sprite Sheet_6
   - first:
-      213: -314403582885832712
-    second: Run Sprite Sheet_7
+      213: -8572015206973236295
+    second: Bug_Run_2.1 Sprite Sheet_7
   - first:
-      213: 901278544239043530
-    second: Run Sprite Sheet_8
+      213: -5785787140836165650
+    second: Bug_Run_2.1 Sprite Sheet_8
   - first:
-      213: 6065306278490331985
-    second: Run Sprite Sheet_9
+      213: 3294704524587484360
+    second: Bug_Run_2.1 Sprite Sheet_9
+  - first:
+      213: -7844254269489951454
+    second: Bug_Run_2.1 Sprite Sheet_10
+  - first:
+      213: -3480662651365253623
+    second: Bug_Run_2.1 Sprite Sheet_11
+  - first:
+      213: 6296152794634419098
+    second: Bug_Run_2.1 Sprite Sheet_12
+  - first:
+      213: -5512729702421658733
+    second: Bug_Run_2.1 Sprite Sheet_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -145,7 +157,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Run Sprite Sheet_0
+      name: Bug_Run_2.1 Sprite Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -159,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 266c89be90beefd50800000000000000
-      internalID: 6773109317451695714
+      spriteID: 93c6359f17975dec0800000000000000
+      internalID: -3542792001435767751
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run Sprite Sheet_1
+      name: Bug_Run_2.1 Sprite Sheet_1
       rect:
         serializedVersion: 2
         x: 32
@@ -180,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7a85fcb55a372960800000000000000
-      internalID: 7577089037990988415
+      spriteID: c807845a98bec1900800000000000000
+      internalID: 656658622105284748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run Sprite Sheet_2
+      name: Bug_Run_2.1 Sprite Sheet_2
       rect:
         serializedVersion: 2
         x: 64
@@ -201,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87ab1b9800465a7e0800000000000000
-      internalID: -1754886526318036360
+      spriteID: 7b0994cd195c46430800000000000000
+      internalID: 3775359617900056759
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run Sprite Sheet_3
+      name: Bug_Run_2.1 Sprite Sheet_3
       rect:
         serializedVersion: 2
         x: 96
@@ -222,14 +234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1801f6f895742ef40800000000000000
-      internalID: 5756241723716997249
+      spriteID: b9257167bd3874c70800000000000000
+      internalID: 8955271362651837083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run Sprite Sheet_4
+      name: Bug_Run_2.1 Sprite Sheet_4
       rect:
         serializedVersion: 2
         x: 128
@@ -243,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb4407e4eeef5b270800000000000000
-      internalID: 8265792990580065470
+      spriteID: 1ee34abdba74e79b0800000000000000
+      internalID: -5080544526177386783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run Sprite Sheet_5
+      name: Bug_Run_2.1 Sprite Sheet_5
       rect:
         serializedVersion: 2
         x: 160
@@ -264,14 +276,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0039073eb3b8eff0800000000000000
-      internalID: -6557769892548595
+      spriteID: 9233e84348a47cbb0800000000000000
+      internalID: -4915878536573734103
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run Sprite Sheet_6
+      name: Bug_Run_2.1 Sprite Sheet_6
       rect:
         serializedVersion: 2
         x: 192
@@ -285,14 +297,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 298a10fee1efbfe90800000000000000
-      internalID: -6990714587750225774
+      spriteID: 5c96f800401f43f90800000000000000
+      internalID: -6974684923398493755
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run Sprite Sheet_7
+      name: Bug_Run_2.1 Sprite Sheet_7
       rect:
         serializedVersion: 2
         x: 224
@@ -306,14 +318,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f7dafd6b9303abf0800000000000000
-      internalID: -314403582885832712
+      spriteID: 9bb1d13f5951a0980800000000000000
+      internalID: -8572015206973236295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run Sprite Sheet_8
+      name: Bug_Run_2.1 Sprite Sheet_8
       rect:
         serializedVersion: 2
         x: 256
@@ -327,14 +339,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac3ac019f0cf18c00800000000000000
-      internalID: 901278544239043530
+      spriteID: ee7ff64ff31c4bfa0800000000000000
+      internalID: -5785787140836165650
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run Sprite Sheet_9
+      name: Bug_Run_2.1 Sprite Sheet_9
       rect:
         serializedVersion: 2
         x: 288
@@ -348,8 +360,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15bdc57cceb4c2450800000000000000
-      internalID: 6065306278490331985
+      spriteID: 8c4c8eb1f4429bd20800000000000000
+      internalID: 3294704524587484360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug_Run_2.1 Sprite Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22dc5337d4c932390800000000000000
+      internalID: -7844254269489951454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug_Run_2.1 Sprite Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90e976a82c332bfc0800000000000000
+      internalID: -3480662651365253623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug_Run_2.1 Sprite Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9b74c7bb9d606750800000000000000
+      internalID: 6296152794634419098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug_Run_2.1 Sprite Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39389681b89de73b0800000000000000
+      internalID: -5512729702421658733
       vertices: []
       indices: 
       edges: []
