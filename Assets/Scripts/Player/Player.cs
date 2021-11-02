@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 [RequireComponent(typeof(Rigidbody2D))]
 
 public class Player : MonoBehaviour
@@ -66,12 +67,26 @@ public class Player : MonoBehaviour
     #region Particles
     [SerializeField] private ParticleSystem walkingParticles;
     [SerializeField] private ParticleSystem jumpParticles;
+    [SerializeField] private ParticleSystem landingParticles;
+    public bool landingDeconfirm = true;
+
     #endregion
     #endregion
-
-
     #region Methods
-    void Awake()
+
+
+    void LandingConfirm()
+    {
+        if (landingDeconfirm == true)
+        {
+            landingParticles.Play();
+            landingDeconfirm = false;
+        }
+        
+    }
+
+
+        void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
@@ -105,6 +120,7 @@ public class Player : MonoBehaviour
         // float newPosition = Mathf.SmoothDamp(transform.position.y, target.position.y, ref yVelocity, smoothTime);
         inputValue = input.Get<float>() / Time.timeScale;
         if (isOnGround) walkingParticles.Play();
+  
     }
 
     void Update()
@@ -146,6 +162,11 @@ public class Player : MonoBehaviour
         FlipSprite();
         ManageStates();
         PlayAnimation();
+        if (isOnGround == true)
+        {
+            LandingConfirm();
+
+        }
     }
 
     void PauseResume(bool gamePaused)
@@ -175,12 +196,15 @@ public class Player : MonoBehaviour
         {
             // cuando te soltas
             currentState = State.Falling;
+            landingDeconfirm = true;
             return;
+            
         }
 
         if (rb.velocity.y < -movTreshold && currentState != State.WallGrabing)
         {
             currentState = State.Falling;
+            landingDeconfirm = true;
         }
         else
         {
@@ -384,5 +408,6 @@ public class Player : MonoBehaviour
     {
         get { return jumpParticles; }
     }
+    
     #endregion
 }
