@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class Detector : MonoBehaviour
 {
-    private LineRenderer lightRay;
-    private Transform[] points;
-    private void Awake()
+    private LineRenderer lineRenderer;
+    public Transform LaserHit;
+    [SerializeField] private LayerMask ignoreLayer;
+    private void Start()
     {
-        lightRay = GetComponent<LineRenderer>();
+        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.enabled = true;
+        lineRenderer.useWorldSpace = true;
     }
-    public void SetUpLine(Transform[] points)
+    private void Update()
     {
-        lightRay.positionCount = points.Length;
-        this.points = points;
-    }
-    private void FixedUpdate()
-    {
-        for (int i= 0; i< points.Length; i++)
-        {
-            lightRay.SetPosition(i, points[i].position);
-        }
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, Mathf.Infinity, ~ignoreLayer);
+        Debug.DrawLine(transform.position, hit.point);
+        LaserHit.position = hit.point;
+        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(1, LaserHit.position);
     }
 }
