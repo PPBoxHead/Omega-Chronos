@@ -46,11 +46,6 @@ public class GameManager : MonoBehaviour
         uIManager = GetComponent<UIManager>();
     }
 
-    void Start()
-    {
-        pauseBtn = KeybindingsManager.GetInstance.GetPauseButton;
-    }
-
     public void OnPause()
     {
         PauseGame();

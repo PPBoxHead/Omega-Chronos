@@ -55,8 +55,6 @@ public class PlayerJump : MonoBehaviour
 
         timer = jumpTimer;
 
-        jumpBtn = KeybindingsManager.GetInstance.GetJumpButton;
-
         inputBuffer = new Queue<KeyCode>();
 
         GameManager.GetInstance.onGamePaused += PauseResume;
