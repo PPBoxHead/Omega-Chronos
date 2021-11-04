@@ -11,7 +11,7 @@ public abstract class Enemy : MonoBehaviour
     protected Transform target;
     protected float range;
     protected SinMovement patrolCicle;
-    protected Vector3 targetOff = new Vector3(0, 0.6f, 0);
+    protected Vector3 targetOff = new Vector3(0, 1.25f, 0);
     #endregion
 
     #region Methods

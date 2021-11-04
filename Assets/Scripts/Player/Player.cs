@@ -82,11 +82,9 @@ public class Player : MonoBehaviour
             landingParticles.Play();
             landingDeconfirm = false;
         }
-        
     }
 
-
-        void Awake()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
@@ -120,7 +118,6 @@ public class Player : MonoBehaviour
         // float newPosition = Mathf.SmoothDamp(transform.position.y, target.position.y, ref yVelocity, smoothTime);
         inputValue = input.Get<float>() / Time.timeScale;
         if (isOnGround) walkingParticles.Play();
-  
     }
 
     void Update()
@@ -134,7 +131,6 @@ public class Player : MonoBehaviour
         // but without it it will move reaaaaally slow
         if (hMovement >= 1) hMovement = 1;
         else if (hMovement <= -1) hMovement = -1;
-
 
         // esto se podria pasar a una corutina pero mientras no de problemas que este aca
         currentMovementSpeed = movementSpeed / Time.timeScale;
@@ -165,7 +161,6 @@ public class Player : MonoBehaviour
         if (isOnGround == true)
         {
             LandingConfirm();
-
         }
     }
 
@@ -198,7 +193,7 @@ public class Player : MonoBehaviour
             currentState = State.Falling;
             landingDeconfirm = true;
             return;
-            
+
         }
 
         if (rb.velocity.y < -movTreshold && currentState != State.WallGrabing)
@@ -408,6 +403,6 @@ public class Player : MonoBehaviour
     {
         get { return jumpParticles; }
     }
-    
+
     #endregion
 }
