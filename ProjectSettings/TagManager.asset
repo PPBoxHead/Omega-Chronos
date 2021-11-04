@@ -9,6 +9,7 @@ TagManager:
   - WallGrab
   - turn
   - Bullet
+  - reactivation
   layers:
   - Default
   - TransparentFX
