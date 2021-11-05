@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
     private Vector3 vRayOff = new Vector3(0.18f, 0, 0);
     private Vector3 hRayOffLow = new Vector3(0, 0.2f, 0);
     private Vector3 hRayOffHigh = new Vector3(0, 1.2f, 0);
-    [SerializeField] private float vRayLength = 0.07f;
+    [SerializeField] private float vRayLength = 0.09f;
     private float hRayLength = 0.37f;
     #endregion
     #region Particles
