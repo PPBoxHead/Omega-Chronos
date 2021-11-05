@@ -195,7 +195,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        if (rb.velocity.y < -movTreshold && currentState != State.WallGrabing)
+        if (rb.velocity.y < -movTreshold && !isOnGround && currentState != State.WallGrabing)
         {
             currentState = State.Falling;
             landingDeconfirm = true;
