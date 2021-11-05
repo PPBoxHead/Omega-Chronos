@@ -14546,6 +14546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initHitPoints: 3
   movementSpeed: 10
+  vRayLength: 0.07
   walkingParticles: {fileID: 4058758738675426623}
   jumpParticles: {fileID: 4058758739450585152}
   landingParticles: {fileID: 4058758738950327445}

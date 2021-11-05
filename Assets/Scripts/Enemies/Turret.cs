@@ -5,7 +5,7 @@ using UnityEngine;
 public class Turret : Enemy
 {
     [Range(1, 10)] [SerializeField] private int health = 3;
-    [Range(1, 10)] [SerializeField] private int visionRange = 3;
+    [Range(1, 20)] [SerializeField] private int visionRange = 3;
     private bool aiming;
     Vector2 direction;
     [SerializeField] private GameObject gunBarrel;
