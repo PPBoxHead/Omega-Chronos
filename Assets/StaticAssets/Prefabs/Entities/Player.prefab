@@ -14562,8 +14562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bde017a4f73282428ce06a5b402a4e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aheadSpeed: 2.5
-  aheadAmount: 3
+  aheadSpeed: 2
+  aheadAmount: 8
   walljumpLerp: 1
 --- !u!114 &4058758739774731897
 MonoBehaviour:

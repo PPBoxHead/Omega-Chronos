@@ -58627,6 +58627,14 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 839887332}
+    - target: {fileID: 4483499063488249549, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483499063488249549, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4483499063628324160, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
       propertyPath: m_Name
       value: Camera
@@ -58637,11 +58645,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4483499063628324186, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.43
+      value: -6.430001
       objectReference: {fileID: 0}
     - target: {fileID: 4483499063628324186, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7149999
+      value: -1.8399997
       objectReference: {fileID: 0}
     - target: {fileID: 4483499063628324186, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -58686,6 +58694,14 @@ PrefabInstance:
     - target: {fileID: 4483499063628324189, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
       propertyPath: m_BackGroundColor.r
       value: 0.9215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483499063910473162, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
+      propertyPath: m_DeadZoneWidth
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483499063910473162, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
+      propertyPath: m_DeadZoneHeight
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
