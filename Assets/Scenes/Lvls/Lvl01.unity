@@ -1277,7 +1277,7 @@ PrefabInstance:
       objectReference: {fileID: 1227931440}
     - target: {fileID: 5551346836857259638, guid: a383bc5fd37b1384897f2fd5bcedf036, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveCheckpoint
+      value: SetCheckpoint
       objectReference: {fileID: 0}
     - target: {fileID: 5551346836857259641, guid: a383bc5fd37b1384897f2fd5bcedf036, type: 3}
       propertyPath: m_Name
@@ -1902,7 +1902,7 @@ PrefabInstance:
       objectReference: {fileID: 1227931440}
     - target: {fileID: 5551346836857259638, guid: a383bc5fd37b1384897f2fd5bcedf036, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveCheckpoint
+      value: SetCheckpoint
       objectReference: {fileID: 0}
     - target: {fileID: 5551346836857259641, guid: a383bc5fd37b1384897f2fd5bcedf036, type: 3}
       propertyPath: m_Name
@@ -22197,7 +22197,7 @@ PrefabInstance:
       objectReference: {fileID: 1227931440}
     - target: {fileID: 5551346836857259638, guid: a383bc5fd37b1384897f2fd5bcedf036, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveCheckpoint
+      value: SetCheckpoint
       objectReference: {fileID: 0}
     - target: {fileID: 5551346836857259641, guid: a383bc5fd37b1384897f2fd5bcedf036, type: 3}
       propertyPath: m_Name
@@ -27860,7 +27860,7 @@ PrefabInstance:
       objectReference: {fileID: 1227931440}
     - target: {fileID: 5551346836857259638, guid: a383bc5fd37b1384897f2fd5bcedf036, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveCheckpoint
+      value: SetCheckpoint
       objectReference: {fileID: 0}
     - target: {fileID: 5551346836857259641, guid: a383bc5fd37b1384897f2fd5bcedf036, type: 3}
       propertyPath: m_Name
@@ -29997,7 +29997,7 @@ PrefabInstance:
       objectReference: {fileID: 1227931440}
     - target: {fileID: 5551346836857259638, guid: a383bc5fd37b1384897f2fd5bcedf036, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveCheckpoint
+      value: SetCheckpoint
       objectReference: {fileID: 0}
     - target: {fileID: 5551346836857259641, guid: a383bc5fd37b1384897f2fd5bcedf036, type: 3}
       propertyPath: m_Name
@@ -30359,7 +30359,7 @@ PrefabInstance:
       objectReference: {fileID: 1227931440}
     - target: {fileID: 5551346836857259638, guid: a383bc5fd37b1384897f2fd5bcedf036, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveCheckpoint
+      value: SetCheckpoint
       objectReference: {fileID: 0}
     - target: {fileID: 5551346836857259641, guid: a383bc5fd37b1384897f2fd5bcedf036, type: 3}
       propertyPath: m_Name
@@ -30680,7 +30680,7 @@ PrefabInstance:
       objectReference: {fileID: 1227931440}
     - target: {fileID: 5551346836857259638, guid: a383bc5fd37b1384897f2fd5bcedf036, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveCheckpoint
+      value: SetCheckpoint
       objectReference: {fileID: 0}
     - target: {fileID: 5551346836857259641, guid: a383bc5fd37b1384897f2fd5bcedf036, type: 3}
       propertyPath: m_Name
@@ -30750,7 +30750,7 @@ PrefabInstance:
       objectReference: {fileID: 1227931440}
     - target: {fileID: 5551346836857259638, guid: a383bc5fd37b1384897f2fd5bcedf036, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveCheckpoint
+      value: SetCheckpoint
       objectReference: {fileID: 0}
     - target: {fileID: 5551346836857259641, guid: a383bc5fd37b1384897f2fd5bcedf036, type: 3}
       propertyPath: m_Name
