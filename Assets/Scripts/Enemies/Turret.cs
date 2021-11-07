@@ -57,6 +57,7 @@ public class Turret : Enemy
     {
         GameObject bullet = bulletPoolManager.GetPooledObject();
         bullet.transform.position = shootPoint.position;
+        bullet.transform.right = direction;
         bullet.SetActive(true);
         bullet.GetComponent<Rigidbody2D>().velocity = direction.normalized * bulletSpeed;
     }
