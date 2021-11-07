@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 1607807689846393145}
   - component: {fileID: 1607807689846393149}
   - component: {fileID: 1607807689846393147}
+  - component: {fileID: 63730402521823880}
+  - component: {fileID: 5141993064912788581}
   m_Layer: 0
   m_Name: Dron
   m_TagString: Untagged
@@ -75,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1103832789
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1671013214741690030, guid: ef51b5d86618fc745a4c68492ba12f46, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -188,6 +190,7 @@ MonoBehaviour:
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 0
+  crashForce: 80
   precision: 1
   visionRange: 6
   speed: 20
@@ -235,3 +238,65 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   otherTag: Player
+--- !u!114 &63730402521823880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607807689846393150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b137b97f8aca3e45be70ef06d22b8ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onCollisionEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1607807689846393149}
+        m_TargetAssemblyTypeName: Dron, Assembly-CSharp
+        m_MethodName: EnvCrash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCollisionExit:
+    m_PersistentCalls:
+      m_Calls: []
+  otherTag: Bullet
+--- !u!114 &5141993064912788581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607807689846393150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b137b97f8aca3e45be70ef06d22b8ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onCollisionEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1607807689846393149}
+        m_TargetAssemblyTypeName: Dron, Assembly-CSharp
+        m_MethodName: EnvCrash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCollisionExit:
+    m_PersistentCalls:
+      m_Calls: []
+  otherTag: Floor

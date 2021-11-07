@@ -16,18 +16,21 @@ public class Player : MonoBehaviour
         WallJumping,
         Falling,
         WallGrabing,
+        Damage,
     }
     #endregion
     #region Variables
     #region Setup
     // le puse un valor por defecto
     [Range(1, 10)] [SerializeField] private int initHitPoints = 3;
-    private int currentHitPoints;
-    private Rigidbody2D rb;
-    private BoxCollider2D col;
-    private float gravityScale;
+    [Range(0.1f, 1), SerializeField] private float iFrames = 0.1f;
+    private bool isVulnerable = true;
     private TimeManager timeManager;
+    private int currentHitPoints;
     private UIManager uIManager;
+    private float gravityScale;
+    private BoxCollider2D col;
+    private Rigidbody2D rb;
 
     private bool wallJumped = false;
     private bool isOnGround;
@@ -37,7 +40,7 @@ public class Player : MonoBehaviour
     private Transform checkpoint;
     private State currentState = State.Idle;
     #region Animations
-    private string[] animations = { "playerIdle", "playerRun", "playerJump", "playerJump", "playerFall", "playerWallgrab" };
+    private string[] animations = { "playerIdle", "playerRun", "playerJump", "playerJump", "playerFall", "playerWallgrab", "playerDamage" };
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     #endregion
@@ -125,7 +128,7 @@ public class Player : MonoBehaviour
         // ver de mejorar esto
         hMovement = Mathf.Lerp(hMovement, inputValue, Time.deltaTime * currentMovementSpeed);
 
-        if (stopMovement) return;
+        if (stopMovement || currentState == State.Damage) return;
 
         // with hMovement = input.Get<float>() / Time.timeScale; hmovement can be > 1
         // but without it it will move reaaaaally slow
@@ -255,12 +258,29 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int value)
     {
+        // if player is in iFrames avoid damage calculations
+        if (!isVulnerable) return;
+
+        isVulnerable = false;
+        rb.velocity = Vector2.zero;
         currentHitPoints -= value;
         uIManager.UpdateHitPoints(currentHitPoints);
         if (currentHitPoints <= 0)
         {
             GameManager.GetInstance.PlayerDeath();
         }
+
+        StartCoroutine("Invulnerability");
+    }
+
+    IEnumerator Invulnerability()
+    {
+        currentState = State.Damage;
+        spriteRenderer.color = Color.red; // esta para tener un feedback de mientras
+        yield return new WaitForSeconds(iFrames);
+        isVulnerable = true;
+        currentState = State.Idle;
+        spriteRenderer.color = Color.white;
     }
 
     void OnDeath(float duration)
