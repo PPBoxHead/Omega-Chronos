@@ -91,6 +91,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         gravityScale = rb.gravityScale;
     }
@@ -104,7 +105,6 @@ public class Player : MonoBehaviour
         GameManager.GetInstance.onDeath += OnDeath;
         timeManager.onSlowMotion += OnSlowMotion;
 
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
 
         currentMovementSpeed = movementSpeed;
@@ -252,8 +252,8 @@ public class Player : MonoBehaviour
                 return;
             }
         }
-        if (hMovement < 0) spriteRenderer.flipX = true;
-        else if (hMovement > 0) spriteRenderer.flipX = false;
+        if (inputValue < 0) spriteRenderer.flipX = true;
+        else if (inputValue > 0) spriteRenderer.flipX = false;
     }
 
     public void TakeDamage(int value)
@@ -421,6 +421,11 @@ public class Player : MonoBehaviour
     public ParticleSystem JumpParticles
     {
         get { return jumpParticles; }
+    }
+
+    public SpriteRenderer GetSpriteRenderer
+    {
+        get { return spriteRenderer; }
     }
 
     #endregion

@@ -14535,6 +14535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initHitPoints: 3
+  iFrames: 0.1
   movementSpeed: 10
   vRayLength: 0.09
   walkingParticles: {fileID: 4058758738675426623}
@@ -14569,7 +14570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vJumpForce: 13
-  hJumpForce: 11
+  hJumpForce: 13
   bufferTime: 0.1
   jumpTimer: 0.2
   coyoteFrames: 0.1

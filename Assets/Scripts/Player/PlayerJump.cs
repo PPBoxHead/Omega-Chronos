@@ -22,6 +22,7 @@ public class PlayerJump : MonoBehaviour
     private bool stopMovement;
     private KeyCode jumpBtn;
 
+    private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
     private Player player;
     private List<Player.State> jumpingState = new List<Player.State>() { Player.State.Walking, Player.State.Idle, Player.State.Jumping, Player.State.Falling, Player.State.WallGrabing, Player.State.WallJumping };
@@ -49,6 +50,7 @@ public class PlayerJump : MonoBehaviour
     void Start()
     {
         player = GetComponent<Player>();
+        spriteRenderer = player.GetSpriteRenderer;
 
         rb = player.GetRb;
         gravityScale = rb.gravityScale;
