@@ -16,8 +16,6 @@ GameObject:
   - component: {fileID: 1607807689846393145}
   - component: {fileID: 1607807689846393149}
   - component: {fileID: 1607807689846393147}
-  - component: {fileID: 63730402521823880}
-  - component: {fileID: 5141993064912788581}
   m_Layer: 0
   m_Name: Dron
   m_TagString: Untagged
@@ -195,6 +193,7 @@ MonoBehaviour:
   visionRange: 6
   speed: 20
   health: 3
+  tilemap: {fileID: 0}
 --- !u!114 &1607807689846393147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,94 +208,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onCollisionEnter:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: TakeDamage
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1607807689846393150}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onCollisionExit:
     m_PersistentCalls:
       m_Calls: []
   otherTag: Player
---- !u!114 &63730402521823880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1607807689846393150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b137b97f8aca3e45be70ef06d22b8ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onCollisionEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1607807689846393149}
-        m_TargetAssemblyTypeName: Dron, Assembly-CSharp
-        m_MethodName: EnvCrash
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onCollisionExit:
-    m_PersistentCalls:
-      m_Calls: []
-  otherTag: Bullet
---- !u!114 &5141993064912788581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1607807689846393150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b137b97f8aca3e45be70ef06d22b8ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onCollisionEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1607807689846393149}
-        m_TargetAssemblyTypeName: Dron, Assembly-CSharp
-        m_MethodName: EnvCrash
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onCollisionExit:
-    m_PersistentCalls:
-      m_Calls: []
-  otherTag: Floor

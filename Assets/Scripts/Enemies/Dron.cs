@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Dron : Enemy
 {
@@ -10,6 +11,11 @@ public class Dron : Enemy
     [Range(1, 10)] [SerializeField] private int health = 2;
     private bool chasing;
     private Rigidbody2D rb;
+    public Tilemap tilemap;
+    Vector2 outDir;
+    Vector2 crashPos;
+    Vector2 inNormal;
+    Vector2 crashVel;
     #endregion
 
     #region Methods
@@ -54,16 +60,41 @@ public class Dron : Enemy
         rb.velocity = Vector2.zero;
 
         rb.velocity = -direction * crashForce;
-        TakeDamage(1);
+        // TakeDamage(1);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Floor"))
+        {
+            inNormal = other.contacts[0].normal;
+            crashPos = transform.position;
+            crashVel = (target.position + targetOff - transform.position).normalized;
+
+            outDir = Vector2.Reflect((target.position + targetOff - transform.position).normalized, inNormal) * -1;
+            Debug.Log(outDir);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (outDir != null)
+        {
+            Debug.DrawRay(crashPos, outDir, Color.green);
+            Debug.DrawRay(crashPos, inNormal, Color.blue);
+            Debug.DrawRay(crashPos, crashVel, Color.red);
+        }
     }
 
     public void EnvCrash()
     {
-        Vector2 direction = -rb.velocity.normalized * crashForce;
+        // reflectedObject.position = Vector3.Reflect(originalObject.position, Vector3.right);
+        //vector3.reflex
+        Vector2 direction = -rb.velocity.normalized;
         rb.velocity = Vector2.zero;
 
-        rb.velocity = -rb.velocity.normalized * crashForce;
-        TakeDamage(1);
+        rb.velocity = -direction * crashForce;
+        // TakeDamage(1);
     }
     #endregion
 }
