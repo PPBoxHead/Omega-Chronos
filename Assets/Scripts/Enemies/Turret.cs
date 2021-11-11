@@ -1,14 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Turret : Enemy
 {
     [Range(1, 10)] [SerializeField] private int health = 3;
-    [Range(1, 20)] [SerializeField] private int visionRange = 3;
-    private bool aiming;
-    Vector2 direction;
-    [SerializeField] private GameObject gunBarrel;
+    [Range(1, 30)] [SerializeField] private int visionRange = 3;
+    protected bool aiming;
+    protected Vector2 direction;
+    [SerializeField] protected GameObject gunBarrel;
     [SerializeField] private float fireRate = 1;
     private bool isOnCooldown = false;
     private BulletPoolManager bulletPoolManager;
@@ -48,12 +47,12 @@ public class Turret : Enemy
             aiming = false;
         }
     }
-    void Aim()
+    protected virtual void Aim()
     {
         direction = target.position + targetOff - transform.position;
         gunBarrel.transform.right = direction;
     }
-    void Shoot()
+    protected virtual void Shoot()
     {
         GameObject bullet = bulletPoolManager.GetPooledObject();
         bullet.transform.position = shootPoint.position;
