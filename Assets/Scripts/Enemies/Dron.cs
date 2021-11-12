@@ -72,7 +72,8 @@ public class Dron : Enemy
             crashVel = (target.position + targetOff - transform.position).normalized;
 
             outDir = Vector2.Reflect((target.position + targetOff - transform.position).normalized, inNormal) * -1;
-            Debug.Log(outDir);
+
+            TakeDamage(1);
         }
     }
 
