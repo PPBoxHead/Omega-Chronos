@@ -10,6 +10,7 @@ TagManager:
   - turn
   - Bullet
   - reactivation
+  - Laser
   layers:
   - Default
   - TransparentFX

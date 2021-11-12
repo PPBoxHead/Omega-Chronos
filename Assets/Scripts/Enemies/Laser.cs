@@ -4,25 +4,36 @@ public class Laser : Turret
 {
     // lo correcto seria tener una clase turret y diferenciarlas de bullet turret
     // con laser turret pero bueno
+    #region Variables
+    [SerializeField] private GameObject laserBeam;
+    [SerializeField] private float accuracy = 100;
+    #endregion
 
+    #region Methods
     private void Update()
     {
         PlayerDetection();
 
         if (target != null)
         {
+            laserBeam.SetActive(true);
             Aim();
+        }
+        else
+        {
+            laserBeam.SetActive(false);
         }
     }
 
     override protected void Aim()
     {
-        // ajustar un poquito esto
-        float angle = Mathf.Atan2(target.position.y + targetOff.y - transform.position.y, target.position.x + targetOff.x - transform.position.x) * Mathf.Rad2Deg;
+        direction = target.position + targetOff - transform.position;
+
+        // laser rotation
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
-        // direction = target.position + targetOff - transform.position;
-        // gunBarrel.transform.right = direction;
-        // gunBarrel.transform.eulerAngles = new Vector3(0, 0, 0);
-        gunBarrel.transform.rotation = Quaternion.RotateTowards(gunBarrel.transform.rotation, targetRotation, 100 * Time.deltaTime);
+
+        gunBarrel.transform.rotation = Quaternion.RotateTowards(gunBarrel.transform.rotation, targetRotation, accuracy * Time.deltaTime);
     }
+    #endregion
 }
