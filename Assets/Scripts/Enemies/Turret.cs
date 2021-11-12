@@ -8,11 +8,11 @@ public class Turret : Enemy
     protected bool aiming;
     protected Vector2 direction;
     [SerializeField] protected GameObject gunBarrel;
-    [SerializeField] private float fireRate = 1;
-    private bool isOnCooldown = false;
-    private BulletPoolManager bulletPoolManager;
-    [SerializeField] private Transform shootPoint;
-    [Range(1, 15)] [SerializeField] private int bulletSpeed = 15;
+    [SerializeField] protected float fireRate = 1;
+    protected bool isOnCooldown = false;
+    protected BulletPoolManager bulletPoolManager;
+    [SerializeField] protected Transform shootPoint;
+    [Range(1, 15)] [SerializeField] protected int bulletSpeed = 15;
     private void Awake()
     {
         range = visionRange;
@@ -60,7 +60,7 @@ public class Turret : Enemy
         bullet.SetActive(true);
         bullet.GetComponent<Rigidbody2D>().velocity = direction.normalized * bulletSpeed;
     }
-    IEnumerator Shooting()
+    protected IEnumerator Shooting()
     {
         isOnCooldown = true;
         Shoot();
