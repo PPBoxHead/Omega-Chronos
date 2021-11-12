@@ -76,8 +76,6 @@ public class Player : MonoBehaviour
     #endregion
     #endregion
     #region Methods
-
-
     void LandingConfirm()
     {
         if (landingDeconfirm == true)
@@ -157,6 +155,7 @@ public class Player : MonoBehaviour
             wallJumped = false;
         }
 
+        MovingPlatformChecker();
         DrawRay();
         FlipSprite();
         ManageStates();
@@ -291,15 +290,16 @@ public class Player : MonoBehaviour
         // tambien frenar la velocidad que tenia anteriormente
     }
 
+    #region Raycasts
     bool isGroundColliding()
     {
         RaycastHit2D rayhit1 = Physics2D.Raycast(transform.position, Vector3.down, vRayLength);
         RaycastHit2D rayhit2 = Physics2D.Raycast(transform.position + vRayOff, Vector3.down, vRayLength);
         RaycastHit2D rayhit3 = Physics2D.Raycast(transform.position - vRayOff, Vector3.down, vRayLength);
 
-        bool colCenter = rayhit1.collider && (rayhit1.collider.CompareTag("Floor"));
-        bool colRight = rayhit2.collider && (rayhit2.collider.CompareTag("Floor"));
-        bool colLeft = rayhit3.collider && (rayhit3.collider.CompareTag("Floor"));
+        bool colCenter = rayhit1.collider && (rayhit1.collider.CompareTag("Floor") || rayhit1.collider.CompareTag("MovingPlatform"));
+        bool colRight = rayhit2.collider && (rayhit2.collider.CompareTag("Floor") || rayhit2.collider.CompareTag("MovingPlatform"));
+        bool colLeft = rayhit3.collider && (rayhit3.collider.CompareTag("Floor") || rayhit3.collider.CompareTag("MovingPlatform"));
 
         return colCenter || colRight || colLeft;
     }
@@ -330,6 +330,22 @@ public class Player : MonoBehaviour
         return (colLL && colLH);
     }
 
+    void MovingPlatformChecker()
+    {
+        RaycastHit2D rayhit1 = Physics2D.Raycast(transform.position, Vector3.down, vRayLength);
+
+        bool colCenter = rayhit1.collider && (rayhit1.collider.CompareTag("MovingPlatform"));
+
+        if (colCenter)
+        {
+            transform.parent = rayhit1.collider.transform;
+        }
+        else
+        {
+            transform.parent = null;
+        }
+    }
+
     void DrawRay()
     {
         // vertical ray
@@ -343,6 +359,7 @@ public class Player : MonoBehaviour
         Debug.DrawRay(transform.position + hRayOffLow, Vector3.left * hRayLength, Color.green);
         Debug.DrawRay(transform.position + hRayOffHigh, Vector3.left * hRayLength, Color.green);
     }
+    #endregion
 
     void OnSlowMotion(bool isTimeSlow)
     {
