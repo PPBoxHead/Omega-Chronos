@@ -859,8 +859,8 @@ GameObject:
   - component: {fileID: 407532918}
   - component: {fileID: 407532917}
   m_Layer: 0
-  m_Name: Platform_Movible (1)
-  m_TagString: Floor
+  m_Name: Platform_Movible_001
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21527,8 +21527,8 @@ GameObject:
   - component: {fileID: 1642722023}
   - component: {fileID: 1642722022}
   m_Layer: 0
-  m_Name: Platform_Movible
-  m_TagString: Floor
+  m_Name: Platform_Movible_000
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
