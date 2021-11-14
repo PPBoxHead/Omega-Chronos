@@ -145,3 +145,13 @@ C# parse time         : 727ms
 candidates check time : 50ms
 console write time    : 1ms
 
+[api-updater (non-obsolete-error-filter)] 11/14/2021 3:58:30 p. m. : Starting C:/ProgramData/Microsoft/Windows/Start Menu/Programs/Visual Studio Code/2020.3.19f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 843.6675ms
+moved types parse time: 53ms
+candidates parse time : 1ms
+C# parse time         : 684ms
+candidates check time : 58ms
+console write time    : 2ms
+

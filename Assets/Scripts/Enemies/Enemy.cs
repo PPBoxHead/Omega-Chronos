@@ -1,5 +1,4 @@
 using UnityEngine;
-[RequireComponent(typeof(SinMovement))]
 
 public abstract class Enemy : MonoBehaviour
 {
