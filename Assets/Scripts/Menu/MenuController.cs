@@ -8,7 +8,7 @@ using TMPro;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] private string startingLevel = "TestScene";
+    [SerializeField] private string startingLevel = "Lvl00";
     [Header("Levels to Load")]
     private string loadedGame;
     [SerializeField] private GameObject noSavedGamePanel = null;
