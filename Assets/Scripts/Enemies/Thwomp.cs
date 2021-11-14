@@ -17,12 +17,13 @@ public class Thwomp : Enemy
     #endregion
     #region Positions
     [Header("Position")]
-    [Range(1, 10), SerializeField] private float actionTime = 2;
+    [Range(0.1f, 10), SerializeField] private float actionTime = 0.5f;
     [Range(1, 10), SerializeField] private int speed = 5;
     [SerializeField] private Vector3 finalPos;
     private Vector3 initPos;
     #endregion
     #region State
+    private bool isReturning = false;
     private bool isMoving = false;
     private bool onRange = false;
     #endregion
@@ -39,6 +40,17 @@ public class Thwomp : Enemy
     {
         PlayerDetection();
 
+        if (isReturning)
+        {
+            Move(initPos);
+
+            if (transform.position.y >= initPos.y)
+            {
+                isReturning = false;
+            }
+            return;
+        }
+
         if (target != null)
         {
             Look();
@@ -54,7 +66,7 @@ public class Thwomp : Enemy
 
             if (transform.position.y <= initPos.y + finalPos.y)
             {
-                // aca hacer el return to position
+                StartCoroutine("Return");
             }
         }
     }
@@ -70,6 +82,14 @@ public class Thwomp : Enemy
         onRange = true;
         yield return new WaitForSeconds(actionTime);
         isMoving = true;
+    }
+
+    IEnumerator Return()
+    {
+        isMoving = false;
+        yield return new WaitForSeconds(actionTime);
+        isReturning = true;
+        onRange = false;
     }
     #endregion
 
