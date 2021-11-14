@@ -23,6 +23,11 @@ public class Turret : Enemy
     private void Start()
     {
         bulletPoolManager = BulletPoolManager.GetInstance;
+
+        // este valor es para que salga el rayo de vision
+        // (y la direccion de apuntado) desde el centro del cañon
+        // y no desde las "Ruedas"
+        visionOff = new Vector3(0, 0.8f, 0);
     }
     private void Update()
     {
@@ -49,7 +54,7 @@ public class Turret : Enemy
     }
     protected virtual void Aim()
     {
-        direction = target.position + targetOff - transform.position;
+        direction = target.position + targetOff - transform.position - visionOff;
         gunBarrel.transform.right = direction;
     }
     protected virtual void Shoot()
