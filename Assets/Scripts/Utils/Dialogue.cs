@@ -8,7 +8,7 @@ public class Dialogue : MonoBehaviour
     #region Variables
     #region Settings
     [Header("Settings")]
-    [Range(0.01f, 0.8f), SerializeField] private float delay = 0.1f;
+    [Range(0.01f, 0.8f), SerializeField] private float delay = 0.05f;
     [Range(1, 10), SerializeField] private float timeBetweenDialogues = 2;
     private bool finished = false;
 
@@ -16,14 +16,17 @@ public class Dialogue : MonoBehaviour
     #region DialoguePosition
     [Header("DialoguePosition")]
     [SerializeField] private DialogueHold[] dialogueHolds;
-    [SerializeField] private TMP_Text dialogueBox;
+    [SerializeField] private GameObject dialogueBox;
+    [SerializeField] private TMP_Text dialogueText;
     #endregion
     #endregion
 
     #region Methods
-    #region DelegateSettings
+    #region Settings
     private void Start()
     {
+        dialogueBox.SetActive(false);
+
         foreach (DialogueHold dialogueHold in dialogueHolds)
         {
             dialogueHold.onShowDialogue += ShowText;
@@ -41,6 +44,7 @@ public class Dialogue : MonoBehaviour
     #region TextShowing
     void ShowText(TextAsset[] textAssets)
     {
+        dialogueBox.SetActive(true);
         // reads between text files in gameobject
         StopAllCoroutines();
         StartCoroutine("ReadText", textAssets);
@@ -57,16 +61,18 @@ public class Dialogue : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenDialogues);
             finished = false;
         }
+
+        dialogueBox.SetActive(false);
     }
 
     IEnumerator WriteText(TextAsset textAsset)
     {
-        dialogueBox.text = ""; // cleans dialogue
+        dialogueText.text = ""; // cleans dialogue
 
         // write dialogue
         for (int i = 0; i < textAsset.ToString().Length; i++)
         {
-            dialogueBox.text += textAsset.ToString()[i];
+            dialogueText.text += textAsset.ToString()[i];
             yield return new WaitForSeconds(delay);
         }
 
