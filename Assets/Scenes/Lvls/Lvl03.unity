@@ -1418,7 +1418,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8196916257148820529, guid: b86f5ce1ae4a7454aaa83ec7283962cc, type: 3}
       propertyPath: m_Name
-      value: Turret_002
+      value: AutomaticTurret_002
       objectReference: {fileID: 0}
     - target: {fileID: 8196916257148820532, guid: b86f5ce1ae4a7454aaa83ec7283962cc, type: 3}
       propertyPath: visionRange
@@ -1990,7 +1990,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4483499063628324186, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.4300003
+      value: -6.430001
       objectReference: {fileID: 0}
     - target: {fileID: 4483499063628324186, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
       propertyPath: m_LocalPosition.y

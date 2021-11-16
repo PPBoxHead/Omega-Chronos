@@ -19,7 +19,7 @@ namespace DialogueSystem
 
         private void Update()
         {
-            if(npcDialogue == true && Input.GetKey(KeyCode.Q))
+            if (npcDialogue == true)
             {
                 Deactivate();
                 gameObject.SetActive(false);
@@ -31,17 +31,18 @@ namespace DialogueSystem
 
         private IEnumerator dialogueSequence()
         {
-            if(npcDialogue == true)
+            if (npcDialogue)
             {
                 /*if(!dialogueFinished)
                 {*/
-                    for(int i=0; i < transform.childCount - 1; i++)
-                    {
-                        Deactivate();
-                        transform.GetChild(i).gameObject.SetActive(true);
-                        yield return new WaitUntil(() => transform.GetChild(i).GetComponent<NPCsDialogueLine>().finished);
-                    }
-               // }
+                for (int i = 0; i < transform.childCount - 1; i++)
+                {
+                    Debug.Log("Pepe");
+                    Deactivate();
+                    transform.GetChild(i).gameObject.SetActive(true);
+                    yield return new WaitUntil(() => transform.GetChild(i).GetComponent<NPCsDialogueLine>().finished);
+                }
+                // }
                 /*else //esto tiene que ser testeado, es para que los npcs tengan varias opciones de dialogo
                 {
                     int index = transform.childCount - 1;
@@ -51,11 +52,11 @@ namespace DialogueSystem
                 }   */
                 //dialogueFinished = true;
                 gameObject.SetActive(false);
-                
+
             }
-            if(introDialogue == true)
+            if (introDialogue)
             {
-                for(int i=0; i < transform.childCount; i++)
+                for (int i = 0; i < transform.childCount; i++)
                 {
                     Deactivate();
                     transform.GetChild(i).gameObject.SetActive(true);
@@ -67,7 +68,7 @@ namespace DialogueSystem
 
         private void Deactivate()
         {
-            for(int i=0; i < transform.childCount; i++)
+            for (int i = 0; i < transform.childCount; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(false);
             }
