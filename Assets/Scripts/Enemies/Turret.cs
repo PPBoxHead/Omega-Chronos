@@ -27,7 +27,7 @@ public class Turret : Enemy
         // este valor es para que salga el rayo de vision
         // (y la direccion de apuntado) desde el centro del cañon
         // y no desde las "Ruedas"
-        visionOff = new Vector3(0, 0.8f, 0);
+        // visionOff = new Vector3(0, 0.8f, 0);
     }
     private void Update()
     {
