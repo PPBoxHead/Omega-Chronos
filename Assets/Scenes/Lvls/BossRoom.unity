@@ -1659,6 +1659,7 @@ MonoBehaviour:
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 4
+  visionOff: {x: 0, y: 0, z: 0}
   health: 3
   visionRange: 30
   gunBarrel: {fileID: 563689912}
@@ -1702,7 +1703,7 @@ GameObject:
   - component: {fileID: 1079146029}
   m_Layer: 0
   m_Name: Platform_Movible (2)
-  m_TagString: Floor
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11727,7 +11728,7 @@ GameObject:
   - component: {fileID: 1552831470}
   m_Layer: 0
   m_Name: Platform_Movible (3)
-  m_TagString: Floor
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11961,7 +11962,7 @@ GameObject:
   - component: {fileID: 1641747713}
   m_Layer: 0
   m_Name: Platform_Movible (1)
-  m_TagString: Floor
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12239,7 +12240,7 @@ GameObject:
   - component: {fileID: 1717427253}
   m_Layer: 0
   m_Name: Platform_Movible
-  m_TagString: Floor
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

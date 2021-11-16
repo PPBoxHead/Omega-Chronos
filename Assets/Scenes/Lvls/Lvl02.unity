@@ -1045,7 +1045,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330121441}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -54.539997, y: -4.4049997, z: 0}
+  m_LocalPosition: {x: -54.574997, y: -4.545, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1208664637}
@@ -1128,11 +1128,9 @@ MonoBehaviour:
     m_Bits: 4
   visionOff: {x: 0, y: 0, z: 0}
   visionRange: 7
-  angleRange: 30
-  accuracy: 100
-  actionAngle: -90
+  accuracy: 150
   eyesPivot: {fileID: 241809589}
-  actionTime: 0.1
+  actionTime: 1
   speed: 10
   finalPos: {x: 0, y: -4, z: 0}
 --- !u!212 &332742852
@@ -1249,11 +1247,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4483499063628324186, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.4300003
+      value: -6.500001
       objectReference: {fileID: 0}
     - target: {fileID: 4483499063628324186, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8399997
+      value: -2.1199996
       objectReference: {fileID: 0}
     - target: {fileID: 4483499063628324186, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17945,11 +17943,9 @@ MonoBehaviour:
     m_Bits: 4
   visionOff: {x: 0, y: 0, z: 0}
   visionRange: 7
-  angleRange: 30
-  accuracy: 100
-  actionAngle: -90
+  accuracy: 150
   eyesPivot: {fileID: 1405461477}
-  actionTime: 0.1
+  actionTime: 1
   speed: 10
   finalPos: {x: 0, y: -4, z: 0}
 --- !u!212 &940078142
@@ -18310,7 +18306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044062388}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -62.293335, y: -0.30000043, z: 0}
+  m_LocalPosition: {x: -62.340004, y: -0.48666692, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 70376179}
@@ -19370,7 +19366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1006499197645927206, guid: 5dcafc4af5ac7d24bbb13ab74b082592, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1006499197645927226, guid: 5dcafc4af5ac7d24bbb13ab74b082592, type: 3}
       propertyPath: m_Pivot.x
@@ -22911,11 +22907,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4058758739774731782, guid: 9ab02df19722b464895cd9f3ffc0a4ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.43
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 4058758739774731782, guid: 9ab02df19722b464895cd9f3ffc0a4ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.72
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4058758739774731782, guid: 9ab02df19722b464895cd9f3ffc0a4ca, type: 3}
       propertyPath: m_LocalPosition.z
@@ -23697,12 +23693,10 @@ MonoBehaviour:
     m_Bits: 4
   visionOff: {x: 0, y: 0, z: 0}
   visionRange: 7
-  angleRange: 30
-  accuracy: 100
-  actionAngle: -90
+  accuracy: 150
   eyesPivot: {fileID: 760652653}
-  actionTime: 0.1
-  speed: 10
+  actionTime: 1
+  speed: 20
   finalPos: {x: 0, y: -4, z: 0}
 --- !u!212 &2043268193
 SpriteRenderer:

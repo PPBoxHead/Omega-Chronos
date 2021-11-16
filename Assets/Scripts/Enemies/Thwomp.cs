@@ -7,9 +7,7 @@ public class Thwomp : Enemy
     [Range(1, 30)] [SerializeField] private int visionRange = 3;
     #region Eyes
     [Header("Eyes")]
-    [Range(1, 90), SerializeField] private float angleRange = 30;
     [Range(50, 150), SerializeField] private int accuracy = 20;
-    [SerializeField] private float actionAngle = -90;
     [SerializeField] private Transform eyesPivot;
     private Quaternion targetRotation;
     private float angle;
@@ -18,14 +16,12 @@ public class Thwomp : Enemy
     #region Positions
     [Header("Position")]
     [Range(0.1f, 10), SerializeField] private float actionTime = 0.5f;
-    [Range(1, 10), SerializeField] private int speed = 5;
+    [Range(1, 20), SerializeField] private int speed = 5;
     [SerializeField] private Vector3 finalPos;
     private Vector3 initPos;
     #endregion
     #region State
     private bool isReturning = false;
-    private bool isMoving = false;
-    private bool onRange = false;
     #endregion
     #endregion
 
@@ -39,6 +35,8 @@ public class Thwomp : Enemy
     private void Update()
     {
         PlayerDetection();
+        if (target != null) Look();
+
 
         if (isReturning)
         {
@@ -50,24 +48,19 @@ public class Thwomp : Enemy
             }
             return;
         }
-
-        if (target != null)
+        else
         {
-            Look();
-            if (Mathf.Abs(actionAngle - angle) <= angleRange && !onRange)
-            {
-                StartCoroutine("StartMoving");
-            }
-        }
-
-        if (isMoving)
-        {
-            Move(transform.position + finalPos);
 
             if (transform.position.y <= initPos.y + finalPos.y)
             {
                 StartCoroutine("Return");
             }
+            else
+            {
+                Move(transform.position + finalPos);
+            }
+
+            return;
         }
     }
 
@@ -77,19 +70,10 @@ public class Thwomp : Enemy
         transform.position = Vector2.MoveTowards(transform.position, objective, speed * Time.deltaTime);
     }
 
-    IEnumerator StartMoving()
-    {
-        onRange = true;
-        yield return new WaitForSeconds(actionTime);
-        isMoving = true;
-    }
-
     IEnumerator Return()
     {
-        isMoving = false;
         yield return new WaitForSeconds(actionTime);
         isReturning = true;
-        onRange = false;
     }
     #endregion
 

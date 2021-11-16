@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 71687427}
   m_Layer: 0
   m_Name: Platform_Movible 5
-  m_TagString: Floor
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1044,7 +1044,7 @@ GameObject:
   - component: {fileID: 587691439}
   m_Layer: 0
   m_Name: Platform_Movible
-  m_TagString: Floor
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1297,7 +1297,7 @@ GameObject:
   - component: {fileID: 618926734}
   m_Layer: 0
   m_Name: Platform_Movible 2
-  m_TagString: Floor
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1512,7 +1512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4058758739774731782, guid: 9ab02df19722b464895cd9f3ffc0a4ca, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4058758739774731782, guid: 9ab02df19722b464895cd9f3ffc0a4ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1587,7 +1587,7 @@ GameObject:
   - component: {fileID: 686458902}
   m_Layer: 0
   m_Name: Platform_Movible 4
-  m_TagString: Floor
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4946,7 +4946,7 @@ GameObject:
   - component: {fileID: 1463118081}
   m_Layer: 0
   m_Name: Platform_Movible 3
-  m_TagString: Floor
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28569,7 +28569,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1978069407
 PrefabInstance:
