@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -28,16 +29,19 @@ public abstract class Enemy : MonoBehaviour
 
             if (isPlayerOnSight)
             {
+                // aca tengo que hacer lo de frenar solo 1 corrutina
+                // en vez de todas
+                StopAllCoroutines();
                 target = playerOnSight.collider.transform;
             }
             else
             {
-                target = null;
+                StartCoroutine("TargetOOS");
             }
         }
         else
         {
-            target = null;
+            StartCoroutine("TargetOOS");
         }
     }
 
@@ -72,6 +76,12 @@ public abstract class Enemy : MonoBehaviour
         {
             Death();
         }
+    }
+
+    IEnumerator TargetOOS()
+    {
+        yield return new WaitForSeconds(2);
+        target = null;
     }
     protected virtual void Death()
     {

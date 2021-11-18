@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Laser : Turret
+public class Boss : Turret
 {
     // lo correcto seria tener una clase turret y diferenciarlas de bullet turret
     // con laser turret pero bueno
@@ -44,6 +44,7 @@ public class Laser : Turret
         RaycastHit2D laserRay = Physics2D.Raycast(transform.position, shootPoint.transform.up);
         if (laserRay && laserRay.collider.CompareTag("EnergyCell"))
         {
+            laserRay.collider.gameObject.SetActive(false);
             onLaserCharge?.Invoke();
         }
     }
