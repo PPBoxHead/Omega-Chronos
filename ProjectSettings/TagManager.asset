@@ -12,6 +12,7 @@ TagManager:
   - reactivation
   - Laser
   - MovingPlatform
+  - EnergyCell
   layers:
   - Default
   - TransparentFX

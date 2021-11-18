@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Laser : Turret
 {
@@ -7,6 +8,7 @@ public class Laser : Turret
     #region Variables
     [SerializeField] private GameObject laserBeam;
     [SerializeField] private float accuracy = 100;
+    public UnityEvent onLaserCharge;
     #endregion
 
     #region Methods
@@ -18,6 +20,7 @@ public class Laser : Turret
         {
             laserBeam.SetActive(true);
             Aim();
+            LaserCharge();
         }
         else
         {
@@ -34,6 +37,15 @@ public class Laser : Turret
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
 
         gunBarrel.transform.rotation = Quaternion.RotateTowards(gunBarrel.transform.rotation, targetRotation, accuracy * Time.deltaTime);
+    }
+
+    void LaserCharge()
+    {
+        RaycastHit2D laserRay = Physics2D.Raycast(transform.position, shootPoint.transform.up);
+        if (laserRay && laserRay.collider.CompareTag("EnergyCell"))
+        {
+            onLaserCharge?.Invoke();
+        }
     }
     #endregion
 }
