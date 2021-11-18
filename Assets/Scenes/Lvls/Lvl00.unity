@@ -40768,6 +40768,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 611538466352303325, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
+      propertyPath: m_Size.x
+      value: 2.4757905
+      objectReference: {fileID: 0}
+    - target: {fileID: 611538466352303325, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.6178951
+      objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -95941,7 +95949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4483499063628324186, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.430001
+      value: -6.4300003
       objectReference: {fileID: 0}
     - target: {fileID: 4483499063628324186, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
       propertyPath: m_LocalPosition.y
