@@ -285,6 +285,8 @@ public class Player : MonoBehaviour
     void OnDeath(float duration)
     {
         MovePlayer();
+        // stops chronotime if you die
+        if (onSlowmo) timeManager.OnChronoTime();
         currentHitPoints = initHitPoints;
         uIManager.UpdateHitPoints(currentHitPoints);
         // tambien frenar la velocidad que tenia anteriormente
