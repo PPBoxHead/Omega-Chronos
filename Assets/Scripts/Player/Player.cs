@@ -70,7 +70,6 @@ public class Player : MonoBehaviour
     #region Particles
     [SerializeField] private ParticleSystem walkingParticles;
     [SerializeField] private ParticleSystem jumpParticles;
-    [SerializeField] private ParticleSystem landingParticles;
     public bool landingDeconfirm = true;
 
     #endregion
@@ -80,7 +79,7 @@ public class Player : MonoBehaviour
     {
         if (landingDeconfirm == true)
         {
-            landingParticles.Play();
+            jumpParticles.Play();
             landingDeconfirm = false;
         }
     }
