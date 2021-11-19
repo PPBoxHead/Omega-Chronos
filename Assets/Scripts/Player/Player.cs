@@ -135,6 +135,7 @@ public class Player : MonoBehaviour
         // esto se podria pasar a una corutina pero mientras no de problemas que este aca
         currentMovementSpeed = movementSpeed / Time.timeScale;
         animator.speed = 1 / Time.timeScale;
+        // rb.drag = 1 / Time.timeScale;
 
         if (!(currentState == State.Jumping || currentState == State.WallJumping))
         {
@@ -146,7 +147,7 @@ public class Player : MonoBehaviour
 
         isOnGround = isGroundColliding();
 
-        if (isOnGround) wallJumped = false;
+        // if (isOnGround) wallJumped = false;
 
         if ((isOnWallR || isOnWallL) && currentState != State.WallJumping)
         {
@@ -162,6 +163,14 @@ public class Player : MonoBehaviour
         if (isOnGround == true)
         {
             LandingConfirm();
+            wallJumped = false;
+
+            // esto solo se aplica cuando esta en el piso
+            // asi el salto se mantiene igual pero la 
+            // "Friccion" se siente normal
+
+            // va por la linea de abajo la movida pero no lo pude solucionar aun 😱
+            // rb.drag = 1 / Mathf.Pow(Time.timeScale, 2);
         }
     }
 
