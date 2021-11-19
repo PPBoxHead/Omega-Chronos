@@ -13,6 +13,7 @@ public abstract class Enemy : MonoBehaviour
     protected float range;
     protected SinMovement patrolCicle;
     protected Vector3 targetOff = new Vector3(0, 1.25f, 0);
+    Coroutine co;
     #endregion
 
     #region Methods
@@ -31,17 +32,17 @@ public abstract class Enemy : MonoBehaviour
             {
                 // aca tengo que hacer lo de frenar solo 1 corrutina
                 // en vez de todas
-                StopAllCoroutines();
+                StopCoroutine(co);
                 target = playerOnSight.collider.transform;
             }
             else
             {
-                StartCoroutine("TargetOOS");
+                co = StartCoroutine(TargetOOS());
             }
         }
         else
         {
-            StartCoroutine("TargetOOS");
+            co = StartCoroutine(TargetOOS());
         }
     }
 
