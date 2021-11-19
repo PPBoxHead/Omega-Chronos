@@ -13,6 +13,7 @@ TagManager:
   - Laser
   - MovingPlatform
   - EnergyCell
+  - Bomb
   layers:
   - Default
   - TransparentFX
