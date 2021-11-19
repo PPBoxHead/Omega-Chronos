@@ -40,8 +40,7 @@ public class PlayerJump : MonoBehaviour
     #region VariableJump
 
     private bool checkingForWall = true;
-    private bool releaseJump = false;
-    private bool startTimer = false;
+    
     private float gravityScale;
     private float timer;
     #endregion
