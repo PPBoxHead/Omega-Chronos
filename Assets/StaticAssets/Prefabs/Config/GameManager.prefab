@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowdownFactor: 0.05
-  slowdownSmooth: 10
+  slowdownSmooth: 20
   slowdownTime: 5
 --- !u!114 &1372486016258866708
 MonoBehaviour:

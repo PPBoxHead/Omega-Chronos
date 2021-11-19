@@ -9,13 +9,19 @@ public class PlayerJump : MonoBehaviour
     #region Setup
     // pasar a Player.cs
     [Header("Jump force")]
-    [Range(5, 20)] [SerializeField] private float vJumpForce = 11f;
-    [Range(5, 20)] [SerializeField] private float hJumpForce = 11f;
+    [Range(5, 30)] [SerializeField] private float vJumpForce = 22f;
+    [Range(5, 30)] [SerializeField] private float hJumpForce = 11f;
+    // llegue a este valor probando
+    // es para que cuando estes en chronotime
+    // el salto en la pared tenga la misma fuerza
+    // que en tiempo normal
+    private float vJumpForceCT = 20;
+    private float hJumpForceCT = 8;
     private float currentVJumpForce;
     private float currentHJumpForce;
 
     [Header("Jump Config")]
-    [Range(0, 0.5f)] [SerializeField] private float bufferTime = 0.1f;
+    [Range(0, 0.5f)] [SerializeField] private float bufferTime = 0.15f;
 
     [Range(0, 1)] [SerializeField] private float jumpTimer = 0.2f;
 
@@ -70,7 +76,13 @@ public class PlayerJump : MonoBehaviour
 
     public void OnReleaseJump()
     {
-        releaseJump = true;
+        // releaseJump = true;
+        if (rb.velocity.y > 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        }
+
+        if (!checkingForWall) checkingForWall = true;
     }
 
     void Update()
@@ -96,20 +108,6 @@ public class PlayerJump : MonoBehaviour
                 else VerticalJump();
             }
         }
-
-        if (startTimer)
-        {
-            timer -= Time.deltaTime / Time.timeScale;
-            if (timer <= 0)
-            {
-                releaseJump = true;
-            }
-        }
-
-        if (releaseJump)
-        {
-            StopJump();
-        }
     }
 
     void VerticalJump()
@@ -118,13 +116,11 @@ public class PlayerJump : MonoBehaviour
         // se podria mejorar un poco mas
         // pero creo que esta bien
         player.CurrentState = Player.State.Jumping;
-
-        rb.gravityScale = 0;
+        float vForce = Time.timeScale == 1 ? vJumpForce : vJumpForceCT;
 
         rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.velocity = Vector2.up * (vJumpForce / Time.timeScale);
-
-        startTimer = true;
+        rb.drag = 1;
+        rb.velocity = Vector2.up * (vForce / Time.timeScale);
     }
 
     void WallJump()
@@ -134,27 +130,14 @@ public class PlayerJump : MonoBehaviour
         player.CurrentState = Player.State.WallJumping;
         player.WallJumped = true;
 
-        rb.gravityScale = 0;
+        float hForce = Time.timeScale == 1 ? hJumpForce : hJumpForceCT;
+        // por algun motivo le sumas 1 y queda igual 😂
+        float vForce = Time.timeScale == 1 ? vJumpForce : vJumpForceCT + 1;
 
         rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.velocity = new Vector2(jumpDir * hJumpForce, vJumpForce) / Time.timeScale;
+        rb.velocity = new Vector2(jumpDir * hForce, vForce) / Time.timeScale;
 
-        startTimer = true;
         checkingForWall = false;
-    }
-
-    void StopJump()
-    {
-        player.CurrentState = Player.State.Falling;
-
-        rb.gravityScale = gravityScale;
-
-        releaseJump = false;
-
-        timer = jumpTimer;
-        startTimer = false;
-
-        if (!checkingForWall) checkingForWall = true;
     }
 
     void PauseResume(bool gamePaused)
@@ -164,7 +147,6 @@ public class PlayerJump : MonoBehaviour
 
     void RemoveAction()
     {
-        // if (inputBuffer.Count > 0) inputBuffer.Dequeue();
         inputTest = 0;
     }
 

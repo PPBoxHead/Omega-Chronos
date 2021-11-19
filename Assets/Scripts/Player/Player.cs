@@ -135,12 +135,8 @@ public class Player : MonoBehaviour
         // esto se podria pasar a una corutina pero mientras no de problemas que este aca
         currentMovementSpeed = movementSpeed / Time.timeScale;
         animator.speed = 1 / Time.timeScale;
-        // rb.drag = 1 / Time.timeScale;
 
-        if (!(currentState == State.Jumping || currentState == State.WallJumping))
-        {
-            rb.gravityScale = gravityScale / Mathf.Pow(Time.timeScale, 2);
-        }
+        rb.gravityScale = gravityScale / Mathf.Pow(Time.timeScale, 2);
 
         isOnWallR = isWallCollidingR();
         isOnWallL = isWallCollidingL();
@@ -160,7 +156,7 @@ public class Player : MonoBehaviour
         FlipSprite();
         ManageStates();
         PlayAnimation();
-        if (isOnGround == true)
+        if (isOnGround)
         {
             LandingConfirm();
             wallJumped = false;
@@ -170,7 +166,15 @@ public class Player : MonoBehaviour
             // "Friccion" se siente normal
 
             // va por la linea de abajo la movida pero no lo pude solucionar aun 😱
-            // rb.drag = 1 / Mathf.Pow(Time.timeScale, 2);
+            // suerte en pila entendiendo esto
+            if (currentState != State.Jumping)
+            {
+                rb.drag = 1 / Mathf.Pow(Time.timeScale, 2);
+            }
+        }
+        else
+        {
+            rb.drag = 1;
         }
     }
 
@@ -284,7 +288,7 @@ public class Player : MonoBehaviour
     {
         currentState = State.Damage;
         spriteRenderer.color = Color.red; // esta para tener un feedback de mientras
-        yield return new WaitForSeconds(iFrames);
+        yield return new WaitForSeconds(iFrames * Time.timeScale);
         isVulnerable = true;
         currentState = State.Idle;
         spriteRenderer.color = Color.white;

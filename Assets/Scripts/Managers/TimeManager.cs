@@ -20,7 +20,7 @@ public class TimeManager : MonoBehaviour
     #endregion
     #region SlowdownParameters
     [Range(0.5f, 0.01f)] [SerializeField] private float slowdownFactor = 0.05f; // controls how low it's gonna be the time
-    [Range(1f, 10f)] [SerializeField] private float slowdownSmooth = 2f;
+    [Range(1f, 30f)] [SerializeField] private float slowdownSmooth = 20f;
     [Range(2f, 8f)] [SerializeField] private float slowdownTime = 5; // how long is gona be the slow
     private float startingTimeScale;
     #endregion
@@ -71,7 +71,6 @@ public class TimeManager : MonoBehaviour
 
             timer -= Time.unscaledDeltaTime;
             uIManager.UpdateBoostValue(slowdownTime, timer);
-            // UpdateBoostValue(timer);
             yield return null;
         }
 
@@ -100,7 +99,6 @@ public class TimeManager : MonoBehaviour
 
             timer += Time.unscaledDeltaTime;
             uIManager.UpdateBoostValue(slowdownTime, timer);
-            // UpdateBoostValue(timer);
             yield return null;
         }
         // para dejar los valores exactos y no luego de un lerp

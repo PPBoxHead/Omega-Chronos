@@ -9714,7 +9714,7 @@ Rigidbody2D:
   m_GravityScale: 6
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &4058758739774731898
@@ -9763,9 +9763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617fcea40f265c24bb8ee71ade63662f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vJumpForce: 13
-  hJumpForce: 13
-  bufferTime: 0.1
+  vJumpForce: 22
+  hJumpForce: 11
+  bufferTime: 0.15
   jumpTimer: 0.2
   coyoteFrames: 0.1
   coyoteTimer: 0
