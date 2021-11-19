@@ -32,17 +32,14 @@ public abstract class Enemy : MonoBehaviour
             {
                 // aca tengo que hacer lo de frenar solo 1 corrutina
                 // en vez de todas
-                StopCoroutine(co);
+                // StopCoroutine(co);
                 target = playerOnSight.collider.transform;
-            }
-            else
-            {
-                co = StartCoroutine(TargetOOS());
             }
         }
         else
         {
-            co = StartCoroutine(TargetOOS());
+            // co = StartCoroutine(TargetOOS());
+            target = null;
         }
     }
 

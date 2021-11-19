@@ -861,7 +861,7 @@ GameObject:
   - component: {fileID: 417073668}
   m_Layer: 0
   m_Name: CenterDoor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -874,7 +874,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 417073666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5000005, y: -40.5, z: 0}
+  m_LocalPosition: {x: -6.5000005, y: -39.74, z: 0}
   m_LocalScale: {x: 9.00025, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 799171580}
@@ -1051,6 +1051,14 @@ PrefabInstance:
       propertyPath: checkpoint
       value: 
       objectReference: {fileID: 988292028}
+    - target: {fileID: 5718392237148999525, guid: c19e7a6696998d04dbde1f39fe414ea1, type: 3}
+      propertyPath: dialogueBox
+      value: 
+      objectReference: {fileID: 1433298391}
+    - target: {fileID: 5718392237148999525, guid: c19e7a6696998d04dbde1f39fe414ea1, type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 1438816220}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c19e7a6696998d04dbde1f39fe414ea1, type: 3}
 --- !u!4 &624075167 stripped
@@ -1236,7 +1244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1006499197645927206, guid: 5dcafc4af5ac7d24bbb13ab74b082592, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1006499197645927226, guid: 5dcafc4af5ac7d24bbb13ab74b082592, type: 3}
       propertyPath: m_Pivot.x
@@ -1577,7 +1585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!58 &1067398191
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1737,8 +1745,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 925f302ebb4a06046bbefadb76c8173b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vSpeed: 3
-  amplitude: 3
+  vSpeed: 2
+  amplitude: 3.5
   hSpeed: 0
   limitX: 0
 --- !u!61 &1079146030
@@ -10741,6 +10749,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a886dbdc2647b04c88f6ee3f14284c6, type: 3}
+--- !u!1 &1433298391 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2329034638127212969, guid: 5dcafc4af5ac7d24bbb13ab74b082592, type: 3}
+  m_PrefabInstance: {fileID: 878473310}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1438816220 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7594259543427888767, guid: 5dcafc4af5ac7d24bbb13ab74b082592, type: 3}
+  m_PrefabInstance: {fileID: 878473310}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1486533977 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5551346836857259636, guid: a383bc5fd37b1384897f2fd5bcedf036, type: 3}
@@ -11852,8 +11876,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 925f302ebb4a06046bbefadb76c8173b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vSpeed: 3
-  amplitude: 3
+  vSpeed: 2
+  amplitude: 3.5
   hSpeed: 0
   limitX: 0
 --- !u!61 &1552831471
@@ -11987,6 +12011,10 @@ PrefabInstance:
     - target: {fileID: 8196916257148820529, guid: b86f5ce1ae4a7454aaa83ec7283962cc, type: 3}
       propertyPath: m_Name
       value: Turret_000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196916257148820529, guid: b86f5ce1ae4a7454aaa83ec7283962cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8196916257148820532, guid: b86f5ce1ae4a7454aaa83ec7283962cc, type: 3}
       propertyPath: m_Enabled
@@ -12193,6 +12221,10 @@ PrefabInstance:
     - target: {fileID: 8196916257148820529, guid: b86f5ce1ae4a7454aaa83ec7283962cc, type: 3}
       propertyPath: m_Name
       value: Turret_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196916257148820529, guid: b86f5ce1ae4a7454aaa83ec7283962cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8196916257148820532, guid: b86f5ce1ae4a7454aaa83ec7283962cc, type: 3}
       propertyPath: visionOff.x
@@ -12938,6 +12970,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret_002
       objectReference: {fileID: 0}
+    - target: {fileID: 8196916257148820529, guid: b86f5ce1ae4a7454aaa83ec7283962cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8196916257148820532, guid: b86f5ce1ae4a7454aaa83ec7283962cc, type: 3}
       propertyPath: visionOff.x
       value: -0.5
@@ -13076,6 +13112,10 @@ PrefabInstance:
       propertyPath: tilemap
       value: 
       objectReference: {fileID: 1272905409}
+    - target: {fileID: 1607807689846393149, guid: 7299e56afacda5349afdba802393f86c, type: 3}
+      propertyPath: visionRange
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1607807689846393150, guid: 7299e56afacda5349afdba802393f86c, type: 3}
       propertyPath: m_Name
       value: Dron_000
@@ -13161,6 +13201,10 @@ PrefabInstance:
     - target: {fileID: 1607807689846393150, guid: 7299e56afacda5349afdba802393f86c, type: 3}
       propertyPath: m_Name
       value: Dron_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607807689846393150, guid: 7299e56afacda5349afdba802393f86c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7299e56afacda5349afdba802393f86c, type: 3}
