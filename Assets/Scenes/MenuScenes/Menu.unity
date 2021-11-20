@@ -3405,12 +3405,13 @@ MonoBehaviour:
   backgroundSource: {fileID: 582584209}
   backgroundClips:
   - {fileID: 8300000, guid: 994f96392b708ae4097e34723bd295aa, type: 3}
+  - {fileID: 8300000, guid: cc926f11ed322224eb88879b67e9dc5c, type: 3}
   characterSFXSource: {fileID: 1206501110}
   characterSFXClips:
-  - {fileID: 8300000, guid: 3f865b4540635184396e3bca3dded282, type: 3}
+  - {fileID: 8300000, guid: 878367e1be66a2249b0d558ee81ff5d6, type: 3}
   sfxSource: {fileID: 1467588711}
   sfxClips:
-  - {fileID: 8300000, guid: cf186dc65fb7f1b4f9c8c1e4bf2af5f4, type: 3}
+  - {fileID: 8300000, guid: 8a14f06884217dc40a7aba753eaeff4f, type: 3}
 --- !u!4 &523988102
 Transform:
   m_ObjectHideFlags: 0

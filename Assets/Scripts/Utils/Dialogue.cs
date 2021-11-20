@@ -26,6 +26,7 @@ public class Dialogue : MonoBehaviour
     private void Start()
     {
         dialogueBox.SetActive(false);
+        //Referencia este "Cachea" el audiomanager
         audioManager = AudioManager.Getinstance;
 
         foreach (DialogueHold dialogueHold in dialogueHolds)
@@ -74,6 +75,7 @@ public class Dialogue : MonoBehaviour
         for (int i = 0; i < textAsset.ToString().Length; i++)
         {
             dialogueText.text += textAsset.ToString()[i];
+            //Referencia este lo reproduce
             audioManager.PlaySFX(AudioManager.SFX.Dialogue);
             yield return new WaitForSeconds(delay);
         }
