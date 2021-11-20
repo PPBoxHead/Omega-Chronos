@@ -1,25 +1,30 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Collections;
 
 public class Dron : Enemy
 {
     #region Variables
-    [Range(10, 100), SerializeField] private int crashForce = 10;
+    [Range(1, 10), SerializeField] private int crashForce = 5;
     [Range(1, 10)] [SerializeField] private float precision = 10;
     [Range(1, 20)] [SerializeField] private int visionRange = 3;
     [Range(10, 20)] [SerializeField] private float speed = 10;
     [Range(1, 10)] [SerializeField] private int health = 2;
     private bool chasing;
     private Rigidbody2D rb;
-    public Tilemap tilemap;
-    Vector2 outDir;
-    Vector2 crashPos;
-    Vector2 inNormal;
-    Vector2 crashVel;
+    #region Crashing
+    private float crashDuration = 0.5f;
+    private bool onDamage = false;
+    private Vector2 crashVel;
+    private Vector2 inNormal;
+    private Vector2 crashPos;
+    private Tilemap tilemap;
+    private Vector2 outDir;
+    #endregion
     #endregion
 
     #region Methods
-    private void Awake()
+    private void Start()
     {
         range = visionRange;
         initialHitPoints = health;
@@ -27,10 +32,13 @@ public class Dron : Enemy
 
         patrolCicle = GetComponent<SinMovement>();
         rb = GetComponent<Rigidbody2D>();
+        tilemap = GameManager.GetInstance.GetTilemap;
     }
 
     private void Update()
     {
+        if (onDamage) return;
+
         PlayerDetection();
 
         if (target != null && !chasing)
@@ -56,11 +64,12 @@ public class Dron : Enemy
 
     public void Crash()
     {
+        Debug.Log("Crash");
         Vector2 direction = (target.position + targetOff - transform.position).normalized;
+        StartCoroutine("Co_OnDamage");
         rb.velocity = Vector2.zero;
 
         rb.velocity = -direction * crashForce;
-        // TakeDamage(1);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -72,9 +81,18 @@ public class Dron : Enemy
             crashVel = (target.position + targetOff - transform.position).normalized;
 
             outDir = Vector2.Reflect((target.position + targetOff - transform.position).normalized, inNormal) * -1;
+            rb.velocity = outDir.normalized * crashForce;
 
-            TakeDamage(1);
+            StartCoroutine("Co_OnDamage");
         }
+    }
+
+    IEnumerator Co_OnDamage()
+    {
+        // TakeDamage(1);
+        onDamage = true;
+        yield return new WaitForSeconds(crashDuration);
+        onDamage = false;
     }
 
     private void OnDrawGizmos()
@@ -85,17 +103,6 @@ public class Dron : Enemy
             Debug.DrawRay(crashPos, inNormal, Color.blue);
             Debug.DrawRay(crashPos, crashVel, Color.red);
         }
-    }
-
-    public void EnvCrash()
-    {
-        // reflectedObject.position = Vector3.Reflect(originalObject.position, Vector3.right);
-        //vector3.reflex
-        Vector2 direction = -rb.velocity.normalized;
-        rb.velocity = Vector2.zero;
-
-        rb.velocity = -direction * crashForce;
-        // TakeDamage(1);
     }
     #endregion
 }

@@ -95820,6 +95820,10 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 1372486016258866712, guid: c19e7a6696998d04dbde1f39fe414ea1, type: 3}
+      propertyPath: tilemap
+      value: 
+      objectReference: {fileID: 1556943472}
+    - target: {fileID: 1372486016258866712, guid: c19e7a6696998d04dbde1f39fe414ea1, type: 3}
       propertyPath: deathText
       value: 
       objectReference: {fileID: 1570565249}

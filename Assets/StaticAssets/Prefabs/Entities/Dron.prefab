@@ -188,12 +188,12 @@ MonoBehaviour:
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 0
-  crashForce: 80
+  visionOff: {x: 0, y: 0, z: 0}
+  crashForce: 5
   precision: 1
   visionRange: 6
   speed: 20
   health: 3
-  tilemap: {fileID: 0}
 --- !u!114 &1607807689846393147
 MonoBehaviour:
   m_ObjectHideFlags: 0

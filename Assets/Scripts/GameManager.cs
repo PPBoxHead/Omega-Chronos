@@ -1,15 +1,18 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.Tilemaps;
 
 public class GameManager : MonoBehaviour
 {
     #region Variabes
     #region Setup
+    [SerializeField] private Tilemap tilemap;
     private SavesManager savesManager;
     private LevelManager levelManager;
     private TimeManager timeManager;
     private UIManager uIManager;
+
     #endregion
     #region Pause
     public delegate void OnGamePaused(bool paused);
@@ -120,6 +123,12 @@ public class GameManager : MonoBehaviour
     {
         get { return uIManager; }
     }
+
+    public Tilemap GetTilemap
+    {
+        get { return tilemap; }
+    }
+
     public static GameManager GetInstance
     {
         get { return instance; }
