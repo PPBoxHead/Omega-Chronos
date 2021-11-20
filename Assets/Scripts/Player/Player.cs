@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     // le puse un valor por defecto
     [Range(1, 10)] [SerializeField] private int initHitPoints = 3;
     [Range(0.1f, 1), SerializeField] private float iFrames = 0.1f;
+    private AudioManager audioManager;
     private bool isVulnerable = true;
     private TimeManager timeManager;
     private int currentHitPoints;
@@ -97,6 +98,7 @@ public class Player : MonoBehaviour
     {
         timeManager = GameManager.GetInstance.GetTimeManager;
         uIManager = GameManager.GetInstance.GetUIManager;
+        audioManager = AudioManager.Getinstance;
 
         GameManager.GetInstance.onGamePaused += PauseResume;
         GameManager.GetInstance.onDeath += OnDeath;
@@ -231,6 +233,7 @@ public class Player : MonoBehaviour
                 animator.Play(animations[(int)currentState]);
                 break;
             case State.Walking:
+                audioManager.PlayCharacterSFX(AudioManager.CharacterSFX.Walking);
                 animator.Play(animations[(int)currentState]);
                 break;
             case State.Jumping:

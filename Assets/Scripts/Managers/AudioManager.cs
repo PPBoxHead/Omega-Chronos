@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
     }
     public enum CharacterSFX
     {
-
+        Walking,
     }
     public enum SFX
     {
@@ -17,9 +17,19 @@ public class AudioManager : MonoBehaviour
     }
     #endregion
     #region Variables
+    float volumeRange = 0.1f;
+    float pitchRange = 0.2f;
     #region AudioSources
+    #region BackgroundClips
+    [Header("Background Clips")]
+    [SerializeField] private AudioSource backgroundSource;
     [SerializeField] private AudioClip[] backgroundClips;
-    private AudioSource backgroundSource;
+    #endregion
+    #region CharacterSFXClips
+    [Header("Character SFX Clips")]
+    [SerializeField] private AudioSource characterSFXSource;
+    [SerializeField] private AudioClip[] characterSFXClips;
+    #endregion
     #endregion
     #region Singleton
     private static AudioManager instance;
@@ -43,10 +53,10 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        backgroundSource = GameObject.Find("/AudioManager/BackgroundMusic").GetComponent<AudioSource>();
         PlayMusic(BackgroundMusic.MainMenu);
     }
 
+    #region BackgroundMusic
     public void PlayMusic(BackgroundMusic backgroundClip)
     {
         switch (backgroundClip)
@@ -58,6 +68,47 @@ public class AudioManager : MonoBehaviour
 
         backgroundSource.Play();
     }
+    #endregion
+
+    #region CharacterSFX
+    public void PlayCharacterSFX(CharacterSFX characterSFXClip)
+    {
+        if (!characterSFXSource.isPlaying)
+        {
+            switch (characterSFXClip)
+            {
+                case CharacterSFX.Walking:
+                    RandomizeSound(characterSFXClips[(int)CharacterSFX.Walking], characterSFXSource);
+                    break;
+            }
+        }
+    }
+    #endregion
+
+
+    #region RandomizeSounds
+    /// <Summary>
+    /// randomizes sound pitch and volume
+    /// </Summary>
+    void RandomizeSound(AudioClip audioClip, AudioSource audioSource)
+    {
+        float startingVolume = 0.4f;
+        float startingPitch = 0.9f;
+
+        audioSource.clip = audioClip;
+        audioSource.volume = GetRandom(startingVolume, volumeRange);
+        audioSource.pitch = GetRandom(startingPitch, pitchRange);
+        audioSource.Play();
+    }
+
+    /// <summary>
+    /// Random.Range a little smaller to make it easier to read
+    /// </summary>
+    float GetRandom(float value, float range)
+    {
+        return Random.Range(value - range, value + range);
+    }
+    #endregion
     #endregion
 
     #region Getter/Setter
