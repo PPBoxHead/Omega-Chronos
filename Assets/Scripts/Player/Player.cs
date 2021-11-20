@@ -201,6 +201,7 @@ public class Player : MonoBehaviour
         this.transform.position = checkpoint.position;
     }
 
+    #region Animations/States
     void ManageStates()
     {
         if (currentState == State.WallGrabing && !isWallCollidingL() && !isWallCollidingR())
@@ -269,7 +270,9 @@ public class Player : MonoBehaviour
         if (inputValue < 0) spriteRenderer.flipX = true;
         else if (inputValue > 0) spriteRenderer.flipX = false;
     }
+    #endregion
 
+    #region Damage/Death
     public void TakeDamage(int value)
     {
         // if player is in iFrames avoid damage calculations
@@ -292,8 +295,11 @@ public class Player : MonoBehaviour
         currentState = State.Damage;
         spriteRenderer.color = Color.red; // esta para tener un feedback de mientras
         yield return new WaitForSeconds(iFrames * Time.timeScale);
-        isVulnerable = true;
         currentState = State.Idle;
+
+        // es 1s in real time
+        yield return new WaitForSeconds(iFrames * Time.timeScale * 10);
+        isVulnerable = true;
         spriteRenderer.color = Color.white;
     }
 
@@ -306,6 +312,7 @@ public class Player : MonoBehaviour
         uIManager.UpdateHitPoints(currentHitPoints);
         // tambien frenar la velocidad que tenia anteriormente
     }
+    #endregion
 
     #region Raycasts
     bool isGroundColliding()
