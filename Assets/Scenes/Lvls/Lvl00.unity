@@ -55472,6 +55472,10 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8792139984014827131, guid: 5dcafc4af5ac7d24bbb13ab74b082592, type: 3}
+      propertyPath: m_Name
+      value: CutsceneImage
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dcafc4af5ac7d24bbb13ab74b082592, type: 3}
 --- !u!1 &1570565249 stripped
