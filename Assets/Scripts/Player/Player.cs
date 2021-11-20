@@ -178,6 +178,13 @@ public class Player : MonoBehaviour
         {
             rb.drag = 1;
         }
+
+        // prueba
+        // Debug.Log(rb.gravityScale * timeManager.TimeScale);
+        // if (!onSlowmo && rb.velocity.y >= rb.gravityScale * timeManager.TimeScale && currentState == State.Jumping)
+        // {
+        //     rb.velocity = new Vector2(rb.velocity.x, rb.gravityScale * timeManager.TimeScale);
+        // }
     }
 
     void PauseResume(bool gamePaused)
