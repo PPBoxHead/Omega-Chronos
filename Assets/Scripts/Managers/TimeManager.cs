@@ -114,4 +114,11 @@ public class TimeManager : MonoBehaviour
         }
     }
     #endregion
+
+    #region Getters/Setters
+    public float TimeScale
+    {
+        get { return Time.timeScale; }
+    }
+    #endregion
 }

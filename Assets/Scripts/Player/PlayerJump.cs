@@ -29,6 +29,7 @@ public class PlayerJump : MonoBehaviour
     private KeyCode jumpBtn;
 
     private SpriteRenderer spriteRenderer;
+    private TimeManager timeManager;
     private Rigidbody2D rb;
     private Player player;
     private List<Player.State> jumpingState = new List<Player.State>() { Player.State.Walking, Player.State.Idle, Player.State.Jumping, Player.State.Falling, Player.State.WallGrabing, Player.State.WallJumping };
@@ -40,7 +41,7 @@ public class PlayerJump : MonoBehaviour
     #region VariableJump
 
     private bool checkingForWall = true;
-    
+
     private float gravityScale;
     private float timer;
     #endregion
@@ -56,6 +57,7 @@ public class PlayerJump : MonoBehaviour
     {
         player = GetComponent<Player>();
         spriteRenderer = player.GetSpriteRenderer;
+        timeManager = GameManager.GetInstance.GetTimeManager;
 
         rb = player.GetRb;
         gravityScale = rb.gravityScale;
@@ -94,7 +96,7 @@ public class PlayerJump : MonoBehaviour
         }
         else
         {
-            coyoteTimer += Time.deltaTime / Time.timeScale;
+            coyoteTimer += Time.deltaTime / timeManager.TimeScale;
         }
 
         if ((player.IsOnGround || player.IsOnWallL || coyoteTimer < coyoteFrames) && inputTest > 0)
@@ -115,11 +117,11 @@ public class PlayerJump : MonoBehaviour
         // se podria mejorar un poco mas
         // pero creo que esta bien
         player.CurrentState = Player.State.Jumping;
-        float vForce = Time.timeScale == 1 ? vJumpForce : vJumpForceCT;
+        float vForce = timeManager.TimeScale == 1 ? vJumpForce : vJumpForceCT;
 
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.drag = 1;
-        rb.velocity = Vector2.up * (vForce / Time.timeScale);
+        rb.velocity = Vector2.up * (vForce / timeManager.TimeScale);
     }
 
     void WallJump()
@@ -129,12 +131,12 @@ public class PlayerJump : MonoBehaviour
         player.CurrentState = Player.State.WallJumping;
         player.WallJumped = true;
 
-        float hForce = Time.timeScale == 1 ? hJumpForce : hJumpForceCT;
+        float hForce = timeManager.TimeScale == 1 ? hJumpForce : hJumpForceCT;
         // por algun motivo le sumas 1 y queda igual 😂
-        float vForce = Time.timeScale == 1 ? vJumpForce : vJumpForceCT + 1;
+        float vForce = timeManager.TimeScale == 1 ? vJumpForce : vJumpForceCT + 1;
 
         rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.velocity = new Vector2(jumpDir * hForce, vForce) / Time.timeScale;
+        rb.velocity = new Vector2(jumpDir * hForce, vForce) / timeManager.TimeScale;
 
         checkingForWall = false;
     }

@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 858244eb3811d38459d95eb3449c3b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemap: {fileID: 0}
   deathText: {fileID: 0}
 --- !u!114 &1372486016258866715
 MonoBehaviour:
@@ -90,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowdownFactor: 0.05
-  slowdownSmooth: 20
+  slowdownSmooth: 3
   slowdownTime: 5
 --- !u!114 &1372486016258866708
 MonoBehaviour:

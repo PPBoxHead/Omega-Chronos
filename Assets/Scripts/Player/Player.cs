@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
     {
         // suavizar movimiento
         // float newPosition = Mathf.SmoothDamp(transform.position.y, target.position.y, ref yVelocity, smoothTime);
-        inputValue = input.Get<float>() / Time.timeScale;
+        inputValue = input.Get<float>() / timeManager.TimeScale;
         if (isOnGround) walkingParticles.Play();
     }
 
@@ -129,16 +129,16 @@ public class Player : MonoBehaviour
 
         if (stopMovement || currentState == State.Damage) return;
 
-        // with hMovement = input.Get<float>() / Time.timeScale; hmovement can be > 1
+        // with hMovement = input.Get<float>() / timeManager.TimeScale; hmovement can be > 1
         // but without it it will move reaaaaally slow
         if (hMovement >= 1) hMovement = 1;
         else if (hMovement <= -1) hMovement = -1;
 
         // esto se podria pasar a una corutina pero mientras no de problemas que este aca
-        currentMovementSpeed = movementSpeed / Time.timeScale;
-        animator.speed = 1 / Time.timeScale;
+        currentMovementSpeed = movementSpeed / timeManager.TimeScale;
+        animator.speed = 1 / timeManager.TimeScale;
 
-        rb.gravityScale = gravityScale / Mathf.Pow(Time.timeScale, 2);
+        rb.gravityScale = gravityScale / Mathf.Pow(timeManager.TimeScale, 2);
 
         isOnWallR = isWallCollidingR();
         isOnWallL = isWallCollidingL();
@@ -171,7 +171,7 @@ public class Player : MonoBehaviour
             // suerte en pila entendiendo esto
             if (currentState != State.Jumping)
             {
-                rb.drag = 1 / Mathf.Pow(Time.timeScale, 2);
+                rb.drag = 1 / Mathf.Pow(timeManager.TimeScale, 2);
             }
         }
         else
@@ -294,11 +294,11 @@ public class Player : MonoBehaviour
     {
         currentState = State.Damage;
         spriteRenderer.color = Color.red; // esta para tener un feedback de mientras
-        yield return new WaitForSeconds(iFrames * Time.timeScale);
+        yield return new WaitForSeconds(iFrames * timeManager.TimeScale);
         currentState = State.Idle;
 
         // es 1s in real time
-        yield return new WaitForSeconds(iFrames * Time.timeScale * 10);
+        yield return new WaitForSeconds(iFrames * timeManager.TimeScale * 10);
         isVulnerable = true;
         spriteRenderer.color = Color.white;
     }
