@@ -40786,7 +40786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -40799,7 +40799,7 @@ PrefabInstance:
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1531257682}
+      objectReference: {fileID: 1372486015964692180}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -40822,7 +40822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: StopText
       objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -40834,7 +40834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: Dialogue, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -42928,7 +42928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -42937,7 +42937,7 @@ PrefabInstance:
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1531257682}
+      objectReference: {fileID: 1372486015964692180}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -42948,7 +42948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: StopText
       objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -42956,7 +42956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: Dialogue, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -95356,7 +95356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -95365,7 +95365,7 @@ PrefabInstance:
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1531257682}
+      objectReference: {fileID: 1372486015964692180}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -95376,7 +95376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: StopText
       objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -95384,7 +95384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: Dialogue, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 611538466352303326, guid: 0edd6386ab90ee94db3f896463e83748, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -95910,6 +95910,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25b5a69ec81b5c74d82c3762696c9cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1372486015964692180 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5718392237148999525, guid: c19e7a6696998d04dbde1f39fe414ea1, type: 3}
+  m_PrefabInstance: {fileID: 1372486015964692178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e6efcc05292134abef21c256bc4767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &4483499063689963022

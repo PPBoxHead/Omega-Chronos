@@ -30801,10 +30801,10 @@ MonoBehaviour:
   onTriggerExit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1672179291}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1908180060}
+        m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
+        m_MethodName: StopText
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -31421,6 +31421,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 858244eb3811d38459d95eb3449c3b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1908180060 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5718392237148999525, guid: c19e7a6696998d04dbde1f39fe414ea1, type: 3}
+  m_PrefabInstance: {fileID: 1908180056}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e6efcc05292134abef21c256bc4767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1946832239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31636,10 +31647,10 @@ MonoBehaviour:
   onTriggerExit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1672179291}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1908180060}
+        m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
+        m_MethodName: StopText
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

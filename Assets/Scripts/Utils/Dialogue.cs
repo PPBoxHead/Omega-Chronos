@@ -10,8 +10,8 @@ public class Dialogue : MonoBehaviour
     [Header("Settings")]
     [Range(0.01f, 0.8f), SerializeField] private float delay = 0.05f;
     [Range(1, 10), SerializeField] private float timeBetweenDialogues = 2;
+    private AudioManager audioManager;
     private bool finished = false;
-
     #endregion
     #region DialoguePosition
     [Header("DialoguePosition")]
@@ -26,6 +26,7 @@ public class Dialogue : MonoBehaviour
     private void Start()
     {
         dialogueBox.SetActive(false);
+        audioManager = AudioManager.Getinstance;
 
         foreach (DialogueHold dialogueHold in dialogueHolds)
         {
@@ -73,10 +74,17 @@ public class Dialogue : MonoBehaviour
         for (int i = 0; i < textAsset.ToString().Length; i++)
         {
             dialogueText.text += textAsset.ToString()[i];
+            audioManager.PlaySFX(AudioManager.SFX.Dialogue);
             yield return new WaitForSeconds(delay);
         }
 
         finished = true;
+    }
+
+    public void StopText()
+    {
+        dialogueBox.SetActive(false);
+        StopAllCoroutines();
     }
     #endregion
     #endregion
