@@ -9732,7 +9732,7 @@ MonoBehaviour:
   initHitPoints: 3
   iFrames: 0.1
   movementSpeed: 10
-  vRayLength: 0.09
+  vRayLength: 0.1
   walkingParticles: {fileID: 4058758738675426623}
   jumpParticles: {fileID: 4058758739450585152}
   landingDeconfirm: 1

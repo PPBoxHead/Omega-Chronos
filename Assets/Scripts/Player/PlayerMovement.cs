@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Player player;
 
-    private List<Player.State> movingState = new List<Player.State>() { Player.State.Walking, Player.State.Jumping, Player.State.Falling, Player.State.WallGrabing };
+    private List<Player.State> movingState = new List<Player.State>() { Player.State.Idle, Player.State.Walking, Player.State.Jumping, Player.State.Falling, Player.State.WallGrabing };
     #endregion
     #region LookAhead
     Transform lookAhead;

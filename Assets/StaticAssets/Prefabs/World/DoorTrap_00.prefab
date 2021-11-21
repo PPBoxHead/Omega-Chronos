@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 4224163117560894204}
   - component: {fileID: 4224163117560894205}
   - component: {fileID: 4224163117560894206}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PressurePlate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4224163117758284889}
   - component: {fileID: 4224163117758284888}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: InitialPos
   m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
@@ -365,7 +365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4224163117807877386}
   - component: {fileID: 4224163117807877385}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FinalPos
   m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}

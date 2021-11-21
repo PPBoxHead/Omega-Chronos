@@ -126,6 +126,7 @@ public class PlayerJump : MonoBehaviour
 
     void WallJump()
     {
+        Debug.Log("Aqui");
         int jumpDir = player.IsOnWallR ? -1 : 1;
 
         player.CurrentState = Player.State.WallJumping;

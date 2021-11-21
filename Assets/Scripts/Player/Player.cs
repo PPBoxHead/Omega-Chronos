@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
     #region Movement
     [Range(5, 15)] [SerializeField] private float movementSpeed = 10;
     private float currentMovementSpeed;
-    private float movTreshold = 0.05f;
+    private float movTreshold = 0.1f;
     private bool onSlowmo = false;
     private float hMovement;
     private float inputValue;
@@ -152,6 +152,7 @@ public class Player : MonoBehaviour
             currentState = State.WallGrabing;
             wallJumped = false;
         }
+        Debug.Log(currentState);
 
         MovingPlatformChecker();
         DrawRay();
@@ -178,13 +179,6 @@ public class Player : MonoBehaviour
         {
             rb.drag = 1;
         }
-
-        // prueba
-        // Debug.Log(rb.gravityScale * timeManager.TimeScale);
-        // if (!onSlowmo && rb.velocity.y >= rb.gravityScale * timeManager.TimeScale && currentState == State.Jumping)
-        // {
-        //     rb.velocity = new Vector2(rb.velocity.x, rb.gravityScale * timeManager.TimeScale);
-        // }
     }
 
     void PauseResume(bool gamePaused)
@@ -219,18 +213,38 @@ public class Player : MonoBehaviour
             return;
         }
 
-        if (rb.velocity.y < -movTreshold && !isOnGround && currentState != State.WallGrabing)
+        if (isOnGround && currentState != State.Jumping)
         {
-            currentState = State.Falling;
-            landingDeconfirm = true;
+            if (Mathf.Abs(rb.velocity.x) >= movTreshold && inputValue != 0)
+            {
+                currentState = State.Walking;
+            }
+            else
+            {
+                currentState = State.Idle;
+            }
         }
         else
         {
-            if (isOnGround && Mathf.Abs(rb.velocity.y) <= movTreshold)
+            if (rb.velocity.y < -movTreshold)
             {
-                currentState = inputValue != 0 ? currentState = State.Walking : currentState = State.Idle;
+                currentState = State.Falling;
+                landingDeconfirm = true;
             }
         }
+
+        // if (rb.velocity.y < -movTreshold && !isOnGround && currentState != State.Jumping)
+        // {
+        //     currentState = State.Falling;
+        //     landingDeconfirm = true;
+        // }
+        // else
+        // {
+        //     if (isOnGround && Mathf.Abs(rb.velocity.y) <= movTreshold)
+        //     {
+        //         currentState = inputValue != 0 ? State.Walking : State.Idle;
+        //     }
+        // }
     }
 
     public void PlayAnimation()
