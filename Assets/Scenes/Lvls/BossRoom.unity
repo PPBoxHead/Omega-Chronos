@@ -2089,6 +2089,8 @@ MonoBehaviour:
   amplitude: 0
   hSpeed: 0
   limitX: 0
+  hDir: 1
+  vDir: 1
 --- !u!114 &1067398195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2286,6 +2288,8 @@ MonoBehaviour:
   amplitude: 9
   hSpeed: 0
   limitX: 0
+  hDir: 1
+  vDir: 1
 --- !u!61 &1079146030
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12535,6 +12539,8 @@ MonoBehaviour:
   amplitude: 9
   hSpeed: 0
   limitX: 0
+  hDir: 1
+  vDir: -1
 --- !u!61 &1552831471
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12696,6 +12702,8 @@ MonoBehaviour:
   amplitude: 0
   hSpeed: 3
   limitX: 3
+  hDir: -1
+  vDir: 1
 --- !u!61 &1641747714
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12986,6 +12994,8 @@ MonoBehaviour:
   amplitude: 0
   hSpeed: 3
   limitX: 3
+  hDir: 1
+  vDir: 1
 --- !u!61 &1717427254
 BoxCollider2D:
   m_ObjectHideFlags: 0
