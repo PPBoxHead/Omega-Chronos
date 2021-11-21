@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5150582838586344401}
   m_Layer: 1
   m_Name: Omega Turret_2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 5150582838628094693}
   m_Layer: 1
   m_Name: LeftHip (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 5150582838629361391}
   m_Layer: 1
   m_Name: RightLegConstraint
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 5150582838635992756}
   m_Layer: 1
   m_Name: GunBarrel
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 5150582838673475011}
   m_Layer: 1
   m_Name: RightLegRig (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 5150582838727933904}
   m_Layer: 1
   m_Name: Omega Turret_1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 5150582838916872062}
   m_Layer: 1
   m_Name: RightLeg
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 5150582838918417623}
   m_Layer: 1
   m_Name: Omega Turret_2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 5150582839017245591}
   m_Layer: 1
   m_Name: Omega Turret_2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 5150582839069139391}
   m_Layer: 1
   m_Name: Omega Turret_1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -671,7 +671,7 @@ GameObject:
   - component: {fileID: 5150582839336235003}
   m_Layer: 1
   m_Name: LeftLeg_End
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -704,7 +704,7 @@ GameObject:
   - component: {fileID: 5150582839352645508}
   m_Layer: 1
   m_Name: SpiderMovement
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -799,7 +799,7 @@ GameObject:
   - component: {fileID: 5150582839419191322}
   m_Layer: 1
   m_Name: LeftTarget (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -830,7 +830,7 @@ GameObject:
   - component: {fileID: 5150582839427769827}
   m_Layer: 1
   m_Name: RightLegConstraint
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -887,7 +887,7 @@ GameObject:
   - component: {fileID: 5150582839449122385}
   m_Layer: 1
   m_Name: Omega Turret_1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -968,7 +968,7 @@ GameObject:
   - component: {fileID: 5150582839453873573}
   m_Layer: 1
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1012,7 +1012,7 @@ GameObject:
   - component: {fileID: 5150582839499952255}
   m_Layer: 1
   m_Name: Hint
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1046,7 +1046,7 @@ GameObject:
   - component: {fileID: 5150582839585965565}
   m_Layer: 1
   m_Name: Omega_Turret
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1129,6 +1129,8 @@ MonoBehaviour:
   amplitude: 0
   hSpeed: 1.5
   limitX: 2
+  hDir: 1
+  vDir: 1
 --- !u!114 &5150582839585965565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1165,7 +1167,7 @@ GameObject:
   - component: {fileID: 5150582839599033436}
   m_Layer: 1
   m_Name: RightTarget (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1196,7 +1198,7 @@ GameObject:
   - component: {fileID: 5150582839652662851}
   m_Layer: 1
   m_Name: LeftLegRig (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1242,7 +1244,7 @@ GameObject:
   - component: {fileID: 5150582839692154037}
   m_Layer: 1
   m_Name: LeftLegConstraint
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1298,7 +1300,7 @@ GameObject:
   - component: {fileID: 5150582839857423749}
   m_Layer: 1
   m_Name: LeftTarget
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1329,7 +1331,7 @@ GameObject:
   - component: {fileID: 5150582839870095977}
   m_Layer: 1
   m_Name: RightLegRig
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1374,7 +1376,7 @@ GameObject:
   - component: {fileID: 5150582839934020761}
   m_Layer: 1
   m_Name: LeftLeg_End
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1404,7 +1406,7 @@ GameObject:
   - component: {fileID: 5150582839951260614}
   m_Layer: 1
   m_Name: RightHip
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1436,7 +1438,7 @@ GameObject:
   - component: {fileID: 5150582840079746325}
   m_Layer: 1
   m_Name: LeftHip
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1469,7 +1471,7 @@ GameObject:
   - component: {fileID: 5150582840142682606}
   m_Layer: 1
   m_Name: Omega Turret_0
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1550,7 +1552,7 @@ GameObject:
   - component: {fileID: 5150582840151120425}
   m_Layer: 1
   m_Name: LeftLeg
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1582,7 +1584,7 @@ GameObject:
   - component: {fileID: 5150582840233402453}
   m_Layer: 1
   m_Name: LeftLeg
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1615,7 +1617,7 @@ GameObject:
   - component: {fileID: 5150582840247256558}
   m_Layer: 1
   m_Name: Omega Turret_1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1697,7 +1699,7 @@ GameObject:
   - component: {fileID: 5150582840263680850}
   m_Layer: 1
   m_Name: LeftLegRig
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1742,7 +1744,7 @@ GameObject:
   - component: {fileID: 5150582840272571390}
   m_Layer: 1
   m_Name: RightHip (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1775,7 +1777,7 @@ GameObject:
   - component: {fileID: 5150582840295486185}
   m_Layer: 1
   m_Name: Omega Turret_2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1856,7 +1858,7 @@ GameObject:
   - component: {fileID: 5150582840340367432}
   m_Layer: 1
   m_Name: RightLeg_End
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1886,7 +1888,7 @@ GameObject:
   - component: {fileID: 5150582840356454020}
   m_Layer: 1
   m_Name: FirePoint
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1916,7 +1918,7 @@ GameObject:
   - component: {fileID: 5150582840443103213}
   m_Layer: 1
   m_Name: RightLeg_End
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1946,7 +1948,7 @@ GameObject:
   - component: {fileID: 5150582840584827389}
   m_Layer: 1
   m_Name: RightTarget
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1976,7 +1978,7 @@ GameObject:
   - component: {fileID: 5150582840698734143}
   m_Layer: 1
   m_Name: RightLeg
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2009,7 +2011,7 @@ GameObject:
   - component: {fileID: 5150582840725977911}
   m_Layer: 1
   m_Name: LeftLegConstraint
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

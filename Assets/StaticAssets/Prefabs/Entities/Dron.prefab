@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1607807689846393147}
   m_Layer: 0
   m_Name: Dron
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,6 +151,8 @@ MonoBehaviour:
   amplitude: 0.5
   hSpeed: 10
   limitX: 20
+  hDir: 1
+  vDir: 1
 --- !u!95 &1607807689846393145
 Animator:
   serializedVersion: 3

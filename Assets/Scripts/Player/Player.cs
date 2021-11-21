@@ -152,7 +152,6 @@ public class Player : MonoBehaviour
             currentState = State.WallGrabing;
             wallJumped = false;
         }
-        Debug.Log(currentState);
 
         MovingPlatformChecker();
         DrawRay();
@@ -232,19 +231,6 @@ public class Player : MonoBehaviour
                 landingDeconfirm = true;
             }
         }
-
-        // if (rb.velocity.y < -movTreshold && !isOnGround && currentState != State.Jumping)
-        // {
-        //     currentState = State.Falling;
-        //     landingDeconfirm = true;
-        // }
-        // else
-        // {
-        //     if (isOnGround && Mathf.Abs(rb.velocity.y) <= movTreshold)
-        //     {
-        //         currentState = inputValue != 0 ? State.Walking : State.Idle;
-        //     }
-        // }
     }
 
     public void PlayAnimation()
@@ -300,7 +286,7 @@ public class Player : MonoBehaviour
         if (!isVulnerable) return;
 
         isVulnerable = false;
-        rb.velocity = Vector2.zero;
+        // rb.velocity = Vector2.zero;
         currentHitPoints -= value;
         uIManager.UpdateHitPoints(currentHitPoints);
         if (currentHitPoints <= 0)
@@ -319,7 +305,7 @@ public class Player : MonoBehaviour
         currentState = State.Idle;
 
         // es 1s in real time
-        yield return new WaitForSeconds(iFrames * timeManager.TimeScale * 10);
+        yield return new WaitForSeconds(1 * timeManager.TimeScale);
         isVulnerable = true;
         spriteRenderer.color = Color.white;
     }
