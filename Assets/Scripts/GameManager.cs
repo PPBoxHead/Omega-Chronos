@@ -84,6 +84,13 @@ public class GameManager : MonoBehaviour
             onDeath(duration);
             StartCoroutine("DeathMessage", duration);
         }
+
+        if (SceneManager.GetActiveScene().name == "BossRoom")
+        {
+            // como esta solo para este caso lo hice asi nomas
+            // se puede dejar mas lindo
+            SceneManager.LoadScene("BossRoom");
+        }
     }
 
     IEnumerator DeathMessage(float duration)
