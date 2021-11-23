@@ -72,6 +72,7 @@ public abstract class Enemy : MonoBehaviour
 
         if (hitPoints <= 0)
         {
+            StopAllCoroutines();
             Death();
         }
     }
