@@ -34,6 +34,7 @@ public class Dialogue : MonoBehaviour
             dialogueHold.onShowDialogue += ShowText;
         }
     }
+
     private void OnDestroy()
     {
         foreach (DialogueHold dialogueHold in dialogueHolds)
