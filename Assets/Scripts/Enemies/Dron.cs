@@ -64,12 +64,15 @@ public class Dron : Enemy
 
     public void Crash()
     {
-        Debug.Log("Crash");
-        Vector2 direction = (target.position + targetOff - transform.position).normalized;
         StartCoroutine("Co_OnDamage");
-        rb.velocity = Vector2.zero;
 
-        rb.velocity = -direction * crashForce;
+        if (target != null)
+        {
+            Vector2 direction = (target.position + targetOff - transform.position).normalized;
+            rb.velocity = Vector2.zero;
+
+            rb.velocity = -direction * crashForce;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
