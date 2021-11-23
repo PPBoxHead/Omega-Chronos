@@ -42,10 +42,18 @@ public class Boss : Turret
     void LaserCharge()
     {
         RaycastHit2D laserRay = Physics2D.Raycast(transform.position, shootPoint.transform.up);
-        if (laserRay && laserRay.collider.CompareTag("EnergyCell"))
+
+        if (laserRay)
         {
-            laserRay.collider.gameObject.SetActive(false);
-            onLaserCharge?.Invoke();
+            if (laserRay.collider.CompareTag("EnergyCell"))
+            {
+                laserRay.collider.gameObject.SetActive(false);
+                onLaserCharge?.Invoke();
+            }
+            else if (laserRay.collider.CompareTag("Player"))
+            {
+                laserRay.collider.gameObject.GetComponent<Player>().TakeDamage(1);
+            }
         }
     }
     #endregion
