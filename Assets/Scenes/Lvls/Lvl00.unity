@@ -49516,11 +49516,35 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1534215607}
+          m_TargetAssemblyTypeName: UnityEngine.InputSystem.PlayerInput, Unity.InputSystem
+          m_MethodName: DeactivateInput
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1372486015964692180}
           m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
           m_MethodName: StopText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1534215607}
+          m_TargetAssemblyTypeName: UnityEngine.InputSystem.PlayerInput, Unity.InputSystem
+          m_MethodName: ActivateInput
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -49553,6 +49577,7 @@ PlayableDirector:
     value: {fileID: 1570565250}
   m_ExposedReferences:
     m_References:
+    - 3c6562f04c9444c42ad49067a0faf86d: {fileID: 1534215604}
     - 3084a813c6780a842a7fd7dc87c51712: {fileID: 645609207}
     - 0d9d0a93b4aafb2468ff0586cab1a2ed: {fileID: 0}
 --- !u!1 &683425499
@@ -58769,6 +58794,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1534215604 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4058758739774731781, guid: 9ab02df19722b464895cd9f3ffc0a4ca, type: 3}
+  m_PrefabInstance: {fileID: 839887331}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1534215607 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4058758739774731899, guid: 9ab02df19722b464895cd9f3ffc0a4ca, type: 3}
+  m_PrefabInstance: {fileID: 839887331}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534215604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1556943466
 GameObject:
   m_ObjectHideFlags: 0
@@ -106022,7 +106063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4483499063628324161, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
       propertyPath: m_PixelSnapping
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4483499063628324186, guid: e00111f9f991b3a4da313d9401ab8db2, type: 3}
       propertyPath: m_RootOrder
