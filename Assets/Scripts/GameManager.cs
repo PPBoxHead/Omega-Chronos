@@ -85,11 +85,11 @@ public class GameManager : MonoBehaviour
             StartCoroutine("DeathMessage", duration);
         }
 
-        if (SceneManager.GetActiveScene().name == "BossRoom")
+        if (SceneManager.GetActiveScene().name == "Lvl04")
         {
             // como esta solo para este caso lo hice asi nomas
             // se puede dejar mas lindo
-            SceneManager.LoadScene("BossRoom");
+            SceneManager.LoadScene("Lvl04");
         }
     }
 

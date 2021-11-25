@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Lvls/Lvl03.unity
     guid: 509982467ee0f754ab4d986a1fa8ee26
   - enabled: 1
-    path: Assets/Scenes/Lvls/BossRoom.unity
+    path: Assets/Scenes/Lvls/Lvl04.unity
     guid: b976aa5fa99fb4b4f819b57bf95e17fd
   - enabled: 1
     path: Assets/Scenes/MenuScenes/WonScreen.unity
