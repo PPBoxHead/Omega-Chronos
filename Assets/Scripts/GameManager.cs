@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour
         levelManager = GetComponent<LevelManager>();
         timeManager = GetComponent<TimeManager>();
         uIManager = GetComponent<UIManager>();
+
+        SceneManager.LoadSceneAsync("UI", LoadSceneMode.Additive);
     }
 
     public void OnPause()
@@ -124,11 +126,6 @@ public class GameManager : MonoBehaviour
     public TimeManager GetTimeManager
     {
         get { return timeManager; }
-    }
-
-    public UIManager GetUIManager
-    {
-        get { return uIManager; }
     }
 
     public Tilemap GetTilemap
