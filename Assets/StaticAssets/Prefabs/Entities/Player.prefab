@@ -9655,6 +9655,7 @@ GameObject:
   - component: {fileID: 4058758739774731901}
   - component: {fileID: 4058758739774731899}
   - component: {fileID: 502522272715652759}
+  - component: {fileID: 217009071727811425}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -9842,6 +9843,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   otherTag: Bullet
+--- !u!81 &217009071727811425
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4058758739774731781}
+  m_Enabled: 1
 --- !u!1 &4058758740241886892
 GameObject:
   m_ObjectHideFlags: 0
