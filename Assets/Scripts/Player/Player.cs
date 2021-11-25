@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         timeManager = GameManager.GetInstance.GetTimeManager;
-        uIManager = GameManager.GetInstance.GetUIManager;
+        uIManager = UIManager.GetInstance;
         audioManager = AudioManager.Getinstance;
 
         GameManager.GetInstance.onGamePaused += PauseResume;

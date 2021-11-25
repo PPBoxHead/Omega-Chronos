@@ -29,7 +29,7 @@ public class TimeManager : MonoBehaviour
     #region Methods
     void Start()
     {
-        uIManager = GameManager.GetInstance.GetUIManager;
+        uIManager = UIManager.GetInstance;
 
         originalDeltaTime = Time.fixedDeltaTime;
         originalTime = Time.timeScale;
