@@ -13,7 +13,10 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         // ver de sacar esto en el menu
-        savesManager = GameManager.GetInstance.GetSavesManager;
+        if (SceneManager.GetActiveScene().name != "Menu")
+        {
+            savesManager = GameManager.GetInstance.GetSavesManager;
+        }
     }
 
     public void LoadScene(string value)
