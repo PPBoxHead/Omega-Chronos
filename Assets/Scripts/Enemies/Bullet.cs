@@ -16,6 +16,8 @@ public class Bullet : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine("Despawn");
+        gameObject.GetComponent<TrailRenderer>().Clear();
+        gameObject.GetComponent<AudioSource>().Play();
     }
 
     IEnumerator Despawn()
