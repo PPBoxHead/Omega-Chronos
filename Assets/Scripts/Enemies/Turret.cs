@@ -13,6 +13,7 @@ public class Turret : Enemy
     protected BulletPoolManager bulletPoolManager;
     [SerializeField] protected Transform shootPoint;
     [Range(1, 15)] [SerializeField] protected int bulletSpeed = 15;
+    private ParticleSystem shootParticles;
     private void Awake()
     {
         range = visionRange;
@@ -23,6 +24,7 @@ public class Turret : Enemy
     private void Start()
     {
         bulletPoolManager = BulletPoolManager.GetInstance;
+        shootParticles = GetComponentInChildren<ParticleSystem>();
 
         // este valor es para que salga el rayo de vision
         // (y la direccion de apuntado) desde el centro del cañon
@@ -60,6 +62,7 @@ public class Turret : Enemy
     protected virtual void Shoot()
     {
         GameObject bullet = bulletPoolManager.GetPooledObject();
+        shootParticles.Play();
         bullet.transform.position = shootPoint.position;
         bullet.transform.right = direction;
         bullet.SetActive(true);
