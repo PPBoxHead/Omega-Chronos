@@ -21,6 +21,8 @@ public class SpiderProceduralAnimation : MonoBehaviour
     private Vector2 lastVelocity;
     private Vector2 lastBodyPos;
 
+    public LayerMask floorMask;
+
     private float velocityMultiplier = 7f;
 
     Vector2[] MatchToSurfaceFromAbove(Vector2 point, float halfRange, Vector2 up)
@@ -28,7 +30,7 @@ public class SpiderProceduralAnimation : MonoBehaviour
         Vector2[] res = new Vector2[2];
         res[1] = Vector3.zero;
         RaycastHit2D hit;
-        hit = Physics2D.Raycast(point + halfRange * up / 2f, -up, 2f * halfRange);
+        hit = Physics2D.Raycast(point + halfRange * up / 2f, -up, 2f * halfRange, floorMask);
         Debug.DrawRay(point + halfRange * up / 2f, - up * 2f * halfRange, Color.red, smoothness * Time.deltaTime);
         if (hit.collider)
         {
