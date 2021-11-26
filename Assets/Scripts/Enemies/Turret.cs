@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Turret : Enemy
 {
-    [Range(1, 10)] [SerializeField] private int health = 3;
-    [Range(1, 30)] [SerializeField] private int visionRange = 3;
+    [Range(1, 10)] [SerializeField] protected int health = 3;
+    [Range(1, 30)] [SerializeField] protected int visionRange = 3;
     protected bool aiming;
     protected Vector2 direction;
     [SerializeField] protected GameObject gunBarrel;
@@ -13,7 +13,7 @@ public class Turret : Enemy
     protected BulletPoolManager bulletPoolManager;
     [SerializeField] protected Transform shootPoint;
     [Range(1, 15)] [SerializeField] protected int bulletSpeed = 15;
-    private ParticleSystem shootParticles;
+    protected ParticleSystem shootParticles;
     private void Awake()
     {
         range = visionRange;
@@ -40,6 +40,7 @@ public class Turret : Enemy
             Chasing();
             aiming = true;
         }
+
         if (aiming && target != null)
         {
             Aim();
@@ -48,6 +49,7 @@ public class Turret : Enemy
                 StartCoroutine("Shooting");
             }
         }
+
         if (target == null)
         {
             Patrol();
