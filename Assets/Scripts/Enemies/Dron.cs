@@ -33,11 +33,13 @@ public class Dron : Enemy
         patrolCicle = GetComponent<SinMovement>();
         rb = GetComponent<Rigidbody2D>();
         tilemap = GameManager.GetInstance.GetTilemap;
+
+        GameManager.GetInstance.onGamePaused += Pause;
     }
 
     private void Update()
     {
-        if (onDamage) return;
+        if (onDamage || onPause) return;
 
         PlayerDetection();
 
@@ -106,6 +108,21 @@ public class Dron : Enemy
             Debug.DrawRay(crashPos, inNormal, Color.blue);
             Debug.DrawRay(crashPos, crashVel, Color.red);
         }
+    }
+
+    protected void Pause(bool gamePaused)
+    {
+        if (gamePaused)
+        {
+            rb.velocity = Vector2.zero;
+        }
+
+        onPause = gamePaused;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.GetInstance.onGamePaused -= Pause;
     }
     #endregion
 }

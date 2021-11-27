@@ -25,6 +25,7 @@ public class Turret : Enemy
     {
         bulletPoolManager = BulletPoolManager.GetInstance;
         shootParticles = GetComponentInChildren<ParticleSystem>();
+        GameManager.GetInstance.onGamePaused += Pause;
 
         // este valor es para que salga el rayo de vision
         // (y la direccion de apuntado) desde el centro del cañon
@@ -33,6 +34,8 @@ public class Turret : Enemy
     }
     private void Update()
     {
+        if (onPause) return;
+
         PlayerDetection();
 
         if (target != null && !aiming)
@@ -76,5 +79,15 @@ public class Turret : Enemy
         Shoot();
         yield return new WaitForSeconds(fireRate);
         isOnCooldown = false;
+    }
+
+    protected void Pause(bool gamePaused)
+    {
+        onPause = gamePaused;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.GetInstance.onGamePaused -= Pause;
     }
 }

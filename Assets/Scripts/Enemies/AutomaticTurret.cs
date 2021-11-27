@@ -9,6 +9,8 @@ public class AutomaticTurret : Turret
     #region Methods
     private void Update()
     {
+        if (onPause) return;
+
         if (!isOnCooldown)
         {
             StartCoroutine("Shooting");

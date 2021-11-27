@@ -14,6 +14,8 @@ public class Boss : Turret
     #region Methods
     private void Update()
     {
+        if (onPause) return;
+
         PlayerDetection();
 
         if (target != null)

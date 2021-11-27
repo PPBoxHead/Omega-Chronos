@@ -14,6 +14,7 @@ public abstract class Enemy : MonoBehaviour
     protected SinMovement patrolCicle;
     protected Vector3 targetOff = new Vector3(0, 1.25f, 0);
     Coroutine co;
+    protected bool onPause = false;
     #endregion
 
     #region Methods

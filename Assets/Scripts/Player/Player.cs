@@ -184,6 +184,7 @@ public class Player : MonoBehaviour
     {
         if (gamePaused)
         {
+            if (onSlowmo) timeManager.OnChronoTime();
             playerMomentum = rb.velocity;
             rb.bodyType = RigidbodyType2D.Static;
         }
