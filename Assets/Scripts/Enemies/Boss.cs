@@ -8,6 +8,7 @@ public class Boss : Turret
     #region Variables
     [SerializeField] private GameObject laserBeam;
     [SerializeField] private float accuracy = 100;
+    [SerializeField] private Transform eye;
     public UnityEvent onLaserCharge;
     #endregion
 
@@ -39,6 +40,11 @@ public class Boss : Turret
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
 
         gunBarrel.transform.rotation = Quaternion.RotateTowards(gunBarrel.transform.rotation, targetRotation, accuracy * Time.deltaTime);
+
+        // por que es + 90? y el otro -90? no lo se, no recuerdo
+        // como se calculaba el angle, lo saque de internet y funciona asi
+        // seguro se puede ajustar pero whatever
+        eye.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
     }
 
     void LaserCharge()

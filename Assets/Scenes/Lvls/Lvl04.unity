@@ -2158,6 +2158,7 @@ MonoBehaviour:
   bulletSpeed: 15
   laserBeam: {fileID: 1723190111}
   accuracy: 15
+  eye: {fileID: 987004147}
   onLaserCharge:
     m_PersistentCalls:
       m_Calls:
