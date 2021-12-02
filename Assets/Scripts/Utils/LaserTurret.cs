@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 public class LaserTurret : MonoBehaviour
@@ -7,10 +8,14 @@ public class LaserTurret : MonoBehaviour
     [SerializeField] private GameObject[] indicators;
     [SerializeField] private float shootDuration = 5;
     [SerializeField] private GameObject laserBeam;
+    [SerializeField] private GameObject readySign;
     [SerializeField] private float cooldown = 20;
     private float timer = 0;
+    private bool isFinished = true;
     private bool isStarted;
     private bool shooting;
+
+    public UnityEvent onShoot;
     #endregion
 
     #region Methods
@@ -48,18 +53,29 @@ public class LaserTurret : MonoBehaviour
 
     public void Started()
     {
-        // TODO: hacer esto que se reinicie con el player y no automatico como esta ahora
-        isStarted = true;
+        if (isFinished)
+        {
+            isStarted = true;
+            readySign.SetActive(false);
+            isFinished = false;
+        }
     }
 
     IEnumerator Shooting()
     {
         shooting = false;
         laserBeam.SetActive(true);
+        onShoot?.Invoke();
         yield return new WaitForSeconds(shootDuration);
         laserBeam.SetActive(false);
-        isStarted = true;
         timer = 0;
+        readySign.SetActive(true);
+        isFinished = true;
+
+        foreach (GameObject item in indicators)
+        {
+            item.SetActive(false);
+        }
     }
     #endregion
 }
