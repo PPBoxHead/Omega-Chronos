@@ -104,6 +104,10 @@ public class Boss : Turret
     protected override void Shoot()
     {
         gunBarrel.transform.rotation = Quaternion.RotateTowards(gunBarrel.transform.rotation, Quaternion.Euler(finalRot), laserSpeed * Time.deltaTime);
+        if (gunBarrel.transform.rotation[2] % 5 == 0)
+        {
+            Debug.Log("Aca se apagaria/prenderia");
+        }
         // LaserDamage();
 
         if (gunBarrel.transform.rotation == Quaternion.Euler(finalRot))
@@ -135,6 +139,7 @@ public class Boss : Turret
         if (hitPoints <= 0)
         {
             StopAllCoroutines();
+            onDeath?.Invoke();
             Death();
         }
 
