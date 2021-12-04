@@ -313,6 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowmoSprites:
+  - {fileID: -2603424022884412314, guid: 6cf5c93d6fc021742a98ceac16f0ff9e, type: 3}
   - {fileID: -3183182706003994218, guid: 4347fd1a61011f34c8b36587b95c6b4f, type: 3}
   - {fileID: 5765897004538934488, guid: 4347fd1a61011f34c8b36587b95c6b4f, type: 3}
   - {fileID: -4741337804779706455, guid: 4347fd1a61011f34c8b36587b95c6b4f, type: 3}
