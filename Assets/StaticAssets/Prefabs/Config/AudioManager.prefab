@@ -302,8 +302,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundSource: {fileID: 8796078333097800033}
   backgroundClips:
-  - {fileID: 8300000, guid: 994f96392b708ae4097e34723bd295aa, type: 3}
   - {fileID: 8300000, guid: cc926f11ed322224eb88879b67e9dc5c, type: 3}
+  - {fileID: 8300000, guid: 994f96392b708ae4097e34723bd295aa, type: 3}
+  - {fileID: 8300000, guid: c0dd66a9ac3ebc840859db0bb7b592b7, type: 3}
   characterSFXSource: {fileID: 8796078331433699334}
   characterSFXClips:
   - {fileID: 8300000, guid: 878367e1be66a2249b0d558ee81ff5d6, type: 3}
@@ -353,9 +354,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 8296036350477022478, guid: c956f0faa25541c408cbc89bb13d5b41, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
