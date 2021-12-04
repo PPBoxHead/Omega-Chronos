@@ -6,10 +6,14 @@ public class UIManager : MonoBehaviour
 {
     #region Variables
     #region Slowmo UI
-    [SerializeField] private Image[] slowmoBar;
+    [Header("Slowmo UI")]
+    [SerializeField] private Sprite[] slowmoSprites;
+    [SerializeField] private Image slowmoUI;
     #endregion
     #region Hitpoints UI
-    private TMP_Text hitPointsText;
+    [Header("Hitpoins UI")]
+    [SerializeField] private Sprite[] lifeSprites;
+    [SerializeField] private Image lifeUI;
     private static UIManager instance;
     #endregion
     #endregion
@@ -26,32 +30,21 @@ public class UIManager : MonoBehaviour
         {
             instance = this;
         }
-
-        // Hitpoints UI
-        hitPointsText = GameObject.Find("UI/HitpointsTxt").GetComponent<TMP_Text>();
     }
 
     public void UpdateBoostValue(float slowdownTime, float value)
     {
         float slowmoValue = value / slowdownTime;
-        int bars = Mathf.RoundToInt(slowmoValue * slowmoBar.Length);
+        int bars = Mathf.RoundToInt(slowmoValue * slowmoSprites.Length);
+        if (bars == 0) return;
 
-        // activates sprites
-        for (int i = 0; i < Mathf.RoundToInt(slowmoValue * slowmoBar.Length); i++)
-        {
-            slowmoBar[i].gameObject.SetActive(true);
-        }
-
-        // turns off sprites
-        for (int i = bars; i < slowmoBar.Length; i++)
-        {
-            slowmoBar[i].gameObject.SetActive(false);
-        }
+        slowmoUI.sprite = slowmoSprites[bars - 1];
     }
 
     public void UpdateHitPoints(int currentHitPoints)
     {
-        hitPointsText.text = "Health: " + currentHitPoints.ToString();
+        if (currentHitPoints == 0) return; //no es lo mas lindo pero funciona porque cuando los hitpoints son 0 el juego recarga
+        lifeUI.GetComponent<Image>().sprite = lifeSprites[currentHitPoints - 1];
     }
     #endregion
 
