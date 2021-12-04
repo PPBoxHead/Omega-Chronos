@@ -548,6 +548,15 @@ SpriteAtlas:
   - {fileID: 8044979951857965708, guid: 28e16969e807fb540b82fddf6475c34e, type: 3}
   - {fileID: 8411221633477758481, guid: 28e16969e807fb540b82fddf6475c34e, type: 3}
   - {fileID: 21300000, guid: 4fb4e779cca28064299613bdb17d1bf9, type: 3}
+  - {fileID: -5399961841666162922, guid: b58ff7cb651e2424ab17eb45e28930ef, type: 3}
+  - {fileID: 864194474580067041, guid: b58ff7cb651e2424ab17eb45e28930ef, type: 3}
+  - {fileID: 3852445667673724241, guid: b58ff7cb651e2424ab17eb45e28930ef, type: 3}
+  - {fileID: 2921748325497658295, guid: b58ff7cb651e2424ab17eb45e28930ef, type: 3}
+  - {fileID: -3388264268667647075, guid: b58ff7cb651e2424ab17eb45e28930ef, type: 3}
+  - {fileID: 2040907993902961787, guid: b58ff7cb651e2424ab17eb45e28930ef, type: 3}
+  - {fileID: 3224441380975310747, guid: b58ff7cb651e2424ab17eb45e28930ef, type: 3}
+  - {fileID: -712869871647412718, guid: b58ff7cb651e2424ab17eb45e28930ef, type: 3}
+  - {fileID: -8789183686501475857, guid: b58ff7cb651e2424ab17eb45e28930ef, type: 3}
   - {fileID: -4426592424968260265, guid: fd452fdb7fbd27b4c9d5735f5e1c945f, type: 3}
   - {fileID: 976682271222102928, guid: fd452fdb7fbd27b4c9d5735f5e1c945f, type: 3}
   - {fileID: 5542707353750751165, guid: 5c86293cbe31fd542a5e8b13ee966514, type: 3}
@@ -1555,6 +1564,15 @@ SpriteAtlas:
   - Cave_Background 2.1_43
   - Cave_Background 2.1_42
   - FogMid
+  - Rain Sprite Sheet_4
+  - Rain Sprite Sheet_5
+  - Rain Sprite Sheet_6
+  - Rain Sprite Sheet_7
+  - Rain Sprite Sheet_0
+  - Rain Sprite Sheet_1
+  - Rain Sprite Sheet_2
+  - Rain Sprite Sheet_3
+  - Rain Sprite Sheet_8
   - DustCables_0
   - DustCables_1
   - DustTiles4_12
