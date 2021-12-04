@@ -1,11 +1,19 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
     #region Enum
     public enum BackgroundMusic
     {
-        MainMenu,
+        Noise,
+        // Menu Music
+        StaticLife,
+        // Menu Music
+        // Lvl 00 music
+        TalkWithMyMechanicalBrain,
+        // Lvl 00 music
     }
     public enum CharacterSFX
     {
@@ -24,6 +32,8 @@ public class AudioManager : MonoBehaviour
     [Header("Background Clips")]
     [SerializeField] private AudioSource backgroundSource;
     [SerializeField] private AudioClip[] backgroundClips;
+    private bool noiseTime = false;
+    private bool fading = false;
     #endregion
     #region CharacterSFXClips
     [Header("Character SFX Clips")]
@@ -51,26 +61,108 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
         }
-
         DontDestroyOnLoad(gameObject);
     }
 
-    void Start()
+    private void Update()
     {
-        PlayMusic(BackgroundMusic.MainMenu);
+        // TODO: Cambiar de musica al cambiar de nivel
+        if (!fading)
+        {
+            if (noiseTime && !backgroundSource.isPlaying)
+            {
+                FadeMusic(BackgroundMusic.Noise);
+                return;
+            }
+
+            if (!backgroundSource.isPlaying)
+            {
+                MusicSelector();
+                return;
+            }
+        }
     }
 
     #region BackgroundMusic
+    void MusicSelector()
+    {
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "Menu":
+                FadeMusic(BackgroundMusic.StaticLife);
+                break;
+            case "Lvl00":
+                FadeMusic(BackgroundMusic.TalkWithMyMechanicalBrain);
+                break;
+        }
+    }
+
+    public void StopMusic()
+    {
+        FadeMusic(BackgroundMusic.Noise);
+    }
+
     public void PlayMusic(BackgroundMusic backgroundClip)
     {
         switch (backgroundClip)
         {
-            case BackgroundMusic.MainMenu:
-                backgroundSource.clip = backgroundClips[(int)BackgroundMusic.MainMenu];
+            case BackgroundMusic.Noise:
+                backgroundSource.clip = backgroundClips[(int)BackgroundMusic.Noise];
+                break;
+            case BackgroundMusic.StaticLife:
+                backgroundSource.clip = backgroundClips[(int)BackgroundMusic.StaticLife];
+                break;
+            case BackgroundMusic.TalkWithMyMechanicalBrain:
+                backgroundSource.clip = backgroundClips[(int)BackgroundMusic.TalkWithMyMechanicalBrain];
                 break;
         }
 
         backgroundSource.Play();
+    }
+
+    /// <summary>
+    /// fades out current music and plays the next one
+    /// </summary>
+    public void FadeMusic(BackgroundMusic musicClip)
+    {
+        fading = true;
+        StopAllCoroutines(); // stops fade in/out, it helps when spamming this
+        StartCoroutine(FadeOut(musicClip));
+    }
+
+    /// <summary>
+    /// smoothly lowers music 
+    /// </summary>
+    IEnumerator FadeOut(BackgroundMusic musicClip)
+    {
+        float duration = 0.05f;
+        float lowestVolume = 0.1f;
+
+        while (backgroundSource.volume > lowestVolume)
+        {
+            backgroundSource.volume -= 0.01f;
+            yield return new WaitForSeconds(duration);
+        }
+
+        PlayMusic(musicClip);
+        noiseTime = !noiseTime;
+        StartCoroutine(FadeIn());
+    }
+
+    /// <summary>
+    /// smoothly turns music up
+    /// </summary>
+    IEnumerator FadeIn()
+    {
+        float duration = 0.05f;
+        int highestVolume = 1;
+
+        while (backgroundSource.volume < highestVolume)
+        {
+            backgroundSource.volume += 0.01f;
+            yield return new WaitForSeconds(duration);
+        }
+        fading = false;
     }
     #endregion
 
