@@ -1,14 +1,14 @@
 Orden de los tracks de musica:
-    00- Static Life (menu).
-    01- Talk with my Mechanical Brain (track del tutorial).
-    02- This Place (track default en lvl 01).
-    03- The 7th Father (track para NPC "The 7th Father").
-    04- Turing (track para NPC "Alan" - lvl 03 random NPC).
-    05- State Machine (track default lvl 02).
+    00- Static Life (menu).👍
+    01- Talk with my Mechanical Brain (track del tutorial).👍
+    02- This Place (track default en lvl 01). 👍
+    03- The 7th Father (track para NPC "The 7th Father").👍
+    04- Turing (track para NPC "Alan" - lvl 03 random NPC).👍
+    05- State Machine (track default lvl 02).👍
 
     //tracks aun por terminar:
-    06- Born_12.5.41 (track default en lvl 03).
-    07- Experimental_Mechanical_Automate (track para NPC "E.M.A.").
+    06- Born_12.5.41 (track default en lvl 03). falta
+    07- Experimental_Mechanical_Automate (track para NPC "E.M.A."). 👍
     08- ¿M0TH3r7 (boss track)
 
 tracks de SFX

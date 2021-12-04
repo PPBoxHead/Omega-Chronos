@@ -7,6 +7,11 @@ public class AudioManager : MonoBehaviour
     #region Enum
     public enum BackgroundMusic
     {
+        // Specifics tracks (dejar al Principio)
+        SeventhFather,
+        Turing,
+        Experimental_Mechanical_Automate,
+        // Specifics tracks (dejar al Principio)
         Noise,
         // Menu Music
         StaticLife,
@@ -14,6 +19,12 @@ public class AudioManager : MonoBehaviour
         // Lvl 00 music
         TalkWithMyMechanicalBrain,
         // Lvl 00 music
+        // Lvl 01 music
+        ThisPlace,
+        // Lvl 01 music
+        // Lvl 02 music
+        StateMachine,
+        // Lvl 02 music
     }
     public enum CharacterSFX
     {
@@ -93,6 +104,12 @@ public class AudioManager : MonoBehaviour
             case "Lvl00":
                 FadeMusic(BackgroundMusic.TalkWithMyMechanicalBrain);
                 break;
+            case "Lvl01":
+                FadeMusic(BackgroundMusic.ThisPlace);
+                break;
+            case "Lvl02":
+                FadeMusic(BackgroundMusic.StateMachine);
+                break;
         }
     }
 
@@ -105,6 +122,15 @@ public class AudioManager : MonoBehaviour
     {
         switch (backgroundClip)
         {
+            case BackgroundMusic.SeventhFather:
+                backgroundSource.clip = backgroundClips[(int)BackgroundMusic.SeventhFather];
+                break;
+            case BackgroundMusic.Turing:
+                backgroundSource.clip = backgroundClips[(int)BackgroundMusic.Turing];
+                break;
+            case BackgroundMusic.Experimental_Mechanical_Automate:
+                backgroundSource.clip = backgroundClips[(int)BackgroundMusic.Experimental_Mechanical_Automate];
+                break;
             case BackgroundMusic.Noise:
                 backgroundSource.clip = backgroundClips[(int)BackgroundMusic.Noise];
                 break;
@@ -113,6 +139,12 @@ public class AudioManager : MonoBehaviour
                 break;
             case BackgroundMusic.TalkWithMyMechanicalBrain:
                 backgroundSource.clip = backgroundClips[(int)BackgroundMusic.TalkWithMyMechanicalBrain];
+                break;
+            case BackgroundMusic.ThisPlace:
+                backgroundSource.clip = backgroundClips[(int)BackgroundMusic.ThisPlace];
+                break;
+            case BackgroundMusic.StateMachine:
+                backgroundSource.clip = backgroundClips[(int)BackgroundMusic.StateMachine];
                 break;
         }
 

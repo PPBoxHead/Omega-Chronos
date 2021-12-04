@@ -302,9 +302,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundSource: {fileID: 8796078333097800033}
   backgroundClips:
+  - {fileID: 8300000, guid: bed8ec195e731e141b18e9523799b35a, type: 3}
+  - {fileID: 8300000, guid: 832d9c58cae848e48a74ec1e9f032ea9, type: 3}
+  - {fileID: 8300000, guid: 90a617ddd7505c640aec25b905dca257, type: 3}
   - {fileID: 8300000, guid: cc926f11ed322224eb88879b67e9dc5c, type: 3}
   - {fileID: 8300000, guid: 994f96392b708ae4097e34723bd295aa, type: 3}
   - {fileID: 8300000, guid: c0dd66a9ac3ebc840859db0bb7b592b7, type: 3}
+  - {fileID: 8300000, guid: e8107b90d0ea32c4f98cf141624e72f6, type: 3}
+  - {fileID: 8300000, guid: 407d6e6d501c709408cc94355ac965ff, type: 3}
   characterSFXSource: {fileID: 8796078331433699334}
   characterSFXClips:
   - {fileID: 8300000, guid: 878367e1be66a2249b0d558ee81ff5d6, type: 3}
