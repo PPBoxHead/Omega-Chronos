@@ -310,6 +310,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c0dd66a9ac3ebc840859db0bb7b592b7, type: 3}
   - {fileID: 8300000, guid: e8107b90d0ea32c4f98cf141624e72f6, type: 3}
   - {fileID: 8300000, guid: 407d6e6d501c709408cc94355ac965ff, type: 3}
+  - {fileID: 8300000, guid: 25027fb3b26dadb4a8bcf4727501e29f, type: 3}
   characterSFXSource: {fileID: 8796078331433699334}
   characterSFXClips:
   - {fileID: 8300000, guid: 878367e1be66a2249b0d558ee81ff5d6, type: 3}

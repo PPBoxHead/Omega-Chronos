@@ -25,6 +25,9 @@ public class AudioManager : MonoBehaviour
         // Lvl 02 music
         StateMachine,
         // Lvl 02 music
+        // Lvl 03 music
+        Born,
+        // Lvl 03 music
     }
     public enum CharacterSFX
     {
@@ -96,6 +99,7 @@ public class AudioManager : MonoBehaviour
     #region BackgroundMusic
     public void MusicSelector()
     {
+        // esto iba a hacerse para poner musica aleatoria pero nunca paso lol
         switch (SceneManager.GetActiveScene().name)
         {
             case "Menu":
@@ -109,6 +113,9 @@ public class AudioManager : MonoBehaviour
                 break;
             case "Lvl02":
                 FadeMusic(BackgroundMusic.StateMachine);
+                break;
+            case "Lvl03":
+                FadeMusic(BackgroundMusic.Born);
                 break;
         }
     }
@@ -145,6 +152,9 @@ public class AudioManager : MonoBehaviour
                 break;
             case BackgroundMusic.StateMachine:
                 backgroundSource.clip = backgroundClips[(int)BackgroundMusic.StateMachine];
+                break;
+            case BackgroundMusic.Born:
+                backgroundSource.clip = backgroundClips[(int)BackgroundMusic.Born];
                 break;
         }
 
