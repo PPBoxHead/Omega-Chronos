@@ -51,6 +51,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadSceneAsync("UI", LoadSceneMode.Additive);
     }
 
+    private void Start()
+    {
+        AudioManager.Getinstance.MusicSelector();
+    }
+
     public void OnPause()
     {
         PauseGame();

@@ -66,7 +66,6 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        // TODO: Cambiar de musica al cambiar de nivel
         if (!fading)
         {
             if (noiseTime && !backgroundSource.isPlaying)
@@ -84,7 +83,7 @@ public class AudioManager : MonoBehaviour
     }
 
     #region BackgroundMusic
-    void MusicSelector()
+    public void MusicSelector()
     {
         switch (SceneManager.GetActiveScene().name)
         {
