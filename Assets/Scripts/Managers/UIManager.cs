@@ -41,6 +41,15 @@ public class UIManager : MonoBehaviour
         slowmoUI.sprite = slowmoSprites[bars - 1];
     }
 
+    public void TurnOffUI()
+    {
+        slowmoUI.gameObject.SetActive(false);
+    }
+
+    public void TurnOnnUI()
+    {
+        slowmoUI.gameObject.SetActive(true);
+    }
     public void UpdateHitPoints(int currentHitPoints)
     {
         if (currentHitPoints == 0) return; //no es lo mas lindo pero funciona porque cuando los hitpoints son 0 el juego recarga

@@ -43,6 +43,7 @@ public class TimeManager : MonoBehaviour
         if (!isTimeSlow)
         {
             StopAllCoroutines();
+            uIManager.TurnOnnUI();
             SlowMotion();
         }
         else if (isTimeSlow)
@@ -105,6 +106,7 @@ public class TimeManager : MonoBehaviour
         timer = slowdownTime;
         Time.timeScale = 1;
         Time.fixedDeltaTime = Time.timeScale * 0.02f;
+        uIManager.TurnOffUI();
     }
     void ManageSlowMotion()
     {
