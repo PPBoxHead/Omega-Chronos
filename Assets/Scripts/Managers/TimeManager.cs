@@ -113,6 +113,13 @@ public class TimeManager : MonoBehaviour
             onSlowMotion(isTimeSlow);
         }
     }
+
+    // resets on death the time scale (instantly)
+    public void ResetTime()
+    {
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
+    }
     #endregion
 
     #region Getters/Setters
