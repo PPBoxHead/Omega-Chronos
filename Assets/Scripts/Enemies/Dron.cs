@@ -12,8 +12,9 @@ public class Dron : Enemy
     [Range(1, 10)] [SerializeField] private int health = 2;
     private bool chasing;
     private Rigidbody2D rb;
+    private ParticlePoolManager particlePoolManager;
     #region Crashing
-    private float crashDuration = 0.5f;
+    private float crashDuration = 1f;
     private bool onDamage = false;
     private Vector2 crashVel;
     private Vector2 inNormal;
@@ -35,6 +36,7 @@ public class Dron : Enemy
         patrolCicle = GetComponent<SinMovement>();
         rb = GetComponent<Rigidbody2D>();
         tilemap = GameManager.GetInstance.GetTilemap;
+        particlePoolManager = ParticlePoolManager.GetInstance;
 
         GameManager.GetInstance.onGamePaused += Pause;
     }
@@ -68,19 +70,6 @@ public class Dron : Enemy
         }
     }
 
-    public void Crash()
-    {
-        StartCoroutine("Co_OnDamage");
-
-        if (target != null)
-        {
-            Vector2 direction = (target.position + targetOff - transform.position).normalized;
-            rb.velocity = Vector2.zero;
-
-            rb.velocity = -direction * crashForce;
-        }
-    }
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Floor"))
@@ -90,15 +79,38 @@ public class Dron : Enemy
             crashVel = (target.position + targetOff - transform.position).normalized;
 
             outDir = Vector2.Reflect((target.position + targetOff - transform.position).normalized, inNormal) * -1;
+            rb.velocity = Vector2.zero;
             rb.velocity = outDir.normalized * crashForce;
 
+            GameObject particles = particlePoolManager.GetPooledObject();
+            particles.transform.position = transform.position;
+            particles.GetComponent<ExplosionParticles>().direction = -outDir.normalized;
+            particles.SetActive(true);
+
+            StartCoroutine("Co_OnDamage");
+            return;
+        }
+
+        // no era la idea de que esto termine asi
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Vector2 direction = (target.position + targetOff - transform.position).normalized;
+            rb.velocity = Vector2.zero;
+
+            GameObject particles = particlePoolManager.GetPooledObject();
+            particles.transform.position = transform.position;
+            particles.GetComponent<ExplosionParticles>().direction = direction.normalized;
+            particles.SetActive(true);
+
+            rb.velocity = Vector2.zero;
+            rb.velocity = -direction * crashForce;
             StartCoroutine("Co_OnDamage");
         }
     }
 
     IEnumerator Co_OnDamage()
     {
-        TakeDamage(1);
+        // TakeDamage(1);
         onDamage = true;
         yield return new WaitForSeconds(crashDuration);
         onDamage = false;
