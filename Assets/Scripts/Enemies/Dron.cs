@@ -21,6 +21,7 @@ public class Dron : Enemy
     private Tilemap tilemap;
     private Vector2 outDir;
     #endregion
+    private Animator animator;
     #endregion
 
     #region Methods
@@ -30,6 +31,7 @@ public class Dron : Enemy
         initialHitPoints = health;
         hitPoints = initialHitPoints;
 
+        animator = GetComponent<Animator>();
         patrolCicle = GetComponent<SinMovement>();
         rb = GetComponent<Rigidbody2D>();
         tilemap = GameManager.GetInstance.GetTilemap;
@@ -45,6 +47,7 @@ public class Dron : Enemy
 
         if (target != null && !chasing)
         {
+            animator.Play("droneAlert");
             Chasing();
             chasing = true;
         }
@@ -59,6 +62,7 @@ public class Dron : Enemy
         if (target == null)
         {
             Patrol();
+            animator.Play("droneIdle");
             rb.velocity = Vector2.zero;
             chasing = false;
         }
