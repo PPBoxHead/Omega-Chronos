@@ -70,6 +70,7 @@ public class Turret : Enemy
         shootParticles.Play();
         bullet.transform.position = shootPoint.position;
         bullet.transform.right = direction;
+        bullet.GetComponent<Bullet>().direction = direction;
         bullet.SetActive(true);
         bullet.GetComponent<Rigidbody2D>().velocity = direction.normalized * bulletSpeed;
     }
