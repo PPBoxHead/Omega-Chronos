@@ -110,7 +110,7 @@ public class Dron : Enemy
 
     IEnumerator Co_OnDamage()
     {
-        // TakeDamage(1);
+        TakeDamage(1);
         onDamage = true;
         yield return new WaitForSeconds(crashDuration);
         onDamage = false;
