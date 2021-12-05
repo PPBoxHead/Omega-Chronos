@@ -9810,6 +9810,8 @@ MonoBehaviour:
   walkingParticles: {fileID: 4058758738675426623}
   jumpParticles: {fileID: 4058758739450585152}
   landingDeconfirm: 1
+  decayTime: 0.2
+  onDamageIntensity: 10
 --- !u!114 &4058758739774731896
 MonoBehaviour:
   m_ObjectHideFlags: 0

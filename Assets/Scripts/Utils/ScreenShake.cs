@@ -4,35 +4,18 @@ using Cinemachine;
 public class ScreenShake : MonoBehaviour
 {
     public static ScreenShake Instance { get; private set; }
-    private CinemachineVirtualCamera cmVC;
-    private float shakeTimer;
+    CinemachineImpulseSource impulseCam;
     private void Awake()
     {
         Instance = this;
-        cmVC = GetComponent<CinemachineVirtualCamera>();
+        impulseCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CinemachineImpulseSource>();
     }
 
-    public void ShakeCamera(float intensity, float time)
+    public void ShakeCamera(float SustainTime, float DecayTime, float intensity) //estos valores se pueden incrementar, referenciando en el void qué propiedades son.
     {
-        CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin =
-            cmVC.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-
-        cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = intensity;
-        shakeTimer = time;
-    }
-
-    private void Update()
-    {
-        if (shakeTimer > 0)
-        {
-            shakeTimer -= Time.deltaTime / Time.timeScale;
-            if (shakeTimer <= 0f)
-            {
-                CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin =
-                 cmVC.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-
-                cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0f;
-            }
-        }
+        impulseCam.m_ImpulseDefinition.m_TimeEnvelope.m_SustainTime = SustainTime;
+        impulseCam.m_ImpulseDefinition.m_TimeEnvelope.m_DecayTime = DecayTime;
+        impulseCam.m_ImpulseDefinition.m_AmplitudeGain = intensity;
+        impulseCam.GenerateImpulse();
     }
 }

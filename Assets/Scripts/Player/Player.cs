@@ -72,7 +72,10 @@ public class Player : MonoBehaviour
     [SerializeField] private ParticleSystem walkingParticles;
     [SerializeField] private ParticleSystem jumpParticles;
     public bool landingDeconfirm = true;
-
+    #region Damage
+    [SerializeField] private float decayTime, onDamageIntensity;
+    private ScreenShake screenShake;
+    #endregion
     #endregion
     #endregion
     #region Methods
@@ -96,6 +99,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        screenShake = ScreenShake.Instance;
         timeManager = GameManager.GetInstance.GetTimeManager;
         uIManager = UIManager.GetInstance;
         audioManager = AudioManager.Getinstance;
@@ -294,7 +298,7 @@ public class Player : MonoBehaviour
         {
             GameManager.GetInstance.PlayerDeath();
         }
-
+        screenShake.ShakeCamera(0, decayTime * timeManager.TimeScale, onDamageIntensity);
         StartCoroutine("Invulnerability");
     }
 

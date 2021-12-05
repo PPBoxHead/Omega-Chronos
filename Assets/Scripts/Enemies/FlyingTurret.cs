@@ -47,6 +47,11 @@ public class FlyingTurret : Turret
             {
                 rb.velocity = Vector2.Lerp(rb.velocity, -direction.normalized, Time.deltaTime * speed);
             }
+
+            if (Vector2.Distance(transform.position, target.position) >= playerDistance + 2)
+            {
+                rb.velocity = Vector2.Lerp(rb.velocity, direction.normalized, Time.deltaTime * speed);
+            }
         }
     }
 
