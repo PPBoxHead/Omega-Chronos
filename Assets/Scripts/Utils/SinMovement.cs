@@ -21,7 +21,6 @@ public class SinMovement : MonoBehaviour
     void Update()
     {
         if (onPause) return;
-
         transform.position = new Vector2(initialPos.x + Mathf.Sin(Time.time * hSpeed * hDir) * limitX, initialPos.y + Mathf.Sin(Time.time * vSpeed * vDir) * amplitude);
     }
 
