@@ -60,6 +60,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 972711c09f1282f4b9b4517ecfde0e4f, type: 3}
   - {fileID: 21300000, guid: 3f0dca41e1844c446af92644b482ada1, type: 3}
   - {fileID: 21300000, guid: 6c3396817bcbf3c478135b83a1ca9757, type: 3}
+  - {fileID: 21300000, guid: b92550910a473094e8640527bf93f262, type: 3}
   - {fileID: 1893322632476869263, guid: b2ccee91c30eb4f489692784426143a7, type: 3}
   - {fileID: -8350737307968738203, guid: b2ccee91c30eb4f489692784426143a7, type: 3}
   - {fileID: -1089538722077204183, guid: b2ccee91c30eb4f489692784426143a7, type: 3}
@@ -177,6 +178,7 @@ SpriteAtlas:
   - {fileID: -6492539065188613490, guid: 56499ce24c1883d46b19c6494397ffa0, type: 3}
   - {fileID: 363717799979384940, guid: 56499ce24c1883d46b19c6494397ffa0, type: 3}
   - {fileID: 8143109878963961586, guid: 56499ce24c1883d46b19c6494397ffa0, type: 3}
+  - {fileID: 21300000, guid: 06e5d51398808274da58259128c392c7, type: 3}
   - {fileID: -2182684873710546419, guid: 97330253d188dea4abe29ebc3b9f25fb, type: 3}
   - {fileID: -8075978015369437535, guid: 97330253d188dea4abe29ebc3b9f25fb, type: 3}
   - {fileID: 7732573167166319159, guid: 97330253d188dea4abe29ebc3b9f25fb, type: 3}
@@ -300,6 +302,7 @@ SpriteAtlas:
   - {fileID: -8044574720832547251, guid: 00267073fe4ecb7498d7e0ed5b7c57f6, type: 3}
   - {fileID: 4564019886108731707, guid: 00267073fe4ecb7498d7e0ed5b7c57f6, type: 3}
   - {fileID: 7874926047044238246, guid: 00267073fe4ecb7498d7e0ed5b7c57f6, type: 3}
+  - {fileID: 21300000, guid: fa9f3ea3bb46f674ba0da868f3758cd8, type: 3}
   - {fileID: 9216723014588578234, guid: 4d7cdce3b52974244b9ead24e91a66f2, type: 3}
   - {fileID: -6061738027123597312, guid: 4d7cdce3b52974244b9ead24e91a66f2, type: 3}
   - {fileID: 5487757385240709835, guid: 4d7cdce3b52974244b9ead24e91a66f2, type: 3}
@@ -307,6 +310,7 @@ SpriteAtlas:
   - {fileID: -4830678318966044283, guid: 4d7cdce3b52974244b9ead24e91a66f2, type: 3}
   - {fileID: 21300000, guid: 7e39cf44dd1a0c344aa628efbd5bd843, type: 3}
   - {fileID: 21300000, guid: 56b6a3746cead9247811043043f23735, type: 3}
+  - {fileID: 21300000, guid: 4b8480252b58b9f4ea6a7c29bb5d664d, type: 3}
   - {fileID: 21300000, guid: 7dac2cb5aab4891429109c4d19705b98, type: 3}
   - {fileID: 21300000, guid: 33ad40f5b49caee4da8ae88e9415c65e, type: 3}
   - {fileID: 21300000, guid: 6da3b256e6a452e4ebd1cb8d4bc24920, type: 3}
@@ -420,6 +424,7 @@ SpriteAtlas:
   - {fileID: 8815068850755236339, guid: 8fd494567669a384e981dd97dbb5c00c, type: 3}
   - {fileID: 8078185458483444371, guid: 8fd494567669a384e981dd97dbb5c00c, type: 3}
   - {fileID: 4696969064008877487, guid: 8fd494567669a384e981dd97dbb5c00c, type: 3}
+  - {fileID: 21300000, guid: 72b79956e95c30f4dbc22b5750e38b17, type: 3}
   - {fileID: -5512729702421658733, guid: 1964e1a6b4f3c504ba23520c1161ab53, type: 3}
   - {fileID: 6296152794634419098, guid: 1964e1a6b4f3c504ba23520c1161ab53, type: 3}
   - {fileID: -3480662651365253623, guid: 1964e1a6b4f3c504ba23520c1161ab53, type: 3}
@@ -435,6 +440,7 @@ SpriteAtlas:
   - {fileID: -5785787140836165650, guid: 1964e1a6b4f3c504ba23520c1161ab53, type: 3}
   - {fileID: 3294704524587484360, guid: 1964e1a6b4f3c504ba23520c1161ab53, type: 3}
   - {fileID: 21300000, guid: 4154750716cae534cacc1167356b0adf, type: 3}
+  - {fileID: 21300000, guid: e03243175323e53428f225fdb7d9d8e6, type: 3}
   - {fileID: 3017725317751706052, guid: b567937775c168a40a0ff6023b980373, type: 3}
   - {fileID: -8155731236952702908, guid: b567937775c168a40a0ff6023b980373, type: 3}
   - {fileID: 7524778405161490502, guid: b567937775c168a40a0ff6023b980373, type: 3}
@@ -644,6 +650,7 @@ SpriteAtlas:
   - {fileID: 8044979951857965708, guid: 28e16969e807fb540b82fddf6475c34e, type: 3}
   - {fileID: 8411221633477758481, guid: 28e16969e807fb540b82fddf6475c34e, type: 3}
   - {fileID: 21300000, guid: 4fb4e779cca28064299613bdb17d1bf9, type: 3}
+  - {fileID: 21300000, guid: 1c745f79ef30d854a91ad62970dc36f9, type: 3}
   - {fileID: -586920109346626780, guid: 7d8b12d96bfba074c99706f5a0b2ac1d, type: 3}
   - {fileID: 2296841469776399539, guid: 7d8b12d96bfba074c99706f5a0b2ac1d, type: 3}
   - {fileID: 7973261926088391741, guid: 7d8b12d96bfba074c99706f5a0b2ac1d, type: 3}
@@ -743,6 +750,7 @@ SpriteAtlas:
   - {fileID: 5774028964461950615, guid: a7d9a87c9c517d545a92b89e964ce800, type: 3}
   - {fileID: 5714226012413110899, guid: a7d9a87c9c517d545a92b89e964ce800, type: 3}
   - {fileID: 21300000, guid: 39530bbcd4fa34d4789caed55e1f945a, type: 3}
+  - {fileID: 21300000, guid: a675f6cc707057941989572b5540c898, type: 3}
   - {fileID: 2208703988740019828, guid: e5cf931daa3abb74aaa4ca0146d5fd6f, type: 3}
   - {fileID: 4385501425044414559, guid: e5cf931daa3abb74aaa4ca0146d5fd6f, type: 3}
   - {fileID: -782878076177916769, guid: 6cf5c93d6fc021742a98ceac16f0ff9e, type: 3}
@@ -893,6 +901,7 @@ SpriteAtlas:
   - {fileID: -3623480318195653050, guid: 16ef0d1e968b9aa4390713cc7934b8ac, type: 3}
   - {fileID: 1332353173810187547, guid: 16ef0d1e968b9aa4390713cc7934b8ac, type: 3}
   - {fileID: 2903168440413767712, guid: 16ef0d1e968b9aa4390713cc7934b8ac, type: 3}
+  - {fileID: 21300000, guid: 809c592eeeb1a404da5116d0b3f8b17a, type: 3}
   - {fileID: -1022153882460306452, guid: 20b14c2e8f627364a888ee26b034861a, type: 3}
   - {fileID: 6215278005389882450, guid: 20b14c2e8f627364a888ee26b034861a, type: 3}
   - {fileID: 3791909821083061939, guid: 20b14c2e8f627364a888ee26b034861a, type: 3}
@@ -1321,6 +1330,7 @@ SpriteAtlas:
   - Turret_Body
   - Boss_Eye
   - FogFront
+  - Boss_Eye-frame-8
   - BossTiles_11
   - BossTiles_10
   - BossTiles_13
@@ -1438,6 +1448,7 @@ SpriteAtlas:
   - CaveDoor_22
   - CaveDoor_29
   - CaveDoor_28
+  - Boss_Eye-frame-2
   - DustTiles_23
   - DustTiles_22
   - DustTiles_21
@@ -1561,6 +1572,7 @@ SpriteAtlas:
   - Bug_WallGrab_2.0 Sprite Sheet_2
   - Bug_WallGrab_2.0 Sprite Sheet_3
   - Bug_WallGrab_2.0 Sprite Sheet_4
+  - Boss_Eye-frame-5
   - Dron_Alert_0
   - Dron_Alert_1
   - Dron_Alert_2
@@ -1568,6 +1580,7 @@ SpriteAtlas:
   - Dron_Alert_4
   - Boss_Body
   - Tv_used
+  - Boss_Eye-frame-1
   - ThisMan
   - Turret_Canon
   - StaticTurret
@@ -1681,6 +1694,7 @@ SpriteAtlas:
   - OmegaCave_Tileset_2.1_62
   - OmegaCave_Tileset_2.1_61
   - OmegaCave_Tileset_2.1_60
+  - Boss_Eye-frame-4
   - Bug_Run_2.1 Sprite Sheet_13
   - Bug_Run_2.1 Sprite Sheet_12
   - Bug_Run_2.1 Sprite Sheet_11
@@ -1696,6 +1710,7 @@ SpriteAtlas:
   - Bug_Run_2.1 Sprite Sheet_8
   - Bug_Run_2.1 Sprite Sheet_9
   - Slow Icon
+  - Boss_Eye-frame-0
   - Pedro Sprite Sheet_2
   - Pedro Sprite Sheet_3
   - Pedro Sprite Sheet_0
@@ -1905,6 +1920,7 @@ SpriteAtlas:
   - Cave_Background 2.1_43
   - Cave_Background 2.1_42
   - FogMid
+  - Boss_Eyel-frame-7
   - EvilPedro Sprite Sheet_0
   - EvilPedro Sprite Sheet_1
   - EvilPedro Sprite Sheet_2
@@ -2004,6 +2020,7 @@ SpriteAtlas:
   - Bug_Idle_2.0 Sprite Sheet_2
   - Bug_Idle_2.0 Sprite Sheet_3
   - Cave_Cables.3_Background
+  - Boss_Eye-frame-6
   - Bullet_0
   - Bullet_1
   - ChronoFill Sprite Sheet 1_6
@@ -2154,6 +2171,7 @@ SpriteAtlas:
   - Omega Turret_2
   - Omega Turret_1
   - Omega Turret_0
+  - Boss_Eye-frame-3
   - Cave_Background 3_9
   - Cave_Background 3_8
   - Cave_Background 3_1

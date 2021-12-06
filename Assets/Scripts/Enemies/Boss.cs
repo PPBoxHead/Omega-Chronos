@@ -7,13 +7,13 @@ public class Boss : Turret
     // lo correcto seria tener una clase turret y diferenciarlas de bullet turret
     // con laser turret pero bueno
     #region Variables
-    [SerializeField] private SpriteRenderer eyeIris, eyeBackgrond;
+    [SerializeField] private SpriteRenderer eyeSprite;
     [SerializeField] private float damageDuration = 2;
     [SerializeField] private GameObject laserBeam;
     [SerializeField] private float laserCooldown;
     [SerializeField] private float laserSpeed;
     [SerializeField] private Vector3 finalRot;
-    [SerializeField] private Transform eye;
+    [SerializeField] private Transform eyeRotationPivot;
     private bool isDamaged, damaging = false;
     private bool laserActivating = true;
     private bool returning = false;
@@ -75,7 +75,7 @@ public class Boss : Turret
         // por que es + 90? y el otro -90? no lo se, no recuerdo
         // como se calculaba el angle, lo saque de internet y funciona asi
         // seguro se puede ajustar pero whatever
-        eye.rotation = Quaternion.RotateTowards(eye.rotation, Quaternion.Euler(new Vector3(0, 0, angle + 90)), laserSpeed * Time.deltaTime);
+        eyeRotationPivot.rotation = Quaternion.RotateTowards(eyeRotationPivot.rotation, Quaternion.Euler(new Vector3(0, 0, angle + 90)), laserSpeed * Time.deltaTime);
     }
 
     void LaserDamage()
@@ -95,8 +95,7 @@ public class Boss : Turret
     {
         laserActivating = false;
         yield return new WaitForSeconds(laserCooldown);
-        eyeIris.color = Color.red;
-        eyeBackgrond.color = Color.red;
+        eyeSprite.color = Color.red;
         yield return new WaitForSeconds(laserCooldown / 4);
         laserBeam.SetActive(true);
         shooting = true;
@@ -123,8 +122,7 @@ public class Boss : Turret
         {
             returning = false;
             laserActivating = true;
-            eyeIris.color = Color.white;
-            eyeBackgrond.color = Color.white;
+            eyeSprite.color = Color.white;
         }
     }
 
@@ -157,7 +155,7 @@ public class Boss : Turret
 
     void DamageAnim()
     {
-        eye.rotation *= Quaternion.Euler(new Vector3(0, 0, 2f));
+        eyeRotationPivot.rotation *= Quaternion.Euler(new Vector3(0, 0, 2f));
     }
     #endregion
 }
