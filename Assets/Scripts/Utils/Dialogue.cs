@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 
 public class Dialogue : MonoBehaviour
@@ -10,6 +11,7 @@ public class Dialogue : MonoBehaviour
     [Header("Settings")]
     [Range(0.01f, 0.8f), SerializeField] private float delay = 0.05f;
     [Range(1, 10), SerializeField] private float timeBetweenDialogues = 2;
+    private List<TextAsset> textAssets = new List<TextAsset>();
     private AudioManager audioManager;
     private bool finished = false;
     #endregion
@@ -45,15 +47,22 @@ public class Dialogue : MonoBehaviour
     #endregion
 
     #region TextShowing
-    void ShowText(TextAsset[] textAssets)
+    void ShowText(TextAsset[] textAssetsParam)
     {
+        textAssets.Clear();
+
+        foreach (TextAsset textAsset in textAssetsParam)
+        {
+            textAssets.Add(textAsset);
+        }
+
         dialogueBox.SetActive(true);
         // reads between text files in gameobject
         StopAllCoroutines();
-        StartCoroutine("ReadText", textAssets);
+        StartCoroutine("ReadText");
     }
 
-    IEnumerator ReadText(TextAsset[] textAssets)
+    IEnumerator ReadText()
     {
         // passes 1 textasset and waits between those
         foreach (TextAsset textAsset in textAssets)
@@ -86,6 +95,7 @@ public class Dialogue : MonoBehaviour
 
     public void StopText()
     {
+        textAssets.Clear();
         dialogueBox.SetActive(false);
         StopAllCoroutines();
     }
