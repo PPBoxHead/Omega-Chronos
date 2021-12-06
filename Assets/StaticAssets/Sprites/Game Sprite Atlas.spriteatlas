@@ -958,6 +958,7 @@ SpriteAtlas:
   - {fileID: -1288681266646082725, guid: e901fc2ed986c46488b723a140159ef5, type: 3}
   - {fileID: 8074217901968338481, guid: e901fc2ed986c46488b723a140159ef5, type: 3}
   - {fileID: -4364881994747798708, guid: e901fc2ed986c46488b723a140159ef5, type: 3}
+  - {fileID: 21300000, guid: ba6afd5edf1a3a9478503b2e8bfa87d8, type: 3}
   - {fileID: 21300000, guid: 61e05a9e151e0c749bb2a161f9eef134, type: 3}
   - {fileID: 7319240407487189950, guid: 6d6730aeb620c184f8de84e8506975fa, type: 3}
   - {fileID: 7987356225670161031, guid: 6d6730aeb620c184f8de84e8506975fa, type: 3}
@@ -2218,6 +2219,7 @@ SpriteAtlas:
   - Bug_Run Jump Sprite Sheet_3
   - Bug_Run Jump Sprite Sheet_0
   - Bug_Run Jump Sprite Sheet_1
+  - 4lan
   - AscensorInside
   - ChronoTime_Value_V2_3
   - ChronoTime_Value_V2_2
