@@ -7,13 +7,14 @@ public class Boss : Turret
     // lo correcto seria tener una clase turret y diferenciarlas de bullet turret
     // con laser turret pero bueno
     #region Variables
-    [SerializeField] private Gun laser;
     [SerializeField] private SpriteRenderer eyeSprite;
     [SerializeField] private float damageDuration = 2;
     [SerializeField] private float laserCooldown;
     [SerializeField] private float laserSpeed;
     [SerializeField] private Vector3 finalRot;
     [SerializeField] private Transform eyeRotationPivot;
+    [SerializeField] private Gun laser;
+    [SerializeField] private Animator animator;
     private bool isDamaged, damaging = false;
     private bool laserActivating = true;
     private bool returning = false;
@@ -95,6 +96,7 @@ public class Boss : Turret
         laserActivating = false;
         yield return new WaitForSeconds(laserCooldown);
         eyeSprite.color = Color.red;
+        animator.Play("Charging");
         yield return new WaitForSeconds(laserCooldown / 4);
         laser.EnableLaser();
         shooting = true;
@@ -111,6 +113,7 @@ public class Boss : Turret
             shooting = false;
             returning = true;
             laser.DisableLaser();
+            animator.Play("Idle");
         }
     }
 

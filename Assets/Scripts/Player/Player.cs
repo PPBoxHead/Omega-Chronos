@@ -400,6 +400,8 @@ public class Player : MonoBehaviour
     void OnSlowMotion(bool isTimeSlow)
     {
         onSlowmo = isTimeSlow;
+        // Emanuel
+        // screenShake.ShakeCamera(0, decayTime * 10 * timeManager.TimeScale, onDamageIntensity);
 
         if (!isTimeSlow)
         {
