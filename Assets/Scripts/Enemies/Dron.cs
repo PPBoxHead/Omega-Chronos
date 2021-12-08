@@ -22,6 +22,7 @@ public class Dron : Enemy
     private Tilemap tilemap;
     private Vector2 outDir;
     #endregion
+    private bool isDead = false;
     private Animator animator;
     #endregion
 
@@ -72,6 +73,7 @@ public class Dron : Enemy
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        if (isDead) return;
         if (other.gameObject.CompareTag("Floor"))
         {
             inNormal = other.contacts[0].normal;
@@ -114,6 +116,35 @@ public class Dron : Enemy
         onDamage = true;
         yield return new WaitForSeconds(crashDuration);
         onDamage = false;
+
+
+    }
+
+    protected override void Death()
+    {
+        if (isDead) return;
+        isDead = true;
+        rb.gravityScale = 4;
+
+        GameObject explosion = particlePoolManager.GetExplosion();
+        if (explosion != null)
+        {
+            explosion.transform.parent = transform;
+            explosion.transform.position = transform.position;
+            explosion.SetActive(true);
+        }
+
+        GameObject smoke = particlePoolManager.GetSmoke();
+
+        if (smoke != null)
+        {
+            smoke.transform.position = transform.position;
+            smoke.transform.parent = transform;
+            smoke.SetActive(true);
+        }
+
+        animator.Play("droneIdle");
+        GetComponent<Dron>().enabled = false;
     }
 
     private void OnDrawGizmos()

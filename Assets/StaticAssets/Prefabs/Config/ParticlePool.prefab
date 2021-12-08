@@ -45,3 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlesPool: []
   particlesPrefab: {fileID: 3208161233273352935, guid: be391c42ca34a0846b0a130138e374f6, type: 3}
+  explosionPool: []
+  explosionsPrefab: {fileID: 6741644844497585742, guid: f99bb64cf447ae749bb6654e503a45ad, type: 3}
+  smokePool: []
+  smokesPrefab: {fileID: 2434861606669070855, guid: 1ac669f5691030c4a837d141688f4dcd, type: 3}

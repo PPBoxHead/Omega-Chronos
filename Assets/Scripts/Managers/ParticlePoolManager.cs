@@ -6,10 +6,19 @@ public class ParticlePoolManager : MonoBehaviour
     #region Variables
     private static ParticlePoolManager instance;
     #region Setup
+    [Header("Crash Particles")]
     [SerializeField] private List<GameObject> particlesPool;
     [SerializeField] private GameObject particlesPrefab;
-    private Transform particlesParent;
     private int particlesAmount = 10;
+    [Header("Explosion Particles")]
+    [SerializeField] private List<GameObject> explosionPool;
+    [SerializeField] private GameObject explosionsPrefab;
+    private int explosionsAmount = 5;
+    [Header("Smoke Particles")]
+    [SerializeField] private List<GameObject> smokePool;
+    [SerializeField] private GameObject smokesPrefab;
+    private int smokesAmount = 5;
+    private Transform particlesParent;
     #endregion
     #endregion
 
@@ -28,8 +37,10 @@ public class ParticlePoolManager : MonoBehaviour
 
     private void Start()
     {
+        // crash
         particlesParent = GameObject.Find("ParticlePool").transform;
         particlesPool = new List<GameObject>();
+        explosionPool = new List<GameObject>();
 
         GameObject go;
 
@@ -41,6 +52,26 @@ public class ParticlePoolManager : MonoBehaviour
 
             particlesPool.Add(go);
         }
+
+        // explosions
+        for (int i = 0; i < explosionsAmount; i++)
+        {
+            go = Instantiate(explosionsPrefab);
+            go.transform.parent = particlesParent;
+            go.SetActive(false);
+
+            explosionPool.Add(go);
+        }
+
+        // Smoke
+        for (int i = 0; i < smokesAmount; i++)
+        {
+            go = Instantiate(smokesPrefab);
+            go.transform.parent = particlesParent;
+            go.SetActive(false);
+
+            smokePool.Add(go);
+        }
     }
 
     public GameObject GetPooledObject()
@@ -50,6 +81,30 @@ public class ParticlePoolManager : MonoBehaviour
             if (!particlesPool[i].activeInHierarchy)
             {
                 return particlesPool[i];
+            }
+        }
+        return null;
+    }
+
+    public GameObject GetExplosion()
+    {
+        for (int i = 0; i < explosionsAmount; i++)
+        {
+            if (!explosionPool[i].activeInHierarchy)
+            {
+                return explosionPool[i];
+            }
+        }
+        return null;
+    }
+
+    public GameObject GetSmoke()
+    {
+        for (int i = 0; i < smokesAmount; i++)
+        {
+            if (!smokePool[i].activeInHierarchy)
+            {
+                return smokePool[i];
             }
         }
         return null;
