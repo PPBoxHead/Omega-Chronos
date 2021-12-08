@@ -98,6 +98,7 @@ public class Boss : Turret
         eyeSprite.color = Color.red;
         animator.Play("Charging");
         yield return new WaitForSeconds(laserCooldown / 4);
+        laser.UpdateLaser();
         laser.EnableLaser();
         shooting = true;
     }

@@ -5,20 +5,31 @@ using System.Collections;
 public class LaserTurret : MonoBehaviour
 {
     #region Variables
-    [SerializeField] private GameObject[] indicators;
+    [SerializeField] private Sprite[] indicators;
     [SerializeField] private float shootDuration = 5;
     [SerializeField] private GameObject laserBeam;
     [SerializeField] private GameObject readySign;
     [SerializeField] private float cooldown = 20;
-    private float timer = 0;
+    private SpriteRenderer spriteRenderer;
+    private ScreenShake screenShake;
     private bool isFinished = true;
+    private float timer = 0;
     private bool isStarted;
     private bool shooting;
-
     public UnityEvent onShoot;
     #endregion
 
     #region Methods
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        screenShake = ScreenShake.Instance;
+    }
+
     private void Update()
     {
         if (isStarted)
@@ -28,14 +39,9 @@ public class LaserTurret : MonoBehaviour
             float value = timer / cooldown;
             int bars = Mathf.RoundToInt(value * indicators.Length);
 
-            for (int i = 0; i < bars; i++)
+            if (bars < indicators.Length)
             {
-                indicators[i].SetActive(true);
-            }
-
-            for (int i = bars; i < indicators.Length; i++)
-            {
-                indicators[i].SetActive(false);
+                spriteRenderer.sprite = indicators[bars];
             }
 
             if (timer >= cooldown)
@@ -66,16 +72,13 @@ public class LaserTurret : MonoBehaviour
         shooting = false;
         laserBeam.SetActive(true);
         onShoot?.Invoke();
+        screenShake.ShakeCamera(0, shootDuration, 10);
         yield return new WaitForSeconds(shootDuration);
         laserBeam.SetActive(false);
         timer = 0;
         readySign.SetActive(true);
         isFinished = true;
-
-        foreach (GameObject item in indicators)
-        {
-            item.SetActive(false);
-        }
+        spriteRenderer.sprite = indicators[0];
     }
     #endregion
 }
