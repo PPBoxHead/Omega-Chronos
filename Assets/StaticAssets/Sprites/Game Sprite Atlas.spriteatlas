@@ -313,6 +313,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 7e39cf44dd1a0c344aa628efbd5bd843, type: 3}
   - {fileID: 21300000, guid: 56b6a3746cead9247811043043f23735, type: 3}
   - {fileID: 21300000, guid: 4b8480252b58b9f4ea6a7c29bb5d664d, type: 3}
+  - {fileID: 21300000, guid: 3b2c097508e81d64b95990b084ec1154, type: 3}
   - {fileID: 21300000, guid: 7dac2cb5aab4891429109c4d19705b98, type: 3}
   - {fileID: 21300000, guid: 33ad40f5b49caee4da8ae88e9415c65e, type: 3}
   - {fileID: 21300000, guid: 6da3b256e6a452e4ebd1cb8d4bc24920, type: 3}
@@ -523,6 +524,7 @@ SpriteAtlas:
   - {fileID: -4092989719142813662, guid: efcecad782e75904e967a4628855798f, type: 3}
   - {fileID: -1445938300909666863, guid: efcecad782e75904e967a4628855798f, type: 3}
   - {fileID: 2233654920612319544, guid: efcecad782e75904e967a4628855798f, type: 3}
+  - {fileID: 21300000, guid: 04b7c018963c004429a688ae98e51ad3, type: 3}
   - {fileID: 21300000, guid: 1f72f248743342c4aafd5c7ac6d0b7ba, type: 3}
   - {fileID: 21300000, guid: df29865856d167142a6806b331cf3d83, type: 3}
   - {fileID: 21300000, guid: a57c717884a23ec408621339012a60e4, type: 3}
@@ -1346,6 +1348,7 @@ SpriteAtlas:
   - {fileID: 3817293773274463851, guid: dcf4f1cff0aae944b89825391b10e242, type: 3}
   - {fileID: 5158742184772227634, guid: dcf4f1cff0aae944b89825391b10e242, type: 3}
   - {fileID: 493346400227281628, guid: dcf4f1cff0aae944b89825391b10e242, type: 3}
+  - {fileID: 21300000, guid: 9abc4edf1acf6a54c912e5563ac7c9ee, type: 3}
   m_PackedSpriteNamesToIndex:
   - SpriteLimitInterface
   - Tvs_1
@@ -1354,7 +1357,7 @@ SpriteAtlas:
   - SlowLimit
   - SlowFill
   - Turret_Body
-  - Boss_L.Arm-1
+  - Boss_L.Arm-2
   - Boss_Eye
   - FogFront
   - Boss_Eye-frame-8
@@ -1609,6 +1612,7 @@ SpriteAtlas:
   - Boss_Body
   - Tv_used
   - Boss_Eye-frame-1
+  - Boss_Body-Damage2v2
   - ThisMan
   - Turret_Canon
   - StaticTurret
@@ -1819,6 +1823,7 @@ SpriteAtlas:
   - DustTiles3_67
   - DustTiles3_64
   - DustTiles3_65
+  - Boss_Body-Damage3v2
   - Boss_Body-Damage2
   - Boss_BackEye
   - Boss_R.Arm-2
@@ -2574,7 +2579,7 @@ SpriteAtlas:
   - Cave_Background_1
   - Cave_Background_8
   - Cave_Background_9
-  - Boss_L.Arm-2
+  - Boss_L.Arm-1
   - DustHouse_4
   - DustHouse_5
   - DustHouse_6
@@ -2642,6 +2647,7 @@ SpriteAtlas:
   - Nu-Life Sprite Sheet_2
   - Nu-Life Sprite Sheet_0
   - Nu-Life Sprite Sheet_1
+  - Boss_Body-Damage1v2
   m_RenderDataMap: {}
   m_Tag: Game Sprite Atlas
   m_IsVariant: 0

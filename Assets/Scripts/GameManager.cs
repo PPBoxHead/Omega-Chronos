@@ -22,9 +22,11 @@ public class GameManager : MonoBehaviour
     private KeyCode pauseBtn;
     #endregion
     #region Death
+    // super cutre pero it works (❁´◡`❁)
+    [SerializeField] private GameObject deathAnim;
+    [SerializeField] private Animator deathAnimText;
     public delegate void OnDeath(float duration);
     public event OnDeath onDeath;
-    public GameObject deathText;
     private float duration = 2f;
     #endregion
     #region Singleton
@@ -86,25 +88,27 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDeath()
     {
-        if (onDeath != null)
-        {
-            onDeath(duration);
-            StartCoroutine("DeathMessage", duration);
-        }
-
         if (SceneManager.GetActiveScene().name == "Lvl04")
         {
             // como esta solo para este caso lo hice asi nomas
             // se puede dejar mas lindo
             SceneManager.LoadScene("Lvl04");
+            return;
+        }
+
+        if (onDeath != null)
+        {
+            onDeath(duration);
+            StartCoroutine("DeathMessage", duration);
         }
     }
 
     IEnumerator DeathMessage(float duration)
     {
-        deathText.SetActive(true);
+        deathAnim.SetActive(true);
+        deathAnimText.Play("Text");
         yield return new WaitForSeconds(duration);
-        deathText.SetActive(false);
+        deathAnim.SetActive(false);
     }
 
     void OnDestroy()

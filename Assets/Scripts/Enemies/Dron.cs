@@ -116,8 +116,6 @@ public class Dron : Enemy
         onDamage = true;
         yield return new WaitForSeconds(crashDuration);
         onDamage = false;
-
-
     }
 
     protected override void Death()
@@ -125,6 +123,7 @@ public class Dron : Enemy
         if (isDead) return;
         isDead = true;
         rb.gravityScale = 4;
+        rb.freezeRotation = false;
 
         GameObject explosion = particlePoolManager.GetExplosion();
         if (explosion != null)
@@ -143,7 +142,8 @@ public class Dron : Enemy
             smoke.SetActive(true);
         }
 
-        animator.Play("droneIdle");
+        animator.Play("droneDeath");
+        GetComponent<OnCollision>().isEnabled = false;
         GetComponent<Dron>().enabled = false;
     }
 

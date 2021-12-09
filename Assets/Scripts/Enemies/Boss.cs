@@ -15,6 +15,12 @@ public class Boss : Turret
     [SerializeField] private Transform eyeRotationPivot;
     [SerializeField] private Gun laser;
     [SerializeField] private Animator animator;
+    [Header("Arms")]
+    [SerializeField] private SpriteRenderer[] armsRenderer;
+    [SerializeField] private Sprite[] armSprite;
+    [Header("Body")]
+    [SerializeField] private SpriteRenderer bodyRenderer;
+    [SerializeField] private Sprite[] bodySprites;
     private bool isDamaged, damaging = false;
     private bool laserActivating = true;
     private bool returning = false;
@@ -36,6 +42,7 @@ public class Boss : Turret
         if (isDamaged)
         {
             if (!damaging) StartCoroutine("OnDamage");
+            laser.UpdateLaser();
             DamageAnim();
             return;
         }
@@ -139,6 +146,20 @@ public class Boss : Turret
     {
         isDamaged = true;
         hitPoints -= value;
+
+        // ESTA HORRIBLE 👍
+        if (hitPoints >= 1) bodyRenderer.sprite = bodySprites[hitPoints - 1];
+        foreach (SpriteRenderer arm in armsRenderer)
+        {
+            if (hitPoints <= 1)
+            {
+                arm.gameObject.SetActive(false);
+            }
+            else
+            {
+                arm.sprite = armSprite[hitPoints - 2];
+            }
+        }
 
         if (hitPoints <= 0)
         {
