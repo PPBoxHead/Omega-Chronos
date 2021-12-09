@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
     #region Particles
     [SerializeField] private ParticleSystem walkingParticles;
     [SerializeField] private ParticleSystem jumpParticles;
-    [SerializeField] private TrailRenderer trailRenderer;
+    [SerializeField] private SlowmoTrial slowmoTrial;
     public bool landingDeconfirm = true;
     #region Damage
     [SerializeField] private float decayTime, onDamageIntensity;
@@ -403,8 +403,9 @@ public class Player : MonoBehaviour
         onSlowmo = isTimeSlow;
 
         // screenShake.ShakeCamera(0.5f, decayTime * 4 * timeManager.TimeScale, 2);
-        trailRenderer.Clear();
-        trailRenderer.enabled = isTimeSlow;
+        //trailRenderer.Clear();
+        //trailRenderer.enabled = isTimeSlow;
+        slowmoTrial.makeGhost = isTimeSlow;
 
         if (!isTimeSlow)
         {
