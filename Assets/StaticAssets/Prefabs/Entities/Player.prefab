@@ -9871,7 +9871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c99e27ddf7914f4391a89deb1b48be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghostDelay: 0.1
+  ghostDelay: 0.01
   body: {fileID: 0}
   ghost: {fileID: 2141180463467498978, guid: c760a40303a11ba489e6e838e518f0b5, type: 3}
   makeGhost: 0
