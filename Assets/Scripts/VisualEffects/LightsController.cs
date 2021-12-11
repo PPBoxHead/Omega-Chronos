@@ -4,6 +4,9 @@ using System.Collections;
 
 public class LightsController : MonoBehaviour
 {
+    // esto iba a ser solo para las luces pero 
+    // al final lo usamos para todo porque resulto
+    // super util
     [SerializeField] private bool activating = false;
     [SerializeField] private float speed = 3;
     public UnityEvent[] turnOnLights;
