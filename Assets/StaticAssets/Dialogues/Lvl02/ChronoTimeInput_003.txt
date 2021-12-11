@@ -1,0 +1,1 @@
+Pressing the Left Shift Key in her head, it will be able to Slow the Time.deltaTime for a few seconds.

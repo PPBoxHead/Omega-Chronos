@@ -1,0 +1,1 @@
+Those walls with white texture are enabled to propel you every time you touch one of them and press Space.
