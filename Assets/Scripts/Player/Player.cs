@@ -78,6 +78,9 @@ public class Player : MonoBehaviour
     private ScreenShake screenShake;
     #endregion
     #endregion
+    #region Colors
+    private PlayerColor playerColor;
+    #endregion
     #endregion
     #region Methods
     void LandingConfirm()
@@ -94,6 +97,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        playerColor = GetComponentInChildren<PlayerColor>();
 
         gravityScale = rb.gravityScale;
     }
@@ -313,7 +317,7 @@ public class Player : MonoBehaviour
         // es 1s in real time
         yield return new WaitForSeconds(1 * timeManager.TimeScale);
         isVulnerable = true;
-        spriteRenderer.color = Color.white;
+        spriteRenderer.color = playerColor.GetColor;
     }
 
     void OnDeath(float duration)
