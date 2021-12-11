@@ -10,7 +10,7 @@ public class FlyingTurret : Turret
     // (y ya que funciona no voy a cambiar que herede de torreta)
     #region Variables
     [SerializeField, Range(1, 15)] private int playerDistance = 10;
-    [SerializeField, Range(20, 60)] private int speed = 30;
+    [SerializeField, Range(20, 60)] private int speed = 60;
     public UnityEvent onDeath;
     private Rigidbody2D rb;
     #endregion
