@@ -106,6 +106,8 @@ public class Dron : Enemy
 
             rb.velocity = Vector2.zero;
             rb.velocity = -direction * crashForce;
+            Debug.Log(hitPoints);
+            if (hitPoints == 1) GetComponent<OnCollision>().onCollisionEnter?.Invoke(); // fue una solucion media rancia pero no se ejecutaba la ultima vez, asi lo forzamos a que lo haga
             StartCoroutine("Co_OnDamage");
         }
     }
@@ -144,7 +146,6 @@ public class Dron : Enemy
 
         animator.Play("droneDeath");
         GetComponent<OnCollision>().isEnabled = false;
-        // GetComponent<OnCollision>().onCollisionEnter?.Invoke(); // fue una solucion media rancia pero no se ejecutaba la ultima vez, asi lo forzamos a que lo haga
         GetComponent<Dron>().enabled = false;
     }
 
