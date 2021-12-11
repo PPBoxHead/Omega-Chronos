@@ -6,6 +6,7 @@ public class LaserTurret : MonoBehaviour
 {
     #region Variables
     [SerializeField] private Sprite[] indicators;
+    [SerializeField] private GameObject endParticles;
     [SerializeField] private float shootDuration = 5;
     [SerializeField] private GameObject laserBeam;
     [SerializeField] private GameObject readySign;
@@ -65,6 +66,15 @@ public class LaserTurret : MonoBehaviour
             readySign.SetActive(false);
             isFinished = false;
         }
+    }
+
+    public void LaserLength()
+    {
+        LineRenderer go;
+        Vector3 offset = new Vector3(0, 29, 0);
+        go = GetComponentInChildren<LineRenderer>();
+        go.SetPosition(1, go.GetPosition(1) + offset);
+        endParticles.SetActive(false);
     }
 
     IEnumerator Shooting()

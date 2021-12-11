@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
         {
             // como esta solo para este caso lo hice asi nomas
             // se puede dejar mas lindo
+            timeManager.ResetTime();
             SceneManager.LoadScene("Lvl04");
             return;
         }
