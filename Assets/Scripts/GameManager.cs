@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     // super cutre pero it works (❁´◡`❁)
     [SerializeField] private GameObject deathAnim;
     [SerializeField] private Animator deathAnimText;
+    [SerializeField] private GameObject DeathTest;
     public delegate void OnDeath(float duration);
     public event OnDeath onDeath;
     private float duration = 2f;
@@ -88,14 +89,14 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDeath()
     {
-        if (SceneManager.GetActiveScene().name == "Lvl04")
-        {
-            // como esta solo para este caso lo hice asi nomas
-            // se puede dejar mas lindo
-            timeManager.ResetTime();
-            SceneManager.LoadScene("Lvl04");
-            return;
-        }
+        // if (SceneManager.GetActiveScene().name == "Lvl04")
+        // {
+        //     // como esta solo para este caso lo hice asi nomas
+        //     // se puede dejar mas lindo
+        //     timeManager.ResetTime();
+        //     SceneManager.LoadScene("Lvl04");
+        //     return;
+        // }
 
         if (onDeath != null)
         {
@@ -108,6 +109,15 @@ public class GameManager : MonoBehaviour
     {
         deathAnim.SetActive(true);
         deathAnimText.Play("Text");
+
+        if (SceneManager.GetActiveScene().name == "Lvl04")
+        {
+            DeathTest.SetActive(true);
+            yield return new WaitForSeconds(duration);
+            timeManager.ResetTime();
+            SceneManager.LoadScene("Lvl04");
+        }
+
         yield return new WaitForSeconds(duration);
         deathAnim.SetActive(false);
     }
