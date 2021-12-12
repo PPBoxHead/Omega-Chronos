@@ -214,7 +214,7 @@ public class Player : MonoBehaviour
     #region Animations/States
     void ManageStates()
     {
-        if (currentState == State.WallGrabing && !isWallCollidingL() && !isWallCollidingR())
+        if (currentState == State.WallGrabing && !isOnWallL && !isOnWallR)
         {
             // cuando te soltas
             currentState = State.Falling;
@@ -235,7 +235,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if (rb.velocity.y < -movTreshold)
+            if (rb.velocity.y < -movTreshold && currentState != State.WallGrabing)
             {
                 currentState = State.Falling;
                 landingDeconfirm = true;
