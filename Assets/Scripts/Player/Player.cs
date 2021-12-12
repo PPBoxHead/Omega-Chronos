@@ -421,6 +421,12 @@ public class Player : MonoBehaviour
         // ser en el update
     }
 
+    public void StopPlayer()
+    {
+        // for cutscenes
+        rb.velocity = Vector2.zero;
+    }
+
     void OnDestroy()
     {
         GameManager.GetInstance.onGamePaused -= PauseResume;
