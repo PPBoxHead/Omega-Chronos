@@ -11,6 +11,7 @@ public class FlyingTurret : Turret
     #region Variables
     [SerializeField, Range(1, 15)] private int playerDistance = 10;
     [SerializeField, Range(20, 60)] private int speed = 60;
+    private ParticlePoolManager particlePoolManager;
     public UnityEvent onDeath;
     private Rigidbody2D rb;
     #endregion
@@ -19,6 +20,7 @@ public class FlyingTurret : Turret
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        particlePoolManager = ParticlePoolManager.GetInstance;
     }
     private void Update()
     {
@@ -58,10 +60,29 @@ public class FlyingTurret : Turret
     protected override void Death()
     {
         rb.gravityScale = 4;
+        rb.freezeRotation = false;
         hitPoints = initialHitPoints;
-        GetComponent<FlyingTurret>().enabled = false;
+
+        GameObject explosion = particlePoolManager.GetExplosion();
+        if (explosion != null)
+        {
+            explosion.transform.parent = transform;
+            explosion.transform.position = transform.position;
+            explosion.SetActive(true);
+        }
+
+        GameObject smoke = particlePoolManager.GetSmoke();
+
+        if (smoke != null)
+        {
+            smoke.transform.position = transform.position;
+            smoke.transform.parent = transform;
+            smoke.SetActive(true);
+        }
 
         onDeath?.Invoke();
+        GetComponent<Animator>().Play("deathEvilPedro");
+        GetComponent<FlyingTurret>().enabled = false;
     }
     #endregion
 }
