@@ -445,6 +445,7 @@ SpriteAtlas:
   - {fileID: 3294704524587484360, guid: 1964e1a6b4f3c504ba23520c1161ab53, type: 3}
   - {fileID: 21300000, guid: 4154750716cae534cacc1167356b0adf, type: 3}
   - {fileID: 21300000, guid: e03243175323e53428f225fdb7d9d8e6, type: 3}
+  - {fileID: 21300000, guid: 1b19de378e4331843a162d294024757a, type: 3}
   - {fileID: 3017725317751706052, guid: b567937775c168a40a0ff6023b980373, type: 3}
   - {fileID: -8155731236952702908, guid: b567937775c168a40a0ff6023b980373, type: 3}
   - {fileID: 7524778405161490502, guid: b567937775c168a40a0ff6023b980373, type: 3}
@@ -1744,6 +1745,7 @@ SpriteAtlas:
   - Bug_Run_2.1 Sprite Sheet_9
   - Slow Icon
   - Boss_Eye-frame-0
+  - Long Platform Mobile Sprite
   - Pedro Sprite Sheet_2
   - Pedro Sprite Sheet_3
   - Pedro Sprite Sheet_0
