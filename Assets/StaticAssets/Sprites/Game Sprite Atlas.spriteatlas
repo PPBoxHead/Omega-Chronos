@@ -983,22 +983,6 @@ SpriteAtlas:
   - {fileID: 7987356225670161031, guid: 6d6730aeb620c184f8de84e8506975fa, type: 3}
   - {fileID: -6447049729716229272, guid: 6d6730aeb620c184f8de84e8506975fa, type: 3}
   - {fileID: 1744289068272453096, guid: 6d6730aeb620c184f8de84e8506975fa, type: 3}
-  - {fileID: 4191614091761915318, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
-  - {fileID: 7178515301311014668, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
-  - {fileID: 8924534687603299016, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
-  - {fileID: -1686778072840624692, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
-  - {fileID: 2514169775017054510, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
-  - {fileID: -1958286899063020006, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
-  - {fileID: -6337938632590719354, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
-  - {fileID: 7391635854369305971, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
-  - {fileID: 467080489102337091, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
-  - {fileID: 4378862449118980370, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
-  - {fileID: 2432073594201245842, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
-  - {fileID: -2849869469300074956, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
-  - {fileID: 1634043125838409061, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
-  - {fileID: 8967081803887183610, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
-  - {fileID: -4637160218032232324, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
-  - {fileID: 8237906086330853851, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
   - {fileID: 21300000, guid: 425233cea838ce4419a4e41dd069660b, type: 3}
   - {fileID: 21300000, guid: e28246eeb96afed41b25b3a26c9c22ed, type: 3}
   - {fileID: -7875227489087072208, guid: 378c13fe87477dd4ca7315f7f7760c68, type: 3}
@@ -1350,6 +1334,22 @@ SpriteAtlas:
   - {fileID: 5158742184772227634, guid: dcf4f1cff0aae944b89825391b10e242, type: 3}
   - {fileID: 493346400227281628, guid: dcf4f1cff0aae944b89825391b10e242, type: 3}
   - {fileID: 21300000, guid: 9abc4edf1acf6a54c912e5563ac7c9ee, type: 3}
+  - {fileID: 4191614091761915318, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
+  - {fileID: 7178515301311014668, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
+  - {fileID: 8924534687603299016, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
+  - {fileID: -1686778072840624692, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
+  - {fileID: 2514169775017054510, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
+  - {fileID: -1958286899063020006, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
+  - {fileID: -6337938632590719354, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
+  - {fileID: 7391635854369305971, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
+  - {fileID: 467080489102337091, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
+  - {fileID: 4378862449118980370, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
+  - {fileID: 2432073594201245842, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
+  - {fileID: -2849869469300074956, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
+  - {fileID: 1634043125838409061, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
+  - {fileID: 8967081803887183610, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
+  - {fileID: -4637160218032232324, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
+  - {fileID: 8237906086330853851, guid: 9a9c5bbe81bb59949ac7a18770229cfb, type: 3}
   m_PackedSpriteNamesToIndex:
   - SpriteLimitInterface
   - Tvs_1
@@ -2283,22 +2283,6 @@ SpriteAtlas:
   - ChronoTime_Value_V2_2
   - ChronoTime_Value_V2_1
   - ChronoTime_Value_V2_0
-  - B.Laser_Canon Sprite Sheet_9
-  - B.Laser_Canon Sprite Sheet_8
-  - B.Laser_Canon Sprite Sheet_3
-  - B.Laser_Canon Sprite Sheet_2
-  - B.Laser_Canon Sprite Sheet_1
-  - B.Laser_Canon Sprite Sheet_0
-  - B.Laser_Canon Sprite Sheet_7
-  - B.Laser_Canon Sprite Sheet_6
-  - B.Laser_Canon Sprite Sheet_5
-  - B.Laser_Canon Sprite Sheet_4
-  - B.Laser_Canon Sprite Sheet_14
-  - B.Laser_Canon Sprite Sheet_15
-  - B.Laser_Canon Sprite Sheet_12
-  - B.Laser_Canon Sprite Sheet_13
-  - B.Laser_Canon Sprite Sheet_10
-  - B.Laser_Canon Sprite Sheet_11
   - Boss_Body-Damage1
   - FrontWall
   - DustCables2_0
@@ -2650,6 +2634,22 @@ SpriteAtlas:
   - Nu-Life Sprite Sheet_0
   - Nu-Life Sprite Sheet_1
   - Boss_Body-Damage1v2
+  - B.Laser_Canon Sprite Sheet_9
+  - B.Laser_Canon Sprite Sheet_8
+  - B.Laser_Canon Sprite Sheet_3
+  - B.Laser_Canon Sprite Sheet_2
+  - B.Laser_Canon Sprite Sheet_1
+  - B.Laser_Canon Sprite Sheet_0
+  - B.Laser_Canon Sprite Sheet_7
+  - B.Laser_Canon Sprite Sheet_6
+  - B.Laser_Canon Sprite Sheet_5
+  - B.Laser_Canon Sprite Sheet_4
+  - B.Laser_Canon Sprite Sheet_14
+  - B.Laser_Canon Sprite Sheet_15
+  - B.Laser_Canon Sprite Sheet_12
+  - B.Laser_Canon Sprite Sheet_13
+  - B.Laser_Canon Sprite Sheet_10
+  - B.Laser_Canon Sprite Sheet_11
   m_RenderDataMap: {}
   m_Tag: Game Sprite Atlas
   m_IsVariant: 0

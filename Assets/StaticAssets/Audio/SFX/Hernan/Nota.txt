@@ -1,0 +1,2 @@
+Después borra los SFX placeholder y solta las 3 carpetas en la principal de SFX. En la carpeta principal, el único sonido (creo) que no hay que eliminar es el keySFX 1 y 2 y el Noise.
+Solo faltan los SFX del ascensor y el del laser azul.
