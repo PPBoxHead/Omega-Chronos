@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Turret : Enemy
 {
+    [SerializeField] public bool turretStoping;
     [Range(1, 10)] [SerializeField] protected int health = 3;
     [Range(1, 30)] [SerializeField] protected int visionRange = 3;
     protected bool aiming;
@@ -40,7 +41,10 @@ public class Turret : Enemy
 
         if (target != null && !aiming)
         {
-            Chasing();
+            if (turretStoping)
+            {
+                Chasing();
+            }
             aiming = true;
         }
 

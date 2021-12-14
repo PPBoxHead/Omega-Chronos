@@ -791,7 +791,7 @@ MonoBehaviour:
   raycastRange: 1.5
   floorMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!1 &5150582839419191323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,8 +1131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vSpeed: 0
   amplitude: 0
-  hSpeed: 1.5
-  limitX: 2
+  hSpeed: 0.8
+  limitX: 3.4
   hDir: 1
   vDir: 1
 --- !u!114 &5150582839585965565
@@ -1153,9 +1153,10 @@ MonoBehaviour:
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 4
-  visionOff: {x: 0, y: 0, z: 0}
+  visionOff: {x: 0, y: 0.65, z: 0}
+  turretStoping: 0
   health: 3
-  visionRange: 5
+  visionRange: 8
   gunBarrel: {fileID: 5150582838635992714}
   fireRate: 1
   shootPoint: {fileID: 5150582840356454020}
