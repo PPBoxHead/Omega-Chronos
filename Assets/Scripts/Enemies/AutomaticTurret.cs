@@ -19,6 +19,9 @@ public class AutomaticTurret : Turret
 
     protected override void Shoot()
     {
+        audioSource.Play();
+        shootParticles.Play();
+
         GameObject bullet = bulletPoolManager.GetPooledObject();
         bullet.transform.position = shootPoint.position;
         bullet.transform.right = bulletDirection;
