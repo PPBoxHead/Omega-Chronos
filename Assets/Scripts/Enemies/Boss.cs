@@ -164,7 +164,6 @@ public class Boss : Turret
         if (hitPoints <= 0)
         {
             StopAllCoroutines();
-            onDeath?.Invoke();
             Death();
         }
 
@@ -173,6 +172,11 @@ public class Boss : Turret
             onDamage[phase]?.Invoke();
             phase += 1;
         }
+    }
+
+    protected override void Death()
+    {
+        onDeath?.Invoke();
     }
 
     IEnumerator OnDamage()
