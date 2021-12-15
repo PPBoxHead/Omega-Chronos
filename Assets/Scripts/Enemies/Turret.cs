@@ -14,6 +14,7 @@ public class Turret : Enemy
     protected BulletPoolManager bulletPoolManager;
     [SerializeField] protected Transform shootPoint;
     [Range(1, 15)] [SerializeField] protected int bulletSpeed = 15;
+    private AudioSource audioSource;
     protected ParticleSystem shootParticles;
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class Turret : Enemy
     private void Start()
     {
         bulletPoolManager = BulletPoolManager.GetInstance;
+        audioSource = GetComponent<AudioSource>();
         shootParticles = GetComponentInChildren<ParticleSystem>();
         GameManager.GetInstance.onGamePaused += Pause;
 
@@ -70,6 +72,7 @@ public class Turret : Enemy
     }
     protected virtual void Shoot()
     {
+        audioSource.Play();
         GameObject bullet = bulletPoolManager.GetPooledObject();
         shootParticles.Play();
         bullet.transform.position = shootPoint.position;

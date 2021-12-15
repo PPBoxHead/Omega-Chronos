@@ -28,7 +28,6 @@ public class Bullet : MonoBehaviour
     {
         StartCoroutine("Despawn");
         gameObject.GetComponent<TrailRenderer>().Clear();
-        gameObject.GetComponent<AudioSource>().Play();
     }
 
     IEnumerator Despawn()
