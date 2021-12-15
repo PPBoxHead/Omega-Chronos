@@ -25,10 +25,11 @@ public class GameManager : MonoBehaviour
     // super cutre pero it works (❁´◡`❁)
     [SerializeField] private GameObject deathAnim;
     [SerializeField] private Animator deathAnimText;
-    [SerializeField] private GameObject DeathTest;
+    // this last one is just for the boss
+    [SerializeField] private GameObject deathImage;
     public delegate void OnDeath(float duration);
     public event OnDeath onDeath;
-    private float duration = 2f;
+    private float duration = 3f;
     #endregion
     #region Singleton
     private static GameManager instance;
@@ -89,18 +90,12 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDeath()
     {
-        // if (SceneManager.GetActiveScene().name == "Lvl04")
-        // {
-        //     // como esta solo para este caso lo hice asi nomas
-        //     // se puede dejar mas lindo
-        //     timeManager.ResetTime();
-        //     SceneManager.LoadScene("Lvl04");
-        //     return;
-        // }
-
         if (onDeath != null)
         {
+
             onDeath(duration);
+            StopAllCoroutines();
+            deathAnim.SetActive(false);
             StartCoroutine("DeathMessage", duration);
         }
     }
@@ -112,10 +107,11 @@ public class GameManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Lvl04")
         {
-            DeathTest.SetActive(true);
+            deathImage.SetActive(true);
             yield return new WaitForSeconds(duration);
             timeManager.ResetTime();
             SceneManager.LoadScene("Lvl04");
+            // el resto no sigue asi que da igual dejarlo por aca
         }
 
         yield return new WaitForSeconds(duration);

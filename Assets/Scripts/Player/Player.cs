@@ -322,12 +322,22 @@ public class Player : MonoBehaviour
 
     void OnDeath(float duration)
     {
-        MovePlayer();
+        StartCoroutine("Death", duration);
+    }
+
+    IEnumerator Death(float duration)
+    {
+        spriteRenderer.enabled = false;
+        rb.velocity = Vector2.zero;
         // stops chronotime if you die
         if (onSlowmo) timeManager.ResetTime();
+        yield return new WaitForSeconds(duration / 2);
+        MovePlayer();
+        spriteRenderer.enabled = true;
+        // hitpoints
         currentHitPoints = initHitPoints;
         uIManager.UpdateHitPoints(currentHitPoints);
-        // tambien frenar la velocidad que tenia anteriormente
+
     }
     #endregion
 

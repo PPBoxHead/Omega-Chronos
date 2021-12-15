@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 [RequireComponent(typeof(Player))]
 
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         rb = player.GetRb;
 
         GameManager.GetInstance.onGamePaused += PauseResume;
+        GameManager.GetInstance.onDeath += OnDeath;
     }
 
     void FixedUpdate()
@@ -52,7 +54,6 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(player.HMovement * player.CurrentMovementSpeed, rb.velocity.y)), walljumpLerp * Time.deltaTime / Time.timeScale);
             // used for smooth movement after walljump
         }
-
     }
 
     void PauseResume(bool gamePaused)
@@ -60,9 +61,22 @@ public class PlayerMovement : MonoBehaviour
         stopMovement = gamePaused;
     }
 
+    void OnDeath(float duration)
+    {
+        StartCoroutine("Death", duration);
+    }
+
+    IEnumerator Death(float duration)
+    {
+        stopMovement = true;
+        yield return new WaitForSeconds(duration / 2);
+        stopMovement = false;
+    }
+
     void OnDestroy()
     {
         GameManager.GetInstance.onGamePaused -= PauseResume;
+        GameManager.GetInstance.onDeath -= OnDeath;
     }
     #endregion
 }
