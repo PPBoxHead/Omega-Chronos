@@ -29,6 +29,7 @@ public class PlayerJump : MonoBehaviour
     private KeyCode jumpBtn;
 
     private SpriteRenderer spriteRenderer;
+    private AudioManager audioManager;
     private TimeManager timeManager;
     private Rigidbody2D rb;
     private Player player;
@@ -58,6 +59,7 @@ public class PlayerJump : MonoBehaviour
         player = GetComponent<Player>();
         spriteRenderer = player.GetSpriteRenderer;
         timeManager = GameManager.GetInstance.GetTimeManager;
+        audioManager = AudioManager.Getinstance;
 
         rb = player.GetRb;
         gravityScale = rb.gravityScale;
@@ -103,6 +105,8 @@ public class PlayerJump : MonoBehaviour
         {
             if (player.CurrentState != Player.State.Jumping)
             {
+                audioManager.PlayCharacterSFX(AudioManager.CharacterSFX.Jumping);
+
                 inputTest = 0;
                 player.JumpParticles.Play();
                 if (player.IsOnWallL || player.IsOnWallR) WallJump();
