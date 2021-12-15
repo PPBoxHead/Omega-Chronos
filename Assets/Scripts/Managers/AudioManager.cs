@@ -32,6 +32,8 @@ public class AudioManager : MonoBehaviour
     public enum CharacterSFX
     {
         Walking,
+        ChronoTime,
+        RecallChrono,
     }
     public enum SFX
     {
@@ -52,6 +54,7 @@ public class AudioManager : MonoBehaviour
     #region CharacterSFXClips
     [Header("Character SFX Clips")]
     [SerializeField] private AudioSource characterSFXSource;
+    [SerializeField] private AudioSource chronoSFXSource;
     [SerializeField] private AudioClip[] characterSFXClips;
     #endregion
     #region SFXClips
@@ -210,14 +213,45 @@ public class AudioManager : MonoBehaviour
     #region CharacterSFX
     public void PlayCharacterSFX(CharacterSFX characterSFXClip)
     {
+        switch (characterSFXClip)
+        {
+            case CharacterSFX.ChronoTime:
+                chronoSFXSource.clip = characterSFXClips[(int)CharacterSFX.ChronoTime];
+                chronoSFXSource.Play();
+                break;
+            case CharacterSFX.RecallChrono:
+                StartCoroutine("FadeOutSFX");
+                break;
+        }
+    }
+
+    IEnumerator FadeOutSFX()
+    {
+        float duration = 0.01f;
+        float lowestVolume = 0.1f;
+        int highestVolume = 1;
+
+        while (chronoSFXSource.volume > lowestVolume)
+        {
+            chronoSFXSource.volume -= 0.1f;
+            yield return new WaitForSeconds(duration);
+        }
+
+        chronoSFXSource.clip = characterSFXClips[(int)CharacterSFX.RecallChrono];
+        chronoSFXSource.Play();
+
+        while (chronoSFXSource.volume < highestVolume)
+        {
+            chronoSFXSource.volume += 0.1f;
+            yield return new WaitForSeconds(duration);
+        }
+    }
+
+    public void WalkingSFX()
+    {
         if (!characterSFXSource.isPlaying)
         {
-            switch (characterSFXClip)
-            {
-                case CharacterSFX.Walking:
-                    RandomizeSound(characterSFXClips[(int)CharacterSFX.Walking], characterSFXSource);
-                    break;
-            }
+            RandomizeSound(characterSFXClips[(int)CharacterSFX.Walking], characterSFXSource);
         }
     }
     #endregion

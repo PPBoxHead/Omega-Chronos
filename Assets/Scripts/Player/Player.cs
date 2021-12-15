@@ -251,7 +251,7 @@ public class Player : MonoBehaviour
                 animator.Play(animations[(int)currentState]);
                 break;
             case State.Walking:
-                audioManager.PlayCharacterSFX(AudioManager.CharacterSFX.Walking);
+                audioManager.WalkingSFX();
                 animator.Play(animations[(int)currentState]);
                 break;
             case State.Jumping:

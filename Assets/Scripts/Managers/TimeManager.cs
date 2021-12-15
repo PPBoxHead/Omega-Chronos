@@ -16,6 +16,7 @@ public class TimeManager : MonoBehaviour
     private bool isTimeSlow = false;
     private float timer;
 
+    private AudioManager audioManager;
     private UIManager uIManager;
     #endregion
     #region SlowdownParameters
@@ -30,6 +31,7 @@ public class TimeManager : MonoBehaviour
     void Start()
     {
         uIManager = UIManager.GetInstance;
+        audioManager = AudioManager.Getinstance;
 
         originalDeltaTime = Time.fixedDeltaTime;
         originalTime = Time.timeScale;
@@ -63,8 +65,8 @@ public class TimeManager : MonoBehaviour
 
     IEnumerator Co_SlowTime()
     {
-        //arreglar aca
-        // pasar numeros a variables
+        audioManager.PlayCharacterSFX(AudioManager.CharacterSFX.ChronoTime);
+
         while (timer > 0)
         {
             Time.timeScale = Mathf.Lerp(Time.timeScale, slowdownFactor, slowdownSmooth * Time.unscaledDeltaTime);
@@ -80,8 +82,8 @@ public class TimeManager : MonoBehaviour
 
     IEnumerator Co_Recharge()
     {
-        //arreglar aca
-        // pasar numeros a variables
+        audioManager.PlayCharacterSFX(AudioManager.CharacterSFX.RecallChrono);
+
         isTimeSlow = false;
         ManageSlowMotion();
         while (timer <= slowdownTime)

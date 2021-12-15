@@ -1,5 +1,38 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-8400151689285260652
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: ed774995d6f2f694685a662f50ac0ae3
+  m_EffectName: Attenuation
+  m_MixLevel: d267bbde71a804f4999381eb98525646
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &-2582912187656747920
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ChronoSFX
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: d68d06a7950d9c34c98ef1a75ecf49e4
+  m_Children: []
+  m_Volume: dc6d151878ef5a348a70422510777814
+  m_Pitch: 4eca999919815484f968eecda115031c
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -8400151689285260652}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -28,6 +61,7 @@ AudioMixerController:
     - 69d890ec1719bb94ea9b47b78528e54a
     - db800490ca860c14ea5e3526e511e53e
     - 24d2d4e5c95dc6843ac72d155f57b5b9
+    - d68d06a7950d9c34c98ef1a75ecf49e4
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -117,6 +151,7 @@ AudioMixerGroupController:
   m_GroupID: db800490ca860c14ea5e3526e511e53e
   m_Children:
   - {fileID: 8894592421264464470}
+  - {fileID: -2582912187656747920}
   m_Volume: 82603b7be253eae4c8bf60b128912937
   m_Pitch: ecdd10afe13afd545b54ffbc506c6a65
   m_Send: 00000000000000000000000000000000
