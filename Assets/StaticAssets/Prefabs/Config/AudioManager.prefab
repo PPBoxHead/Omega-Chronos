@@ -443,6 +443,8 @@ MonoBehaviour:
   chronoSFXSource: {fileID: 4175714185151839144}
   characterSFXClips:
   - {fileID: 8300000, guid: 878367e1be66a2249b0d558ee81ff5d6, type: 3}
+  - {fileID: 8300000, guid: fa387c8e21600ca4698d1853a04d10ab, type: 3}
+  - {fileID: 8300000, guid: 003bd406db4ee0d4aacd2ab006611c31, type: 3}
   sfxSource: {fileID: 8796078331692701335}
   sfxClips:
   - {fileID: 8300000, guid: 8a14f06884217dc40a7aba753eaeff4f, type: 3}
