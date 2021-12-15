@@ -38,6 +38,7 @@ public class AudioManager : MonoBehaviour
     public enum SFX
     {
         Dialogue,
+        Death,
     }
     #endregion
     #region Variables
@@ -259,18 +260,25 @@ public class AudioManager : MonoBehaviour
     // se podrian hacer las 2 juntas (playcharactersfx y playsfx)
     // pero... bueno
     #region SFX
-    public void PlaySFX(SFX sfxClip)
+    public void DialogueSFX()
     {
         if (!sfxSource.isPlaying)
         {
-            switch (sfxClip)
-            {
-                case SFX.Dialogue:
-                    RandomizeSound(sfxClips[(int)SFX.Dialogue], sfxSource);
-                    break;
-            }
+            RandomizeSound(sfxClips[(int)SFX.Dialogue], sfxSource);
         }
     }
+
+    public void PlaySFX(SFX sfxClip)
+    {
+        switch (sfxClip)
+        {
+            case SFX.Death:
+                sfxSource.clip = sfxClips[(int)SFX.Death];
+                break;
+        }
+        sfxSource.Play();
+    }
+
     #endregion
 
     #region RandomizeSounds

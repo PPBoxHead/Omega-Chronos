@@ -322,6 +322,7 @@ public class Player : MonoBehaviour
 
     void OnDeath(float duration)
     {
+        audioManager.PlaySFX(AudioManager.SFX.Death);
         StartCoroutine("Death", duration);
     }
 

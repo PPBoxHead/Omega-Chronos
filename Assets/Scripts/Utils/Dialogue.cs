@@ -86,7 +86,7 @@ public class Dialogue : MonoBehaviour
         {
             dialogueText.text += textAsset.ToString()[i];
             //Referencia este lo reproduce
-            audioManager.PlaySFX(AudioManager.SFX.Dialogue);
+            audioManager.DialogueSFX();
             yield return new WaitForSeconds(delay);
         }
 

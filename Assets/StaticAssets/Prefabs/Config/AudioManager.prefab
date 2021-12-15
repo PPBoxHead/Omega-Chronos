@@ -448,6 +448,7 @@ MonoBehaviour:
   sfxSource: {fileID: 8796078331692701335}
   sfxClips:
   - {fileID: 8300000, guid: 8a14f06884217dc40a7aba753eaeff4f, type: 3}
+  - {fileID: 8300000, guid: f0794888ab931d044afc7079a9286f67, type: 3}
 --- !u!1 &8796078333097800063
 GameObject:
   m_ObjectHideFlags: 0

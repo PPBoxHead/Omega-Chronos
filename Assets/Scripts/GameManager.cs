@@ -92,7 +92,6 @@ public class GameManager : MonoBehaviour
     {
         if (onDeath != null)
         {
-
             onDeath(duration);
             StopAllCoroutines();
             deathAnim.SetActive(false);
