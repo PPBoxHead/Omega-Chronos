@@ -123,6 +123,9 @@ public class AudioManager : MonoBehaviour
             case "Lvl03":
                 FadeMusic(BackgroundMusic.Born);
                 break;
+            case "Lvl04":
+                backgroundSource.Stop();
+                break;
         }
     }
 
