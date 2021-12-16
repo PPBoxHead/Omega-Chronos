@@ -13,10 +13,12 @@ public class LaserTurret : MonoBehaviour
     [SerializeField] private float cooldown = 20;
     private SpriteRenderer spriteRenderer;
     private ScreenShake screenShake;
+    private AudioSource audioSource;
     private bool isFinished = true;
     private float timer = 0;
     private bool isStarted;
     private bool shooting;
+    private bool loading = false;
     public UnityEvent onShoot;
     #endregion
 
@@ -29,6 +31,7 @@ public class LaserTurret : MonoBehaviour
     private void Start()
     {
         screenShake = ScreenShake.Instance;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -39,6 +42,12 @@ public class LaserTurret : MonoBehaviour
 
             float value = timer / cooldown;
             int bars = Mathf.RoundToInt(value * indicators.Length);
+
+            if (!loading && timer >= cooldown * 0.90f)
+            {
+                loading = true;
+                audioSource.Play();
+            }
 
             if (bars < indicators.Length)
             {
@@ -79,16 +88,23 @@ public class LaserTurret : MonoBehaviour
 
     IEnumerator Shooting()
     {
+        // start shooting
         shooting = false;
         laserBeam.SetActive(true);
         onShoot?.Invoke();
+
         screenShake.ShakeCamera(0, shootDuration, 10);
+
         yield return new WaitForSeconds(shootDuration);
+
+        // stop shooting
+        audioSource.Stop();
         laserBeam.SetActive(false);
         timer = 0;
         readySign.SetActive(true);
         isFinished = true;
         spriteRenderer.sprite = indicators[0];
+        loading = false;
     }
     #endregion
 }
