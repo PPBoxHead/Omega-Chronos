@@ -5,6 +5,7 @@ public class LevelManager : MonoBehaviour
 {
     #region Variables
     #region Setup
+    [SerializeField] private bool dontLoadHere = false;
     private SavesManager savesManager;
     #endregion
     #endregion
@@ -13,7 +14,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         // ver de sacar esto en el menu
-        if (SceneManager.GetActiveScene().name != "Menu")
+        if (!dontLoadHere)
         {
             savesManager = GameManager.GetInstance.GetSavesManager;
         }
