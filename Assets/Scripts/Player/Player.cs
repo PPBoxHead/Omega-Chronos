@@ -298,6 +298,7 @@ public class Player : MonoBehaviour
         isVulnerable = false;
         // rb.velocity = Vector2.zero;
         currentHitPoints -= value;
+        audioManager.PlayCharacterSFX(AudioManager.CharacterSFX.Damage);
         uIManager.UpdateHitPoints(currentHitPoints);
         if (currentHitPoints <= 0)
         {

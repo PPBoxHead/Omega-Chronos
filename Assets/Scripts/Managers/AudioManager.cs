@@ -35,6 +35,7 @@ public class AudioManager : MonoBehaviour
         ChronoTime,
         RecallChrono,
         Jumping,
+        Damage
     }
     public enum SFX
     {
@@ -226,6 +227,10 @@ public class AudioManager : MonoBehaviour
                 break;
             case CharacterSFX.Jumping:
                 RandomizeSound(characterSFXClips[(int)CharacterSFX.Jumping], characterSFXSource);
+                break;
+            case CharacterSFX.Damage:
+                characterSFXSource.clip = characterSFXClips[(int)CharacterSFX.Damage];
+                characterSFXSource.Play();
                 break;
         }
     }
