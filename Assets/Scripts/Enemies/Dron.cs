@@ -15,6 +15,7 @@ public class Dron : Enemy
     private ParticlePoolManager particlePoolManager;
     #region Crashing
     private float crashDuration = 1f;
+    private AudioSource audioSource;
     private bool onDamage = false;
     private Vector2 crashVel;
     private Vector2 inNormal;
@@ -34,6 +35,7 @@ public class Dron : Enemy
         hitPoints = initialHitPoints;
 
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         patrolCicle = GetComponent<SinMovement>();
         rb = GetComponent<Rigidbody2D>();
         tilemap = GameManager.GetInstance.GetTilemap;
@@ -113,6 +115,7 @@ public class Dron : Enemy
 
     IEnumerator Co_OnDamage()
     {
+        audioSource.Play();
         TakeDamage(1);
         onDamage = true;
         yield return new WaitForSeconds(crashDuration);
