@@ -332,7 +332,11 @@ public class Player : MonoBehaviour
         spriteRenderer.enabled = false;
         rb.velocity = Vector2.zero;
         // stops chronotime if you die
-        if (onSlowmo) timeManager.ResetTime();
+        if (onSlowmo)
+        {
+            timeManager.ResetTime();
+            timeManager.OnChronoTime();
+        }
         yield return new WaitForSeconds(duration / 2);
         MovePlayer();
         spriteRenderer.enabled = true;
