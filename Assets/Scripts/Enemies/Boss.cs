@@ -179,7 +179,10 @@ public class Boss : Turret
 
     protected override void Death()
     {
+        shooting = false;
         onDeath?.Invoke();
+        gunBarrel.SetActive(false);
+        this.enabled = false;
     }
 
     IEnumerator OnDamage()
