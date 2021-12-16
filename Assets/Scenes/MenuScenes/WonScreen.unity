@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Thank you for playing
+  m_text: Thank you for playing :D
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 13b6fa0889ee81749b6d88c86a85b109, type: 2}
   m_sharedMaterial: {fileID: 3304284830663202079, guid: 13b6fa0889ee81749b6d88c86a85b109, type: 2}
@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1459346797}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &945777536
@@ -685,8 +685,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4b76418b759834890466e5ad3b0d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollTextSpeed: 2.5
-  letterScroll: 5
+  scrollTextSpeed: 1
+  letterScroll: 2
   textComponent: {fileID: 1442203299}
 --- !u!114 &1442203299
 MonoBehaviour:
