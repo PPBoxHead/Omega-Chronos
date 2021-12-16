@@ -34,6 +34,7 @@ public class Boss : Turret
     #region Methods
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         initialRot = gunBarrel.transform.rotation.eulerAngles;
     }
 
@@ -104,7 +105,8 @@ public class Boss : Turret
         yield return new WaitForSeconds(laserCooldown);
         eyeSprite.color = Color.red;
         animator.Play("Charging");
-        yield return new WaitForSeconds(laserCooldown / 4);
+        audioSource.Play();
+        yield return new WaitForSeconds(laserCooldown / 3);
         laser.UpdateLaser();
         laser.EnableLaser();
         shooting = true;
@@ -118,6 +120,7 @@ public class Boss : Turret
 
         if (gunBarrel.transform.rotation == Quaternion.Euler(finalRot))
         {
+            audioSource.Stop();
             shooting = false;
             returning = true;
             laser.DisableLaser();
