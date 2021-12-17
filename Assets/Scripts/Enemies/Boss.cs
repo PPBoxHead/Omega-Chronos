@@ -14,6 +14,7 @@ public class Boss : Turret
     [SerializeField] private Vector3 finalRot;
     [SerializeField] private Transform eyeRotationPivot;
     [SerializeField] private Gun laser;
+    [SerializeField] private Gun laserWeb;
     [SerializeField] private Animator animator;
     [Header("Arms")]
     [SerializeField] private SpriteRenderer[] armsRenderer;
@@ -44,6 +45,7 @@ public class Boss : Turret
         {
             if (!damaging) StartCoroutine("OnDamage");
             laser.UpdateLaser();
+            laserWeb.UpdateLaser();
             DamageAnim();
             return;
         }
@@ -109,12 +111,15 @@ public class Boss : Turret
         yield return new WaitForSeconds(laserCooldown / 3);
         laser.UpdateLaser();
         laser.EnableLaser();
+        laserWeb.UpdateLaser();
+        laserWeb.EnableLaser();
         shooting = true;
     }
 
     protected override void Shoot()
     {
         laser.UpdateLaser();
+        laserWeb.UpdateLaser();
         gunBarrel.transform.rotation = Quaternion.RotateTowards(gunBarrel.transform.rotation, Quaternion.Euler(finalRot), laserSpeed * Time.deltaTime);
         LaserDamage();
 
@@ -124,6 +129,7 @@ public class Boss : Turret
             shooting = false;
             returning = true;
             laser.DisableLaser();
+            laserWeb.DisableLaser();
             animator.Play("Idle");
         }
     }
